@@ -43,7 +43,7 @@ st.markdown(f'<iframe width="80%" height="600" src="{miro_url}" frameborder="0" 
 # Links
 #st.markdown('## Links Úteis')
 st.markdown('##### Fontes de dados')
-st.markdown('Link acessado em 20 novembro 2024' '[A história do petróleo no Brasil](https://www.gov.br/anp/pt-br/acesso-a-informacao/institucional/historia-petroleo-brasil)')
+st.markdown('Link acessado em 20 novembro 2024   ' '[A história do petróleo no Brasil](https://www.gov.br/anp/pt-br/acesso-a-informacao/institucional/historia-petroleo-brasil)')
 st.markdown('Link acessado em 20 novembro 2024   ' '[Qual é a origem do petróleo?](https://www.bbc.com/portuguese/articles/cnk0e0yydelo)')
 st.markdown('Link acessado em 20 novembro 2024   ' '[OPEC]( https://www.opec.org/opec_web/en/index.htm)')
 st.markdown('Link acessado em 20 novembro 2024   ' '[OpenAI. “O Chat GPT é uma ferramenta de processamento de linguagem natural orientada por IA, que possibilita conversas semelhantes às humanas com o chatbot](https://openai.com/blog/chat-gpt-3-launch/)')
@@ -55,11 +55,11 @@ st.markdown('Link acessado em 20 novembro 2024   ' '[Oito motivos para a queda d
 
 # Equipe do projeto
 st.markdown('## Equipe FIAP')
-st.markdown('#### Caio Vinicius Branco Gonçalves - RM 354248', unsafe_allow_html = True)
-st.markdown('#### Jhonny da Silva Mineu - RM 355135', unsafe_allow_html = True)
-st.markdown('#### Marina Mendez Araujo - RM 355100', unsafe_allow_html = True)
-st.markdown('#### Mônada Raquel Brito de Oliveira - RM 354367', unsafe_allow_html = True)
-st.markdown('#### Volmir Moderoso Santos - RM 355589', unsafe_allow_html = True)
+st.markdown('#### Caio Vinicius Branco Gonçalves - RM 354248')
+st.markdown('#### Jhonny da Silva Mineu - RM 355135')
+st.markdown('#### Marina Mendez Araujo - RM 355100')
+st.markdown('#### Mônada Raquel Brito de Oliveira - RM 354367')
+st.markdown('#### Volmir Moderoso Santos - RM 355589')
 
 
 
