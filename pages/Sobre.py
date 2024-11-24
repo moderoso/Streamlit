@@ -26,7 +26,7 @@ import streamlit as st
 st.set_page_config(page_title= 'Projeto ML preço do Petróleo', layout='wide', page_icon= ':fuelpump:')
 
 # Título da página
-st.title('Desenvolvimento do Projeto ML preço do Petróleo 🛠️')
+st.title('Projeto ML preço do Petróleo 🛠️')
 
 # Descrição do projeto
 st.markdown('<p style="text-align: justify;">A GalPreto, uma empresa líder no agenciamento de petróleo, busca otimizar as suas estratégias de mercado e prever flutuações de preço com maior precisão. Para isso, contratou a DataPro para desenvolver um dashboard interativo com visualizações intuitivas, insights em tempo real e um modelo de Machine Learning para previsão do preço do petróleo:</p>', unsafe_allow_html = True)
