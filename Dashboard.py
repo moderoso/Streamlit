@@ -52,7 +52,7 @@ st.markdown('[Geopolítica do Petróleo - Foi acessado em 20 novembro 2024](http
 st.markdown('[Nos Bastidores da Terra: Geóloga Explica a Formação do Petróleo - Foi acessado em 20 novembro 2024](https://super.abril.com.br/coluna/deriva-continental/nos-bastidores-da-terra-geologa-explica-a-formacao-do-petroleo#google_vignette)')
 st.markdown('[Organização dos Países Exportadores de Petróleo - Foi acessado em 20 novembro 2024 ](https://pt.wikipedia.org/wiki/Organiza%C3%A7%C3%A3o_dos_Pa%C3%ADses_Exportadores_de_Petr%C3%B3leo)')
 st.markdown('[Agência Internacional de Energia - Foi acessado em 20 novembro 2024](https://pt.wikipedia.org/wiki/Ag%C3%AAncia_Internacional_de_Energia)')  
-st.markdown('[Oito motivos para a queda do preço do  petróleo] Link acessado em 20 novembro 2024(https://www.dw.com/pt-br/oito-motivos-para-a-queda-do-pre%C3%A7o-do-petr%C3%B3leo/a-19051686)') 
+st.markdown('Link acessado em 20 novembro 2024''[Oito motivos para a queda do preço do  petróleo](https://www.dw.com/pt-br/oito-motivos-para-a-queda-do-pre%C3%A7o-do-petr%C3%B3leo/a-19051686)') 
 
 # Equipe do projeto
 st.markdown('## Equipe FIAP')
