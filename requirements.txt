@@ -16,5 +16,18 @@ requests==2.32.3
 seaborn==0.13.2
 statsmodels==0.14.4
 tensorflow==2.17.1
+utils>=1.0.2
+google-cloud-bigquery==3.17.1
+google-api-core==2.15.0
+google-auth==2.27.0
+google-auth-oauthlib==1.0.0
+google-cloud==0.34.0
+google-cloud-bigquery-storage==2.24.0
+google-cloud-core==2.4.1
+google-crc32c==1.5.0
+google-pasta==0.2.0
+google-resumable-media==2.7.0
+googleapis-common-protos==1.62.0
+googletrans==3.0.0
 
 
