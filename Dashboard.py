@@ -25,25 +25,25 @@ from statsmodels.tsa.arima.model import ARIMA
 #st.markdown('<p style="text-align: justify;">O Dólar exerce uma influência significativa na flutuação dos preços do barril de petróleo. O gráfico abaixo mostra a variação do preço do barril e da taxa de câmbio Dólar-Real ao longo do tempo, destacando os principais picos e vales nos preços desse período.</p>', unsafe_allow_html = True)
 
 # Webscraping dos dados de taxa de câmbio
-url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=38590&module=M'
-coluna = 'Taxa'
-dados_taxa = webscraping(url,coluna)
+#url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=38590&module=M'
+#coluna = 'Taxa'
+#dados_taxa = webscraping(url,coluna)
 
 # Leitura dos dados de petróleo gravados no BigQuery
-tabela_bq = 'tb_preco_petroleo'
-dados_preco = select_bq(tabela_bq)
+#tabela_bq = 'tb_preco_petroleo'
+#dados_preco = select_bq(tabela_bq)
 
-df_merged = pd.merge(dados_preco, dados_taxa, left_index=True, right_index=True, how='left')
-df_merged.Taxa = df_merged.Taxa/100
+#df_merged = pd.merge(dados_preco, dados_taxa, left_index=True, right_index=True, how='left')
+#df_merged.Taxa = df_merged.Taxa/100
 
 # Preparação do gráfico
-x = df_merged.index
-y = df_merged.Preco
-y2 = df_merged.Taxa
+#x = df_merged.index
+#y = df_merged.Preco
+#y2 = df_merged.Taxa
 
-picos_indices_max = np.where(((y == 143.95) & (x =='2008-07-07')) | ((y == 126.64) & (x == '2011-05-06'))| ((y == 133.18) & (x == '2022-03-08')))[0] 
-picos_indices_min = np.where(((y == 33.73) & (x =='2008-12-30')) | ((y == 26.01) & (x == '2016-01-24')) | ((y == 9.12) & (x == '2020-04-21')))[0] 
-st.plotly_chart(graf_marcado_multiplos(x, y, picos_indices_max, picos_indices_min,y2), use_container_width=True)
+#picos_indices_max = np.where(((y == 143.95) & (x =='2008-07-07')) | ((y == 126.64) & (x == '2011-05-06'))| ((y == 133.18) & (x == '2022-03-08')))[0] 
+#picos_indices_min = np.where(((y == 33.73) & (x =='2008-12-30')) | ((y == 26.01) & (x == '2016-01-24')) | ((y == 9.12) & (x == '2020-04-21')))[0] 
+#st.plotly_chart(graf_marcado_multiplos(x, y, picos_indices_max, picos_indices_min,y2), use_container_width=True)
 
 # Altas e baixas históricas no preço
 st.markdown('<h3> Principais fatos históricos que afetaram os preços: </h3>', unsafe_allow_html = True)
