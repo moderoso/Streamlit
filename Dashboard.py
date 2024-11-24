@@ -23,17 +23,17 @@ from statsmodels.tsa.arima.model import ARIMA
 import streamlit as st
 
 # Configuração da página
-st.set_page_config(page_title= 'Sobre o Projeto', layout='wide', page_icon= ':fuelpump:')
+st.set_page_config(page_title= 'Projeto ML preço do Petróleo', layout='wide', page_icon= ':fuelpump:')
 
 # Título da página
-st.title('Desenvolvimento do Projeto 🛠️')
+st.title('Desenvolvimento do Projeto ML preço do Petróleo 🛠️')
 
 # Descrição do projeto
-st.markdown('<p style="text-align: justify;">Este projeto foi um Tech Challenge proposto na quarta fase do curso de Pós-graduação em Data Analytics da faculdade Fiap em que nós alunos fomos convidados a analisar o preço histórico do barril de petróleo e a partir dessa análise cumprir alguns desafios:</p>', unsafe_allow_html = True)
-st.markdown('- Criar um dashboard interativo')
-st.markdown('- Apresentar insights')
-st.markdown('- Criar um modelo preditivo com Série Temporal')
-st.markdown('- Fazer deploy do modelo em produção')
+st.markdown('<p style="text-align: justify;">A GalPreto, uma empresa líder no agenciamento de petróleo, busca otimizar as suas estratégias de mercado e prever flutuações de preço com maior precisão. Para isso, contratou a DataPro para desenvolver um dashboard interativo com visualizações intuitivas, insights em tempo real e um modelo de Machine Learning para previsão do preço do petróleo:</p>', unsafe_allow_html = True)
+st.markdown('- Análise Exploratória')
+st.markdown('- Desenvolvimento dashboard com os insights abaixo na ferramenta Streamlit')
+st.markdown('- Desenvolvimento de um modelo Machine Learning')
+
 
 # Visualização da fluxo de trabalho do projeto
 st.markdown('## Fluxo de Trabalho')
