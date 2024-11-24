@@ -52,11 +52,15 @@ st.markdown('[Site BBC News Brasil - publicado em maio/2015](https://www.bbc.com
 st.markdown('[Site Exame - publicado em novembro/2015](https://exame.com/economia/precos-do-petroleo-se-aproximam-do-fundo-do-poco-de-2008/)')
 st.markdown('[Site Veja - publicado em abril/2020](https://veja.abril.com.br/economia/petroleo-tem-menor-preco-em-18-anos-por-queda-na-demanda-devido-covid-19)')
 st.markdown('[Jornal Nexo - março/2022](https://www.nexojornal.com.br/expresso/2022/03/17/5-gr%C3%A1ficos-para-entender-20-anos-de-pre%C3%A7os-da-gasolina)')  
-st.markdown('[Site BBC News Brasil - outubro/2022](https://www.bbc.com/portuguese/internacional-63180611)') 
+st.markdown('[Oito motivos para a queda do preço do  petróleo -  Acesso em 20 novembro. 2024](https://www.dw.com/pt-br/oito-motivos-para-a-queda-do-pre%C3%A7o-do-petr%C3%B3leo/a-19051686)') 
 
 # Equipe do projeto
-st.markdown('## Equipe')
-st.markdown('#####  Keila Ferreira Petruz - Analista de BI <a href="https://www.linkedin.com/in/keila-ferreira-petruz/" target="_blank"  style="margin: 0px 5px 0px 10px;"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="30" height="30"></a> <a href="https://github.com/kfpetruz" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" width="30" height="30"></a>', unsafe_allow_html = True)
-st.markdown('##### Tainá Maria Dias de Paula - Analista de BI <a href="https://www.linkedin.com/in/tainamdpaula/" target="_blank"  style="margin: 0px 5px 0px 10px;"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="30" height="30"></a> <a href="https://github.com/tainamaria" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" width="30" height="30"></a>', unsafe_allow_html = True)
+st.markdown('## Equipe FIAP')
+st.markdown('#####  Caio Vinicius Branco Gonçalves - RM 354248', unsafe_allow_html = True)
+st.markdown('##### Jhonny da Silva Mineu - RM 355135', unsafe_allow_html = True)
+st.markdown('#####  Marina Mendez Araujo - RM 355100', unsafe_allow_html = True)
+st.markdown('##### Mônada Raquel Brito de Oliveira - RM 354367', unsafe_allow_html = True)
+st.markdown('##### Volmir Moderoso Santos - RM 355589', unsafe_allow_html = True)
+
 
 
