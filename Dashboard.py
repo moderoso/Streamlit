@@ -1,9 +1,22 @@
-# Importação das bibliotecas
-import streamlit as st
+# Para realizar o WebScraping
+from bs4 import BeautifulSoup
+from prophet import Prophet
+from prophet.plot import plot_plotly, plot_components_plotly
+
+import requests
 import pandas as pd
-import plotly.express as px
 import numpy as np
-from utils import webscraping,graf_marcado_max_min,atualiza_dados
+import matplotlib.pyplot as plt
+import seaborn as sns
+import statsmodels.api as sm
+
+from prophet import Prophet
+from sklearn.model_selection import TimeSeriesSplit
+from sklearn.metrics import mean_absolute_error
+from sklearn.preprocessing import MinMaxScaler
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import LSTM, Dense, Dropout
+from statsmodels.tsa.arima.model import ARIMA
 
 # Configuração da página
 st.set_page_config(page_title= 'Dashboard - Preço do Petróleo', layout='wide', page_icon= ':fuelpump:')
