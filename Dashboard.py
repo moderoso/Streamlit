@@ -46,7 +46,7 @@ from statsmodels.tsa.arima.model import ARIMA
 #st.plotly_chart(graf_marcado_multiplos(x, y, picos_indices_max, picos_indices_min,y2), use_container_width=True)
 
 # Altas e baixas históricas no preço
-st.markdown('<h3> Principais fatos históricos que afetaram os preços: </h3>', unsafe_allow_html = True)
+markdown('<h3> Principais fatos históricos que afetaram os preços: </h3>', unsafe_allow_html = True)
 
 st.markdown('<p style="text-align: justify;"><span style="color:red; font-weight: bold">Julho/2008:</span> o fato que culmina no pico de preço do barril de petróleo nesse período, vem acompanhado de uma curva crescente desde o ano de 2004, com instabilidade geopolítica, crescimento da demanda global, especulação no mercado financeiro. Em 2005, por exemplo, o evento climático do furacão Katrina causou danos significativos às instalações de produção de petróleo e gás no Golfo do México, afetando a oferta. Tensões geopolíticas em regiões chave de produção de petróleo, como o Oriente Médio, também contribuíram para a preocupação com a segurança no fornecimento. Eventos como a tensão entre os Estados Unidos e o Irã, assim como conflitos em regiões produtoras, geraram incertezas que influenciaram nos crescentes preços do petróleo.</p>', unsafe_allow_html = True)
 
