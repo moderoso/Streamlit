@@ -55,11 +55,11 @@ st.markdown('Link acessado em 20 novembro 2024' '[Oito motivos para a queda do p
 
 # Equipe do projeto
 st.markdown('## Equipe FIAP')
-st.markdown('## Caio Vinicius Branco Gonçalves - RM 354248', unsafe_allow_html = True)
-st.markdown('## Jhonny da Silva Mineu - RM 355135', unsafe_allow_html = True)
-st.markdown('## Marina Mendez Araujo - RM 355100', unsafe_allow_html = True)
-st.markdown('## Mônada Raquel Brito de Oliveira - RM 354367', unsafe_allow_html = True)
-st.markdown('## Volmir Moderoso Santos - RM 355589', unsafe_allow_html = True)
+st.markdown('#### Caio Vinicius Branco Gonçalves - RM 354248', unsafe_allow_html = True)
+st.markdown('#### Jhonny da Silva Mineu - RM 355135', unsafe_allow_html = True)
+st.markdown('#### Marina Mendez Araujo - RM 355100', unsafe_allow_html = True)
+st.markdown('#### Mônada Raquel Brito de Oliveira - RM 354367', unsafe_allow_html = True)
+st.markdown('#### Volmir Moderoso Santos - RM 355589', unsafe_allow_html = True)
 
 
 
