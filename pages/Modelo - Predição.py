@@ -11,7 +11,7 @@ st.set_page_config(page_title= 'Modelo - Predição', layout='wide', page_icon= 
 # Título da página e descrição introdutória do modelo escolhido, parâmetros e performance
 st.title('Modelo Preditivo :telescope:')
 
-st.markdown('<p style="text-align: justify;">Considerando que os dados apresentaram uma leve repetição sazonal a cada intervalo de 30 dias, optamos por utilizar o modelo <span style="font-weight: bold">ETS (Erro, Tendência, Sazonalidade)</span>. O modelo ETS é adequado para séries temporais com características variáveis no tempo, permitindo a captura de padrões complexos mesmo em situações onde as tendências e sazonalidades são mínimas. Além disso, o modelo ETS oferece uma estrutura flexível que pode ser adaptada para se ajustar às particularidades dos dados, garantindo uma modelagem precisa e robusta.</p>', unsafe_allow_html = True)
+st.markdown('<p style="text-align: justify;">Testando atualização do MVP do projeto com o GitHub na minha máquina <span style="font-weight: bold">-- Jhonny</span>. </p>', unsafe_allow_html = True)
 
 st.header('Parâmetros')
 st.markdown('<p style="text-align: justify;">ETS é um modelo de séries temporais que descreve a evolução de uma variável ao longo do tempo, levando em consideração três parâmetros principais: tendência, sazonalidade e períodos sazonais.  </p>', unsafe_allow_html = True)
