@@ -7,11 +7,11 @@ from utils import modelo_previsao_prophet,tratando_dados,importacao_dados_previs
 st.set_page_config(page_title= 'Modelo - Predição', layout='wide', page_icon= ':fuelpump:')
 
 # Título da página e descrição introdutória do modelo escolhido, parâmetros e performance
-st.title('Modelo Preditivo :telescope:')
+st.title('Modelo Preditivo :telescope: ⚡')
 
 st.markdown('<p style="text-align: justify;">Testando atualização do MVP do projeto com o GitHub na minha máquina <span style="font-weight: bold">-- Jhonny</span>. </p>', unsafe_allow_html = True)
 
-st.markdown('<p style="text-align: justify;">Teste de atualização GitHub :rocket: </p>', unsafe_allow_html = True)
+st.markdown('<p style="text-align: justify;">Teste de atualização GitHub </p>', unsafe_allow_html = True)
 
 # Leitura dos dados de petróleo com WebScraping
 url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?module=m&serid=1650971490&oper=view'
