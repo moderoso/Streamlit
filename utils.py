@@ -354,7 +354,7 @@ def importacao_dados_previsao(url):
         return pd.DataFrame()
 
 def tratando_dados(df):
-    # Renomeando as colunas para o formato padrão utilizado em time series
+    # Renomeando as colunas para o formato padrão utilizado em time series para escolha do modelo
     df.rename(columns={"Data":"ds","Preço - petróleo bruto - Brent (FOB)":"y"},inplace=True)
 
     # Alterando o tipo do dado das colunas para Data e númerica
