@@ -358,8 +358,8 @@ def tratando_dados(df):
     df.rename(columns={"Data":"ds","Preço - petróleo bruto - Brent (FOB)":"y"},inplace=True)
 
     # Alterando o tipo do dado das colunas para Data e númerica
-    df['ds'] = pd.to_datetime(df_preco['ds'],format="%d/%m/%Y")
-    df['y'] = pd.to_numeric(df_preco['y'])
+    df['ds'] = pd.to_datetime(df['ds'],format="%d/%m/%Y")
+    df['y'] = pd.to_numeric(df['y'])
     df_preco = df.sort_values(by='ds')
 
     return df_preco
