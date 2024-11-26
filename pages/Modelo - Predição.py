@@ -15,7 +15,7 @@ st.markdown('<p style="text-align: justify;">Testando atualização do MVP do pr
 url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?module=m&serid=1650971490&oper=view'
 df = importacao_dados_previsao(url)
 
-# Tratando os dados coletados
+# Tratando os dados coletados para retornar o df que será usado nas predições
 df_preco = tratando_dados(df)
 
 # Aplicando o dataframe após o tratamento para treinar o modelo usando o Prophet
