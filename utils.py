@@ -396,12 +396,8 @@ def modelo_previsao_prophet(df_preco):
             'WMAPE': wmape_value
         })
 
-        print(f'Fold {fold + 1} - MAE: {mae:.4f}, WMAPE: {wmape_value:.2%}')
-
     # Consolidando os resultados
     results_df = pd.DataFrame(results_prophet)
-    print("\nResultados médios de validação cruzada:")
-    print(results_df.mean(numeric_only=True))
 
     # Treinando o modelo final e prevendo os próximos 90 dias
     final_model = Prophet(daily_seasonality=True, yearly_seasonality=True)
@@ -448,6 +444,7 @@ def plot_previsao(df_real, previsao, titulo='Previsão do Preço do Petróleo (P
 
 
 def plot_previsao_10_meses(df_preco, future_forecast, titulo='Previsão do Preço do Petróleo (Últimos 10 Meses + Próximos 90 dias)'):
+
     """
     Plota os dados reais dos últimos 10 meses e as previsões para os próximos 90 dias.
 
@@ -488,3 +485,54 @@ def plot_previsao_10_meses(df_preco, future_forecast, titulo='Previsão do Preç
 
     # Exibindo o gráfico no Streamlit
     st.pyplot(fig)
+
+
+def modelo_previsao_ARIMA(df_preco):
+    # Configurando o TimeSeriesSplit
+    n_splits = 5  # Número de divisões para validação cruzada
+    tscv = TimeSeriesSplit(n_splits=n_splits)
+
+    # Armazenando os resultados
+    results_arima = []
+
+    # Loop de validação cruzada
+    for fold, (train_index, val_index) in enumerate(tscv.split(df_preco)):
+        print(f"Treinando o Fold {fold + 1}...")
+
+        # Separando os dados de treino e validação
+        train_data = df_preco.iloc[train_index]['y']
+        val_data = df_preco.iloc[val_index]['y']
+
+        # Ajustando o modelo ARIMA no conjunto de treino
+        arima_model = ARIMA(train_data, order=(5, 1, 1))  # Parâmetros de exemplo (p=5, d=1, q=0)
+        arima_fitted = arima_model.fit()
+
+        # Fazendo previsões no conjunto de validação
+        y_val_pred = arima_fitted.forecast(steps=len(val_data))
+
+        # Calculando as métricas
+        mae = mean_absolute_error(val_data, y_val_pred)
+        wmape_value = np.sum(np.abs(val_data - y_val_pred)) / np.sum(val_data)
+
+        results_arima.append({
+            'fold': fold + 1,
+            'MAE': mae,
+            'WMAPE': wmape_value
+        })
+
+        # Consolidando os resultados
+    results_df = pd.DataFrame(results_arima)
+
+    final_arima_model = ARIMA(df_preco['y'], order=(5, 1, 0))
+    final_arima_fitted = final_arima_model.fit()
+
+    future_predictions = final_arima_fitted.forecast(steps=90)
+    # Criando datas para previsões futuras
+    last_date = df_preco['ds'].max()
+    future_dates = pd.date_range(last_date + pd.Timedelta(days=1), periods=90, freq='D')
+
+    # Exibindo as previsões futuras
+    future_forecast_df = pd.DataFrame({'ds': future_dates, 'yhat': future_predictions})
+
+    return future_forecast_df
+
