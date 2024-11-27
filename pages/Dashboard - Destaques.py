@@ -40,22 +40,12 @@ def busca_dados(classe):
     for valor in linha.find_all('td'):
       campos.append(valor.text.strip().replace(',','.'))
     dados.append(campos)
+
+picos_indices_max = np.where(((y == 143.95) & (x =='2008-07-07')) | ((y == 126.64) & (x == '2011-05-06'))| ((y == 133.18) & (x == '2022-03-08')))[0] 
+picos_indices_min = np.where(((y == 33.73) & (x =='2008-12-30')) | ((y == 26.01) & (x == '2016-01-24')) | ((y == 9.12) & (x == '2020-04-21')))[0] 
+st.plotly_chart(graf_marcado_multiplos(x, y, picos_indices_max, picos_indices_min,y2), use_container_width=True)	
 	
-import time
-
-'Starting a long computation...'
-
-# Add a placeholder
-latest_iteration = st.empty()
-bar = st.progress(0)
-
-for i in range(100):
-  # Update the progress bar with each iteration.
-  latest_iteration.text(f'Iteration {i+1}')
-  bar.progress(i + 1)
-  time.sleep(0.1)
-
-'...and now we\'re done!'	
+	
 	
 
 
