@@ -16,8 +16,8 @@ atualiza_dados()
 
 # Webscraping dos dados de petróleo
 url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=38590&module=M'
-coluna = 'Taxa'
-dados_taxa = webscraping(url,coluna)
+coluna = 'Preco'
+dados = webscraping(url,coluna)
 
 # Construção dos dataframes 
 dados_sem_dataindex = dados.reset_index()
