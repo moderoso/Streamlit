@@ -41,7 +41,22 @@ def busca_dados(classe):
       campos.append(valor.text.strip().replace(',','.'))
     dados.append(campos)
 	
-x = st.slider('x')  # 👈 this is a widget
-st.write(x, 'squared is', x * x)	
+import time
+
+'Starting a long computation...'
+
+# Add a placeholder
+latest_iteration = st.empty()
+bar = st.progress(0)
+
+for i in range(100):
+  # Update the progress bar with each iteration.
+  latest_iteration.text(f'Iteration {i+1}')
+  bar.progress(i + 1)
+  time.sleep(0.1)
+
+'...and now we\'re done!'	
+	
+
 
 
