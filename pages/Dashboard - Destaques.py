@@ -40,5 +40,8 @@ def busca_dados(classe):
     for valor in linha.find_all('td'):
       campos.append(valor.text.strip().replace(',','.'))
     dados.append(campos)
+	
+x = st.slider('x')  # 👈 this is a widget
+st.write(x, 'squared is', x * x)	
 
 
