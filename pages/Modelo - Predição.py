@@ -11,7 +11,7 @@ st.title('Modelo Preditivo :telescope: ⚡')
 
 st.markdown('<p style="text-align: justify;">Testando atualização do MVP do projeto com o GitHub na minha máquina <span style="font-weight: bold">-- Jhonny</span>. </p>', unsafe_allow_html = True)
 
-st.markdown('<p style="text-align: justify;">Teste de atualização GitHub </p>', unsafe_allow_html = True)
+st.markdown('<p style="text-align: justify;">Escolha um tipo de modelo abaixo: </p>', unsafe_allow_html = True)
 
 # Leitura dos dados de petróleo com WebScraping
 url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?module=m&serid=1650971490&oper=view'
