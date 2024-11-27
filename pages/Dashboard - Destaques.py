@@ -65,11 +65,11 @@ fonte_negrito = 'font-weight: bold;'
 
 col1, col2, col3, col4 = st.columns(4)
 with col1:
-    metrica1 = dados.index.max().strftime('%d/%m/%Y')
+    st.metric = dados.index.max().strftime('%d/%m/%Y')
     st.markdown(f"<h2 style='{cor_estilizada}'>{metrica1}</h2> <span style='{fonte_negrito}'> Dados atualizados até </span>", unsafe_allow_html=True)
     #st.metric('Dados atualizados até:', value=dados.index.max().strftime('%d/%m/%Y')) 
 with col2: 
-    metrica2 = dados.index.min().strftime('%d/%m/%Y')
+    st.metric = dados.index.min().strftime('%d/%m/%Y')
     st.markdown(f"<h2 style='{cor_estilizada}'> {metrica2} </h2> <span style='{fonte_negrito}'> Dados monitorados desde</span> ", unsafe_allow_html=True) 
 with col3:
     metrica3 = dados['Preco'].min()
