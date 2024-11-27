@@ -15,9 +15,9 @@ st.title('Dashboard - Variação do Preço do Petróleo :fuelpump:')
 atualiza_dados()
 
 # Webscraping dos dados de petróleo
-url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?module=m&serid=1650971490&oper=view'
-coluna = 'Preco'
-dados = webscraping(url,coluna)
+url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=38590&module=M'
+coluna = 'Taxa'
+dados_taxa = webscraping(url,coluna)
 
 # Construção dos dataframes 
 dados_sem_dataindex = dados.reset_index()
