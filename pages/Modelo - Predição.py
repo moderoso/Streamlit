@@ -35,7 +35,7 @@ if opcao == "Prophet":
 
     # Plotando o resultado dos últimos 10 meses + os próximos 90 dias previstos
     plot_previsao_10_meses(df_preco,future_forecast)
-elif opcao == "Opção 2":
+elif opcao == "ARIMA":
     future_forecast = modelo_previsao_ARIMA(df_preco)
 
     # Plotando o resultado 
