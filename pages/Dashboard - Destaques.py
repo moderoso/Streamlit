@@ -41,22 +41,7 @@ def busca_dados(classe):
       campos.append(valor.text.strip().replace(',','.'))
     dados.append(campos)
 
-# Construção dos gráficos          
-fig_picos_preco = px.bar(picos_preco,
-                        x = picos_preco['Mes'].astype(str) + '/' + picos_preco['Ano'].astype(str),
-                        y = 'Preco',
-                        text_auto=True,
-                        title= f'Top 10 meses com média de preços mais altos')
-fig_picos_preco.update_xaxes(type='category')
-fig_picos_preco.update_layout(xaxis_title= 'Data', yaxis_title = 'Preço (US$)')
 
-fig_vales_preco = px.bar(vales_preco,
-                        x = vales_preco['Mes'].astype(str) + '/' + vales_preco['Ano'].astype(str),
-                        y = 'Preco',
-                        text_auto=True,
-                        title= f'Top 10 meses com média de preços mais baixos')
-fig_vales_preco.update_xaxes(type='category')
-fig_vales_preco.update_layout(xaxis_title= 'Data', yaxis_title = 'Preço (US$)')
 
 
 # Visualização dos visuais no Streamlit
