@@ -18,7 +18,7 @@ st.set_page_config(page_title= 'Dashboard - Preço do Petróleo', layout='wide',
 st.title('Dashboard - Variação do Preço do Petróleo :fuelpump:')
 
 # Botão para atualizar os dados da aplicação
-atualiza_dados()
+#atualiza_dados()
 
 # Webscraping dos dados de petróleo
 url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?module=m&serid=1650971490&oper=view'
