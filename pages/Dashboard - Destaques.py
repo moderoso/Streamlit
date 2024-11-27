@@ -1,15 +1,14 @@
 # Importação das bibliotecas
-import streamlit as st
-import pandas as pd
-import plotly.express as px
-import numpy as np
-from utils import webscraping,graf_marcado_max_min,atualiza_dados
-
-# Para realizar o WebScraping
-import requests
 from bs4 import BeautifulSoup
 from prophet import Prophet
 from prophet.plot import plot_plotly, plot_components_plotly
+
+import requests
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import statsmodels.api as sm
 
 # Configuração da página
 st.set_page_config(page_title= 'Dashboard - Preço do Petróleo', layout='wide', page_icon= ':fuelpump:')
