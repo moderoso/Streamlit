@@ -42,27 +42,21 @@ def busca_dados(classe):
     dados.append(campos)
 
 
-# Construção dos gráficos          
-fig_picos_preco = px.bar(picos_preco,
-                        x = picos_preco['Mes'].astype(str) + '/' + picos_preco['Ano'].astype(str),
-                        y = 'Preco',
-                        text_auto=True,
-                        title= f'Top 10 meses com média de preços mais altos')
-fig_picos_preco.update_xaxes(type='category')
-fig_picos_preco.update_layout(xaxis_title= 'Data', yaxis_title = 'Preço (US$)')
+# Leitura dos dados de petróleo gravados no BigQuery
+tabela_bq = 'tb_preco_petroleo'
+dados_preco = select_bq(tabela_bq)
 
-fig_vales_preco = px.bar(vales_preco,
-                        x = vales_preco['Mes'].astype(str) + '/' + vales_preco['Ano'].astype(str),
-                        y = 'Preco',
-                        text_auto=True,
-                        title= f'Top 10 meses com média de preços mais baixos')
-fig_vales_preco.update_xaxes(type='category')
-fig_vales_preco.update_layout(xaxis_title= 'Data', yaxis_title = 'Preço (US$)')
+df_merged = pd.merge(dados_preco, dados_taxa, left_index=True, right_index=True, how='left')
+df_merged.Taxa = df_merged.Taxa/100
 
-# Visualização dos visuais no Streamlit
-## Cartões
-cor_estilizada = 'color: #0145AC;'
-fonte_negrito = 'font-weight: bold;'
+# Preparação do gráfico
+x = df_merged.index
+y = df_merged.Preco
+y2 = df_merged.Taxa
+
+picos_indices_max = np.where(((y == 143.95) & (x =='2008-07-07')) | ((y == 126.64) & (x == '2011-05-06'))| ((y == 133.18) & (x == '2022-03-08')))[0] 
+picos_indices_min = np.where(((y == 33.73) & (x =='2008-12-30')) | ((y == 26.01) & (x == '2016-01-24')) | ((y == 9.12) & (x == '2020-04-21')))[0] 
+st.plotly_chart(graf_marcado_multiplos(x, y, picos_indices_max, picos_indices_min,y2), use_container_width=True)
 
 col1, col2, col3, col4 = st.columns(4)
 with col1:
