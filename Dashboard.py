@@ -22,3 +22,10 @@ st.title('Dashboard - Variação do Preço do Petróleo :fuelpump:')
 # Construção dos dataframes 
 df_dolar = pd.read_csv('dolar.csv', encoding = "ISO-8859-1", sep=";")
 df_dolar.head()
+
+if st.checkbox('Show dataframe'):
+    chart_data = pd.df_dolar(
+       np.random.randn(20, 3),
+       columns=['a', 'b', 'c'])
+
+    chart_data
