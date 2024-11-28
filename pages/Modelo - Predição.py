@@ -10,9 +10,7 @@ st.set_page_config(page_title= 'Modelo - Predição', layout='wide', page_icon= 
 st.title('Modelo Preditivo :telescope: ⚡')
 
 st.markdown('<p style="text-align: justify;">Testando atualização do MVP do projeto com o GitHub na minha máquina <span style="font-weight: bold">-- Jhonny</span>. </p>', unsafe_allow_html = True)
-
-#st.markdown('<p style="text-align: justify;">Escolha um tipo de modelo abaixo: </p>', unsafe_allow_html = True)
-st.title('Escolha um tipo de modelo abaixo: ')
+st.subheader('Escolha um tipo de modelo abaixo: ')
 
 opcao = st.radio(
     "Selecione uma das opções abaixo:",
