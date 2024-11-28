@@ -1,7 +1,7 @@
 # Importação das bibliotecas
 import streamlit as st
 from statsmodels.tsa.seasonal import seasonal_decompose
-from utils import select_bq,decomposicao,teste_estatistico
+from utils import decomposicao,teste_estatistico
 
 # Configuração da página
 st.set_page_config(page_title= 'Modelo - Decomposição e Análise', layout='wide', page_icon= ':fuelpump:')
@@ -21,17 +21,17 @@ st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Saz
 st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Sazonalidade anual:</span> Padrões que se repetem anualmente. Por exemplo, em dados climáticos, podemos observar variações sazonais nas temperaturas ao longo das estações do ano. O período sazonal associado seria 365 dias.</p>', unsafe_allow_html = True)
 
 # Leitura dos dados de petróleo gravados no BigQuery
-tabela_bq = 'tb_preco_petroleo'
-dados = select_bq(tabela_bq)
+#tabela_bq = 'tb_preco_petroleo'
+#dados = select_bq(tabela_bq)
 
 # Agrupamento dos dados em semanal, mensal e diário
-df_semanal = dados.resample('W')['Preco'].mean()
-df_mensal = dados.resample('M')['Preco'].mean()
-df_anual = dados.resample('Y')['Preco'].mean()
+#df_semanal = dados.resample('W')['Preco'].mean()
+#df_mensal = dados.resample('M')['Preco'].mean()
+#df_anual = dados.resample('Y')['Preco'].mean()
 
 # Seleção do modelo de decomposição e período sazonal
-modelo = st.sidebar.selectbox("Selecione o modelo de decomposição", ['Multiplicativo','Aditivo'])
-formato = st.sidebar.selectbox("Selecione o período sazonal", ['1','7','30','365'])
+#modelo = st.sidebar.selectbox("Selecione o modelo de decomposição", ['Multiplicativo','Aditivo'])
+#formato = st.sidebar.selectbox("Selecione o período sazonal", ['1','7','30','365'])
 
 # Para cada combinação de seleção, é apresentado as análises de decomposição, teste estatístico e gráficos de autocorrelação
 if (modelo == 'Multiplicativo' and formato == '1'):
