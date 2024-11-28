@@ -15,9 +15,9 @@ st.title('Dashboard - Variação do Preço do Petróleo :fuelpump:')
 #atualiza_dados()
 
 # Webscraping dos dados de petróleo
-url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=38590&module=M'
-coluna = 'Preco'
-dados = webscraping(url,coluna)
+#url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=38590&module=M'
+#coluna = 'Preco'
+#dados = webscraping(url,coluna)
 
 # Construção dos dataframes 
 df_dolar = pd.read_csv('dolar.csv', encoding = "ISO-8859-1", sep=";")
