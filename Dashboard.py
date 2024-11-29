@@ -21,7 +21,7 @@ st.title('Dashboard - Variação do Preço do Petróleo :fuelpump:')
 
 # Construção dos dataframes 
 @st.cache_data
-def get_dolar_data():
+#def get_dolar_data():
 df_dolar = pd.read_csv('dolar.csv', encoding = "ISO-8859-1", sep=";")
 df_dolar.head()
 
