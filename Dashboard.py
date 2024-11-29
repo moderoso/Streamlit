@@ -44,7 +44,7 @@ c = (
 #   .mark_circle()
     .mark_point(filled=True)
    .encode(x="Data", y="Dolar Comercia (R$)", size="c", color="c", tooltip=["Data", "Dolar Comercia (R$)", "c"])
-).interactive()
+).add_selection(select_year).transform_filter(select_year)
 
 st.altair_chart(c, use_container_width=True)
 
