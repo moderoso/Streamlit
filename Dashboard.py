@@ -27,5 +27,15 @@ df_dolar.head()
 
 if st.checkbox('Show dataframe'):
 	st.write(df_dolar)
+	
+# Create a line chart
+fig = px.line(df_dolar, x='Data', y='Valor')  # Assuming 'Data' and 'Valor' are columns in your DataFrame
+
+# Display the chart in Streamlit
+st.plotly_chart(fig)	
+
+fig = px.line(df_dolar, x='Data', y='Valor', 
+                   title='Variação do Dólar', 
+                   labels={'Data': 'Data', 'Valor': 'Valor do Dólar'})
 
 
