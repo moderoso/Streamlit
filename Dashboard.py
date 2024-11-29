@@ -39,6 +39,11 @@ import altair as alt
 
 df_dolar = pd.DataFrame(np.random.randn(20, 3), columns=["Data", "Dolar Comercia (R$)", "c"])
 
+select_year = alt.selection_single(
+    name='Select', fields=['Data'], init={'Year': 1928},
+    bind=alt.binding_range(min=1928, max=2046, step=10)
+)
+
 c = (
    alt.Chart(df_dolar)
 #   .mark_circle()
