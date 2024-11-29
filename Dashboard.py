@@ -44,7 +44,7 @@ ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
 
  
 # Display the plot in Streamlit
-st.pyplot(plot.fig)
+st.pyplot(plt.fig)
 
 
 
