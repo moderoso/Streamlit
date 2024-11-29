@@ -33,7 +33,7 @@ if st.checkbox('Show dataframe'):
 	
 
 # Create the plot
-sns.lineplot(x='Data', y='Dolar Comercia (R$)', data=df_dolar)
+plot = sns.lineplot(x='Data', y='Dolar Comercia (R$)', data=df_dolar)
 
 # Customize the plot (optional)
 #plot.xlabel("Date")
