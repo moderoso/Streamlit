@@ -34,13 +34,14 @@ if st.checkbox('Show dataframe'):
 
 # Create the plot
 plot = sns.lineplot(x='Data', y='Dolar Comercia (R$)', data=df_dolar)
+fig, ax = plt.subplots()
 
 # Customize the plot (optional)
 #plot.xlabel("Date")
 #plot.ylabel("Dollar Commercial (R$)")
 #plot.title("Dollar Commercial Rate Over Time")
-axes=ax.twinx()
-axes.plot(np.arange(len(rides_number)), rides_number, color ='red', label="# rides")
+#axes=ax.twinx()
+#axes.plot(np.arange(len(rides_number)), rides_number, color ='red', label="# rides")
 #plot.xticks(rotation=45)  # Rotate x-axis labels for better readability
 
 st.pyplot(plot.fig)
