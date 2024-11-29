@@ -32,10 +32,20 @@ df_dolar.head()
 if st.checkbox('Show dataframe'):
 	st.write(df_dolar)
 	
+ 
+# Create a Seaborn pairplot
+plot = sns.pairplot(df_dolar)
+ 
+# Display the plot in Streamlit
+st.pyplot(plot.fig)
+
+
+
+
 
 # Create the plot
-plot = sns.lineplot(x='Data', y='Dolar Comercia (R$)', data=df_dolar)
-fig, ax = plt.subplots()
+#plot = sns.lineplot(x='Data', y='Dolar Comercia (R$)', data=df_dolar)
+#fig, ax = plt.subplots()
 
 # Customize the plot (optional)
 #plot.xlabel("Date")
@@ -45,7 +55,7 @@ fig, ax = plt.subplots()
 #axes.plot(np.arange(len(rides_number)), rides_number, color ='red', label="# rides")
 #plot.xticks(rotation=45)  # Rotate x-axis labels for better readability
 
-st.pyplot(plot.fig)
+#st.pyplot(plot.fig)
 
 
 
