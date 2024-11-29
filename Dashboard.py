@@ -34,10 +34,17 @@ if st.checkbox('Show dataframe'):
 	
  
 # Create a Seaborn pairplot
-plot = sns.barplot(x='Data', y='Dolar Comercia (R$)', data=df_dolar)
+plt.figure(figsize=(20,5))
+ax = sns.barplot(x='Data', y='Dolar Comercia (R$)', data=df_dolar)
+
+
+# rotate the labels
+ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
+
+
  
 # Display the plot in Streamlit
-st.pyplot(plot.fig)
+st.pyplot(ax.fig)
 
 
 
