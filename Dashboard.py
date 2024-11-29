@@ -40,7 +40,7 @@ import altair as alt
 df_dolar = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
 
 c = (
-   alt.Chart(chart_data)
+   alt.Chart(df_dolar)
    .mark_circle()
    .encode(x="a", y="b", size="c", color="c", tooltip=["a", "b", "c"])
 )
