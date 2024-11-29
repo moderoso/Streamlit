@@ -6,6 +6,8 @@ import seaborn as sns
 import numpy as np
 import matplotlib as plt 
 
+import altair as alt
+
 #from utils import atualiza_dados
 
 # Configuração da página
@@ -32,22 +34,18 @@ df_dolar.head()
 if st.checkbox('Show dataframe'):
 	st.write(df_dolar)
 	
- 
-# Create a Seaborn pairplot
 
-ax = sns.barplot(x='Data', y='Dolar Comercia (R$)', data=df_dolar)
+import altair as alt
 
+chart_data = df_dolar(np.random.randn(20, 3), columns=["a", "b", "c"])
 
-# rotate the labels
-ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
+c = (
+   alt.Chart(chart_data)
+   .mark_circle()
+   .encode(x="a", y="b", size="c", color="c", tooltip=["a", "b", "c"])
+)
 
-plt.figure(figsize=(20,5))
- 
-# Display the plot in Streamlit
-st.pyplot(plt.fig)
-
-
-
+st.altair_chart(c, use_container_width=True)
 
 
 # Create the plot
