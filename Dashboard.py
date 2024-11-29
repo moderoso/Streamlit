@@ -37,12 +37,12 @@ if st.checkbox('Show dataframe'):
 
 import altair as alt
 
-df_dolar = pd.DataFrame(np.random.randn(20, 3), columns=["Data", "Dolar Comercia (R$)", "c"])
+df_dolar = pd.DataFrame(np.random.randn(20, 3), columns=["Data", "Dolar Comercia (R$)"])
 
 c = (
    alt.Chart(df_dolar)
    .mark_circle()
-   .encode(x="Data", y="Dolar Comercia (R$)", size="c", color="c", tooltip=["Data", "Dolar Comercia (R$)", "c"])
+   .encode(x="Data", y="Dolar Comercia (R$)", size="c", color="c", tooltip=["Data", "Dolar Comercia (R$)"])
 )
 
 st.altair_chart(c, use_container_width=True)
