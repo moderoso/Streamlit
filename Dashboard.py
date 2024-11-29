@@ -37,7 +37,7 @@ if st.checkbox('Show dataframe'):
 
 import altair as alt
 
-df_dolar = pd.DataFrame(np.random.randn(20, 3), columns=["Ano", "Dolar Comercia (R$)", "c"])
+df_dolar = pd.DataFrame(np.random.randn(20, 3), columns=["Data", "Dolar Comercia (R$)", "Ano"])
 
 select_year = alt.selection_single(
     name='Select', fields=['Data'],
@@ -47,7 +47,7 @@ c = (
    alt.Chart(df_dolar)
 #   .mark_circle()
     .mark_point(filled=True)
-   .encode(x="Data", y="Dolar Comercia (R$)", size="c", color="c", tooltip=["Data", "Dolar Comercia (R$)", "c"])
+   .encode(x="Data", y="Dolar Comercia (R$)", size="c", color="c", tooltip=["Data", "Dolar Comercia (R$)", "Ano"])
 ).add_selection(select_year).transform_filter(select_year)
 
 st.altair_chart(c, use_container_width=True)
