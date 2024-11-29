@@ -29,14 +29,18 @@ df_dolar.head()
 if st.checkbox('Show dataframe'):
 	st.write(df_dolar)
 	
-# Create a line chart
-fig = px.line(df_dolar, x='Data', y='Valor')  # Assuming 'Data' and 'Valor' are columns in your DataFrame
+# Convert the 'Data' column to datetime objects
+df_dolar['Data'] = pd.to_datetime(df_dolar['Data'], format='%d/%m/%Y')
 
-# Display the chart in Streamlit
-st.plotly_chart(fig)	
-
-fig = px.line(df_dolar, x='Data', y='Valor', 
-                   title='Variação do Dólar', 
-                   labels={'Data': 'Data', 'Valor': 'Valor do Dólar'})
+# Convert 'Dolar Comercia (R$)' to numeric, handling commas and potential errors
+df_dolar['Dolar Comercia (R$)'] = df_dolar['Dolar Comercia (R$)'].astype(str).str.replace(',', '.').astype(float)
 
 
+# Create the Plotly figure
+fig = px.line(df_dolar, x="Data", y="Dolar Comercia (R$)")
+
+# Customize the plot (optional)
+fig.update_layout(title="Dolar Comercial Over Time", xaxis_title="Date", yaxis_title="Dolar Comercial (R$)")
+
+# Show the plot
+fig.show()
