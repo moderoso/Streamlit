@@ -28,7 +28,7 @@ st.title('Dashboard - Variação do Preço do Petróleo :fuelpump:')
 #@st.cache_data
 #def get_dolar_data():
 df_dolar = pd.read_csv('dolar.csv', encoding = "ISO-8859-1", sep=";")
-#df_dolar = df_dolar.drop(['Dia', 'Mês', 'Ano' ], axis=1)
+df_dolar = df_dolar.drop(['Dia', 'Mês', 'Ano' ], axis=1)
 df_dolar.head()
 
 if st.checkbox('Show dataframe'):
@@ -37,7 +37,7 @@ if st.checkbox('Show dataframe'):
 
 import altair as alt
 
-df_dolar = pd.DataFrame(np.random.randn(20, 3), columns=["Data", "Dolar Comercia (R$)", "Ano"])
+df_dolar = pd.DataFrame(np.random.randn(20, 3), columns=["Data", "Dolar Comercia (R$)", "c"])
 
 select_year = alt.selection_single(
     name='Select', fields=['Data'],
@@ -47,7 +47,7 @@ c = (
    alt.Chart(df_dolar)
 #   .mark_circle()
     .mark_point(filled=True)
-   .encode(x="Data", y="Dolar Comercia (R$)", size="c", color="c", tooltip=["Data", "Dolar Comercia (R$)", "Ano"])
+   .encode(x="Data", y="Dolar Comercia (R$)", size="c", color="c", tooltip=["Data", "Dolar Comercia (R$)", "c"])
 ).add_selection(select_year).transform_filter(select_year)
 
 st.altair_chart(c, use_container_width=True)
