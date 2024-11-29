@@ -41,7 +41,7 @@ sns.lineplot(x='Data', y='Dolar Comercia (R$)', data=df_dolar)
 #plot.title("Dollar Commercial Rate Over Time")
 #plot.xticks(rotation=45)  # Rotate x-axis labels for better readability
 
-st.pyplot(lineplot.fig)
+st.pyplot(plot.fig)
 
 
 
