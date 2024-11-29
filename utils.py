@@ -12,10 +12,6 @@ from bs4 import BeautifulSoup
 from prophet import Prophet
 from prophet.plot import plot_plotly, plot_components_plotly
 
-from bs4 import BeautifulSoup
-from prophet import Prophet
-from prophet.plot import plot_plotly, plot_components_plotly
-
 import requests
 import pandas as pd
 import numpy as np
