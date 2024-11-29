@@ -4,6 +4,7 @@ import pandas as pd
 import plotly.express as px
 import seaborn as sns
 import numpy as np
+import matplotlib as plt 
 
 #from utils import atualiza_dados
 
