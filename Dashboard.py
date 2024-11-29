@@ -37,7 +37,7 @@ if st.checkbox('Show dataframe'):
 
 import altair as alt
 
-df_dolar = pd.DataFrame(np.random.randn(20, 2), columns=["Data", "Dolar Comercia (R$)", "c"])
+df_dolar = pd.DataFrame(np.random.randn(20, 3), columns=["Data", "Dolar Comercia (R$)", "c"])
 
 c = (
    alt.Chart(df_dolar)
