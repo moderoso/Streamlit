@@ -34,7 +34,7 @@ if st.checkbox('Show dataframe'):
 	
  
 # Create a Seaborn pairplot
-plot = sns.pairplot(x='Data', y='Dolar Comercia (R$)', data=df_dolar)
+plot = sns.barplot(x='Data', y='Dolar Comercia (R$)', data=df_dolar)
  
 # Display the plot in Streamlit
 st.pyplot(plot.fig)
