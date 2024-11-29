@@ -39,8 +39,8 @@ plot = sns.lineplot(x='Data', y='Dolar Comercia (R$)', data=df_dolar)
 #plot.xlabel("Date")
 #plot.ylabel("Dollar Commercial (R$)")
 #plot.title("Dollar Commercial Rate Over Time")
-ax2=ax.twinx()
-ax2.plot(np.arange(len(rides_number)), rides_number, color ='red', label="# rides")
+axes=ax.twinx()
+axes.plot(np.arange(len(rides_number)), rides_number, color ='red', label="# rides")
 #plot.xticks(rotation=45)  # Rotate x-axis labels for better readability
 
 st.pyplot(plot.fig)
