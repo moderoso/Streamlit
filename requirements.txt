@@ -16,7 +16,7 @@ requests==2.32.3
 seaborn==0.13.2
 statsmodels==0.14.4
 tensorflow==2.17.1
-utils>=1.0.2
+utils==1.0.2
 pandas-gbq>=0.20.0
 #google-cloud-bigquery==3.17.1
 #google-api-core==2.15.0
