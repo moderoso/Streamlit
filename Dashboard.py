@@ -34,7 +34,7 @@ if st.checkbox('Show dataframe'):
 	
  
 # Create a Seaborn pairplot
-#plt.figure(figsize=(20,5))
+plt.figure(figsize=(20,5))
 ax = sns.barplot(x='Data', y='Dolar Comercia (R$)', data=df_dolar)
 
 
