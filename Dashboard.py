@@ -30,13 +30,22 @@ if st.checkbox('Show dataframe'):
 	st.write(df_dolar)
 	
 
+ # Select columns for the chart
+    x_column = st.selectbox("Select X-axis column", df_dolar.columns)
+    y_column = st.selectbox("Select Y-axis column", df_dolar.columns)
+
+    # Create the Seaborn chart
+    fig, ax = plt.subplots()  # Create a Matplotlib figure and axes
+    sns.scatterplot(x=x_column, y=y_column, data=df_dolar, ax=ax)  # Create the chart on the axes
+    st.pyplot(fig)  # Display the chart in Streamlit
+
 # Data preparation (same as before)
-df_dolar['Data'] = pd.to_datetime(df_dolar['Data'], format='%d/%m/%Y')
-df_dolar['Dolar Comercia (R$)'] = df_dolar['Dolar Comercia (R$)'].astype(str).str.replace(',', '.').astype(float)
+#df_dolar['Data'] = pd.to_datetime(df_dolar['Data'], format='%d/%m/%Y')
+#df_dolar['Dolar Comercia (R$)'] = df_dolar['Dolar Comercia (R$)'].astype(str).str.replace(',', '.').astype(float)
 
 # Create the Plotly figure (same as before)
-fig = px.line(df_dolar, x="Data", y="Dolar Comercial (R$)")
-fig.update_layout(title="Dolar Comercial Over Time", xaxis_title="Date", yaxis_title="Dolar Comercial (R$)")
+#fig = px.line(df_dolar, x="Data", y="Dolar Comercial (R$)")
+#fig.update_layout(title="Dolar Comercial Over Time", xaxis_title="Date", yaxis_title="Dolar Comercial (R$)")
 
 # Display the chart in Streamlit
-st.plotly_chart(fig)
+#st.plotly_chart(fig)
