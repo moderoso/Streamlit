@@ -41,9 +41,10 @@ df_dolar = pd.DataFrame(np.random.randn(20, 3), columns=["Data", "Dolar Comercia
 
 c = (
    alt.Chart(df_dolar)
-   .mark_circle()
+#   .mark_circle()
+    .mark_point(filled=True)
    .encode(x="Data", y="Dolar Comercia (R$)", size="c", color="c", tooltip=["Data", "Dolar Comercia (R$)", "c"])
-)
+).interactive()
 
 st.altair_chart(c, use_container_width=True)
 
