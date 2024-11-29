@@ -4,7 +4,7 @@ import pandas as pd
 import plotly.express as px
 import numpy as np
 
-from utils import atualiza_dados
+#from utils import atualiza_dados
 
 # Configuração da página
 st.set_page_config(page_title= 'Dashboard - Preço do Petróleo', layout='wide', page_icon= ':fuelpump:,📊 ')
@@ -13,12 +13,12 @@ st.set_page_config(page_title= 'Dashboard - Preço do Petróleo', layout='wide',
 st.title('Dashboard - Variação do Preço do Petróleo :fuelpump:')
 
 # Botão para atualizar os dados da aplicação
-atualiza_dados()
+#atualiza_dados()
 
 # Webscraping dos dados de petróleo
-url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=38590&module=M'
-coluna = 'Preco'
-dados_taxa = webscraping(url,coluna)
+#url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=38590&module=M'
+#coluna = 'Preco'
+#dados_taxa = webscraping(url,coluna)
 
 # Construção dos dataframes 
 #@st.cache_data
