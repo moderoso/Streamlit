@@ -31,14 +31,22 @@ if st.checkbox('Show dataframe'):
 	st.write(df_dolar)
 	
 
+fig = px.line(df_dolar, x=df_dolar.index, y="Último")
+fig.update_layout(title='Dolar Value',
+                   xaxis_title='Date',
+                   yaxis_title='Value')
+
+
+st.plotly_chart(fig)
+
  # Select columns for the chart
-    x_column = st.selectbox("Select X-axis column", df_dolar.columns)
-    y_column = st.selectbox("Select Y-axis column", df_dolar.columns)
+#    x_column = st.selectbox("Select X-axis column", df_dolar.columns)
+ #   y_column = st.selectbox("Select Y-axis column", df_dolar.columns)
 
     # Create the Seaborn chart
-    fig, ax = plt.subplots()  # Create a Matplotlib figure and axes
-    sns.scatterplot(x=x_column, y=y_column, data=df_dolar, ax=ax)  # Create the chart on the axes
-    st.pyplot(fig)  # Display the chart in Streamlit
+#    fig, ax = plt.subplots()  # Create a Matplotlib figure and axes
+#    sns.scatterplot(x=x_column, y=y_column, data=df_dolar, ax=ax)  # Create the chart on the axes
+#    st.pyplot(fig)  # Display the chart in Streamlit
 
 # Data preparation (same as before)
 #df_dolar['Data'] = pd.to_datetime(df_dolar['Data'], format='%d/%m/%Y')
