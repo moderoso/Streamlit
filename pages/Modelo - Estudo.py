@@ -73,10 +73,11 @@ url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?module=m&serid=1650971490&oper
 df_dolar = pd.read_csv('Valor_Dolar.csv', encoding = "ISO-8859-1", sep=";")
 df_dolar.head()
 
-
 df_petroleo = importacao_dados_previsao(url)
 df_petroleo.head()
 
+df_petroleo.rename(columns={"ds":"Data", "y":"Valor"},inplace=True)
+st.dataframe(df_petroleo)
 
 
 
