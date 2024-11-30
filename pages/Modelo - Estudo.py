@@ -8,7 +8,7 @@ st.set_page_config(page_title= 'Modelo - Decomposição e Análise', layout='wid
 
 # Título da página e descrição introdutória da decomposição e período sazonal
 st.title('Modelo - Estudo 📊')
-st.markdown('<p style="text-align: justify;"> 'Com o contexto do petróleo e seu impacto no mundo, a DataPro realizou um estudo contendo informações relevantes para uma evolução dos indicadores pautada nos pontos de variações externas anteriormente explicadas, aplicando alguns algoritmos de previsibilidade para a obtenção dos preços médios. De acordo com o gráfico apresentado, é possível analisar o impacto dos eventos geopolíticos no preço do barril de petróleo:
+st.markdown('<p style="text-align: justify;"> Com o contexto do petróleo e seu impacto no mundo, a DataPro realizou um estudo contendo informações relevantes para uma evolução dos indicadores pautada nos pontos de variações externas anteriormente explicadas, aplicando alguns algoritmos de previsibilidade para a obtenção dos preços médios. De acordo com o gráfico apresentado, é possível analisar o impacto dos eventos geopolíticos no preço do barril de petróleo:
 Durante a crise econômica de 2008/2009, o preço do petróleo sofreu uma queda acentuada devido à recessão global, que resultou em uma redução significativa na demanda por petróleo. A relutância dos membros da OPEP em ajustar suas cotas de produção exacerbou o desequilíbrio entre oferta e demanda, resultando em um excesso de oferta no mercado global e, consequentemente, uma queda substancial nos preços do petróleo.
 Entre os anos de 2014 e 2018, os preços do petróleo enfrentaram novos períodos de queda, impulsionados principalmente pela ascensão dos Estados Unidos como um dos maiores produtores de petróleo. Esse fenômeno resultou em diversos fatores que impactaram o mercado global de petróleo, incluindo:
 Diminuição da demanda e aumento da oferta para os Estados Unidos, principal consumidor global de petróleo, devido ao aumento da produção interna;
@@ -16,7 +16,7 @@ Expansão da produção de petróleo pelo Iraque, que elevou a oferta global;
 Retorno do Irã ao mercado internacional de petróleo, após o acordo nuclear e a consequente remoção do embargo econômico imposto pelos Estados Unidos;
 Aumento da produção nacional no Brasil, com a exploração do pré-sal, o que reduziu a necessidade de importações de petróleo e ampliou a oferta interna;
 Resistência da OPEP em reduzir a produção, o que manteve a oferta superior à demanda no mercado global, contribuindo para a queda dos preços.
-Esses fatores combinados geraram um desequilíbrio entre oferta e demanda, pressionando os preços para baixo ao longo desse período.'</p>', unsafe_allow_html = True)
+Esses fatores combinados geraram um desequilíbrio entre oferta e demanda, pressionando os preços para baixo ao longo desse período.</p>', unsafe_allow_html = True)
 
 st.subheader('Modelo de Decomposição')
 st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Decomposição Multiplicativa:</span> Série temporal modelada como o produto dos componentes de tendência, sazonalidade e resíduos. Útil quando a variação sazonal muda proporcionalmente com o nível da série temporal.</p>', unsafe_allow_html = True)
