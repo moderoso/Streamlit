@@ -21,7 +21,30 @@ st.markdown('<p style="text-align: justify;">Esses fatores combinados geraram um
 image = Image.open('images/petroleo_mundo.jpg')
 st.image(image, caption='Petroleo no Mundo', width = 600)
 
+
+#Texto sobre o estudo
 st.markdown('<p style="text-align: justify;">A crise do petróleo de 1973 elevou os preços globais, e estimulou a exploração do recurso no Brasil. Durante este período, o Brasil investiu fortemente em tecnologia, incluindo a pesquisa em exploração offshore (em alto-mar).Em 2007, o Brasil fez a descoberta do pré-sal, um reservatório vasto de petróleo abaixo de uma camada de sal no fundo do oceano. Isso consolidou o Brasil como um importante produtor de petróleo, colocando-o entre os maiores exportadores do mundo.A Petrobras enfrentou crises políticas e econômicas nos últimos anos, incluindo investigações de corrupção (como a Lava Jato), o que afetou sua operação, mas mesmo assim, o Brasil continua sendo uma das principais potências petrolíferas globais.</p>', unsafe_allow_html = True)
+
+st.markdown('<h3>Formação preço do petróleo</h3>', unsafe_allow_html = True)
+st.markdown('<p style="text-align: justify;">O preço do petróleo é determinado por uma complexa interação de fatores econômicos, geopolíticos e até mesmo eventos climáticos. Até mesmo baseado no na flutuação do valor em dólar cobrado mundialmente. A lei da oferta e da demanda é o princípio fundamental que rege esse mercado, mas outros elementos também desempenham um papel crucial.</p>', unsafe_allow_html = True)
+
+st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Oferta e Demanda:</span>Oferta: A quantidade de petróleo produzido e disponível no mercado influencia diretamente o preço. Fatores como descobertas de novas reservas, investimentos em exploração e produção, políticas governamentais e capacidade de produção dos países exportadores impactam a oferta.</r>Demanda: O consumo global de petróleo, impulsionado principalmente pelo setor de transporte e pela indústria, exerce uma forte pressão sobre os preços. O crescimento econômico mundial, a eficiência energética e o desenvolvimento de fontes de energia alternativas influenciam a demanda.</p>', unsafe_allow_html = True)
+
+st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Organização dos Países Exportadores de Petróleo (OPEP):</span>A OPEP, composta por países com grandes reservas de petróleo, possui um papel fundamental na regulação da oferta global. Através de acordos de produção, a organização busca estabilizar os preços do petróleo, influenciando significativamente o mercado.</p>', unsafe_allow_html = True)
+
+st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Agência Internacional de Energia (IEA):</span>É uma organização internacional com sede em Paris, ligada à Organização para a Cooperação e Desenvolvimento Econômico (OCDE). A IEA atua como uma espécie de "orientadora política" para seus 30 países membros (todos economias desenvolvidas).</p>', unsafe_allow_html = True)
+
+st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Geopolítica:</span>Conflitos em regiões produtoras de petróleo, sanções econômicas, instabilidade política e mudanças nos regimes de governo podem causar interrupções no fornecimento e levar a aumentos nos preços.</p>', unsafe_allow_html = True)
+
+st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Dólar Americano:</span>O petróleo é negociado em dólares americanos no mercado internacional. A valorização do dólar tende a tornar o petróleo mais caro para os compradores que utilizam outras moedas, o que pode pressionar os preços para cima.</p>', unsafe_allow_html = True)
+
+st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Estoques:</span>Os níveis de estoque de petróleo nos países consumidores e produtores também influenciam os preços. Estoques elevados podem indicar uma oferta abundante e pressionar os preços para baixo, enquanto estoques baixos podem sinalizar uma oferta restrita e levar a aumentos nos preços.</p>', unsafe_allow_html = True)
+
+st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Especulação:</span>Investidores e especuladores podem influenciar os preços do petróleo através de suas atividades nos mercados futuros. A compra e venda de contratos futuros sobre petróleo podem amplificar as oscilações de preços.</p>', unsafe_allow_html = True)
+
+st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Eventos Imprevistos:</span>Desastres naturais, como furacões e terremotos, podem interromper a produção de petróleo e causar aumentos nos preços. Além disso, novas descobertas de grandes reservas ou avanços tecnológicos na produção também podem impactar o mercado.</p>', unsafe_allow_html = True)
+
+
 
 st.markdown('<h3>Modelos preditivos utilizados no estudo </h3>', unsafe_allow_html = True)
 
