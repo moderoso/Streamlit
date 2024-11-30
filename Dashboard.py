@@ -36,6 +36,7 @@ df_preco = importacao_dados_previsao(url)
 df_preco.head()
 df_preco.rename(columns={"Preço - petróleo bruto - Brent (FOB)":"Valor"},inplace=True)
 
+st.dataframe(df_preco)
 
 # Inserindo barra para filtrar os anos
 anos = df_preco['Data'].dt.year.unique()
