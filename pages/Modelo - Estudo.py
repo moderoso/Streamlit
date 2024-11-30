@@ -27,7 +27,7 @@ st.markdown('<p style="text-align: justify;">Esses fatores combinados geraram um
 
 
 def img_to_bytes(img_path):
-    img_bytes = Path(img_path).read_bytes()
+    img_bytes = Path(app/static/pages).read_bytes()
     encoded = base64.b64encode(img_bytes).decode()
     return encoded
 header_html = "<img src='data:image/png;base64,{}' class='img-fluid'>".format(
