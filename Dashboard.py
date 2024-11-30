@@ -8,7 +8,7 @@ import matplotlib as plt
 
 import altair as alt
 
-#from utils import atualiza_dados
+from utils import importacao_dados_previsao
 
 # Configuração da página
 st.set_page_config(page_title= 'Dashboard - Preço do Petróleo', layout='wide', page_icon= ':fuelpump:,📊 ')
@@ -20,71 +20,72 @@ st.title('Dashboard - Variação do Preço do Petróleo :fuelpump:')
 #atualiza_dados()
 
 # Webscraping dos dados de petróleo
-#url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=38590&module=M'
-#coluna = 'Preco'
-#dados_taxa = webscraping(url,coluna)
+url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=38590&module=M'
 
 # Construção dos dataframes 
-#@st.cache_data
-#def get_dolar_data():
-df_dolar = pd.read_csv('dolar.csv', encoding = "ISO-8859-1", sep=";")
-df_dolar = df_dolar.drop(['Dia', 'Mês', 'Ano' ], axis=1)
+df_dolar = pd.read_csv('Valor_Dolar.csv', encoding = "ISO-8859-1", sep=";")
 df_dolar.head()
 
-if st.checkbox('Show dataframe'):
-	st.write(df_dolar)
-	
+df_datas_relevantes = pd.read_csv('Eventos_Relevantes_Petroleo.csv', encoding = "ISO-8859-1", sep=";")
+df_datas_relevantes.head()
 
-import altair as alt
+df_prod_pretoleo = pd.read_csv('Producao_Petroleo_Anual.csv', encoding = "ISO-8859-1", sep=";")
+df_prod_pretoleo.head()
 
-df_dolar = pd.DataFrame(np.random.randn(20, 3), columns=["Data", "Dolar Comercia (R$)", "c"])
-
-select_year = alt.selection_single(
-    name='Select', fields=['Data'],
-)
-
-c = (
-   alt.Chart(df_dolar)
-#   .mark_circle()
-    .mark_point(filled=True)
-   .encode(x="Data", y="Dolar Comercia (R$)", size="c", color="c", tooltip=["Data", "Dolar Comercia (R$)", "c"])
-).add_selection(select_year).transform_filter(select_year)
-
-st.altair_chart(c, use_container_width=True)
-
-
-# Create the plot
-#plot = sns.lineplot(x='Data', y='Dolar Comercia (R$)', data=df_dolar)
-#fig, ax = plt.subplots()
-
-# Customize the plot (optional)
-#plot.xlabel("Date")
-#plot.ylabel("Dollar Commercial (R$)")
-#plot.title("Dollar Commercial Rate Over Time")
-#axes=ax.twinx()
-#axes.plot(np.arange(len(rides_number)), rides_number, color ='red', label="# rides")
-#plot.xticks(rotation=45)  # Rotate x-axis labels for better readability
-
-#st.pyplot(plot.fig)
+df_preco = importacao_dados_previsao(url)
+df_preco.head()
 
 
 
- # Select columns for the chart
-#    x_column = st.selectbox("Select X-axis column", df_dolar.columns)
- #   y_column = st.selectbox("Select Y-axis column", df_dolar.columns)
+# Inserindo barra para filtrar os anos
+anos = df_preco['Data'].dt.year.unique()
+anos_selecionados = st.slider("Selecione o intervalo de anos", 
+                              min_value=int(anos.min()), 
+                              max_value=int(anos.max()), 
+                              value=(int(anos.min()), int(anos.max())))
 
-    # Create the Seaborn chart
-#    fig, ax = plt.subplots()  # Create a Matplotlib figure and axes
-#    sns.scatterplot(x=x_column, y=y_column, data=df_dolar, ax=ax)  # Create the chart on the axes
-#    st.pyplot(fig)  # Display the chart in Streamlit
+# Filtrando o dataframe com base nos anos selecionados
+df_filtrado = df_preco[(df_preco['Data'].dt.year >= anos_selecionados[0]) & 
+                       (df_preco['Data'].dt.year <= anos_selecionados[1])]
 
-# Data preparation (same as before)
-#df_dolar['Data'] = pd.to_datetime(df_dolar['Data'], format='%d/%m/%Y')
-#df_dolar['Dolar Comercia (R$)'] = df_dolar['Dolar Comercia (R$)'].astype(str).str.replace(',', '.').astype(float)
+col1, col2, col3, col4 = st.columns(4)
 
-# Create the Plotly figure (same as before)
-#fig = px.line(df_dolar, x="Data", y="Dolar Comercial (R$)")
-#fig.update_layout(title="Dolar Comercial Over Time", xaxis_title="Date", yaxis_title="Dolar Comercial (R$)")
+# Maior valor do ano atual
+ano_atual = pd.Timestamp.now().year
+df_atual = df_preco[df_preco['Data'].dt.year == ano_atual]
+maior_valor_atual = df_atual['Valor'].max()
+col1.metric("Maior Valor (Ano Atual)", f"${maior_valor_atual:.2f}")
 
-# Display the chart in Streamlit
-#st.plotly_chart(fig)
+# Data do último registro
+ultima_data = df_preco['Data'].max()
+col2.metric("Última Data Registrada", ultima_data.strftime('%d/%m/%Y'))
+
+# Maior valor do período filtrado
+maior_valor_filtrado = df_filtrado['Valor'].max()
+col3.metric("Maior Valor (Período)", f"${maior_valor_filtrado:.2f}")
+
+# Menor valor do período filtrado
+menor_valor_filtrado = df_filtrado['Valor'].min()
+col4.metric("Menor Valor (Período)", f"${menor_valor_filtrado:.2f}")
+
+
+
+col1, col2, col3, col4 = st.columns(4)
+
+# Maior valor do ano atual
+ano_atual = pd.Timestamp.now().year
+df_atual = df_preco[df_preco['Data'].dt.year == ano_atual]
+maior_valor_atual = df_atual['Valor'].max()
+col1.metric("Maior Valor (Ano Atual)", f"${maior_valor_atual:.2f}")
+
+# Data do último registro
+ultima_data = df_preco['Data'].max()
+col2.metric("Última Data Registrada", ultima_data.strftime('%d/%m/%Y'))
+
+# Maior valor do período filtrado
+maior_valor_filtrado = df_filtrado['Valor'].max()
+col3.metric("Maior Valor (Período)", f"${maior_valor_filtrado:.2f}")
+
+# Menor valor do período filtrado
+menor_valor_filtrado = df_filtrado['Valor'].min()
+col4.metric("Menor Valor (Período)", f"${menor_valor_filtrado:.2f}")
