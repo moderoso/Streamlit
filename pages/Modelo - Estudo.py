@@ -83,10 +83,10 @@ df_petroleo.head()
 df_dolar.rename(columns={"Data":"Data", "Taxa de câmbio - R$ / US$ - comercial - compra - média":"Valor Dolar"},inplace=True)
 st.dataframe(df_dolar)
 
-df_petroleo.rename(columns={"Data":"Data", "Preço - petróleo bruto - Brent (FOB)":"Valor"},inplace=True)
+df_petroleo.rename(columns={"Data":"Data", "Preço - petróleo bruto - Brent (FOB)":"Valor Petroleo"},inplace=True)
 st.dataframe(df_petroleo)
 
-df_petroleo = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
+df_petroleo = pd.DataFrame(np.random.randn(20, 3), columns=["Data", "Valor Petroleo", "c"])
 
 st.bar_chart(df_petroleo)
 
