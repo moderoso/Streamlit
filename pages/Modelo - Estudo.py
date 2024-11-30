@@ -27,7 +27,7 @@ st.markdown('<h3>Modelos preditivos utilizados no estudo </h3>', unsafe_allow_ht
 
 st.markdown('<p style="text-align: justify;"> Para trazer uma previsão do preço do petróleo para o cliente, a empresa DataPro construiu alguns modelos, com diferentes técnicas, para avaliar a que mais atende. As técnicas escolhidas pela DataPro foram:</p>', unsafe_allow_html = True)
 
-st.markdown('<h2>1. ARIMA </h2>', unsafe_allow_html = True)
+st.markdown('<h5>1. ARIMA </h5>', unsafe_allow_html = True)
 
 st.markdown('<p style="text-align: justify;"> O modelo ARIMA (AutoRegressive Integrated Moving Average) é uma técnica de análise de séries temporais usada para prever dados que variam ao longo do tempo. Bastante utilizado em estatística e econometria para previsão e modelagem de dados temporais, ele combina três componentes principais:</p>', unsafe_allow_html = True)
 st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">AutoRegressivo (AR):</span>Captura a relação entre uma observação e um número definido de observações anteriores;</p>', unsafe_allow_html = True)
@@ -36,7 +36,7 @@ st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Mé
 
 st.markdown('<p style="text-align: justify;"> Essa combinação ajuda a capturar padrões e tendências nos dados, fornecendo uma base sólida para previsões futuras.</p>', unsafe_allow_html = True)
 
-st.markdown('<h2>2. PROPHET </h2>', unsafe_allow_html = True)
+st.markdown('<h5>2. PROPHET </h5>', unsafe_allow_html = True)
 
 st.markdown('<p style="text-align: justify;"> Desenvolvido pela Meta, é um modelo de previsão projetado para lidar com séries temporais que exibem tendências e sazonalidades.É particularmente útil para dados que possuem padrões sazonais e mudanças de tendência, e é desenhado para ser robusto a faltas de dados e a mudanças bruscas no comportamento da série. Ele utiliza o modelo de séries temporais decomposto com três componentes principais: tendência (g), sazonalidade (s) e feriados (h), combinados na seguinte equação:</p>', unsafe_allow_html = True)
 st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">y(t)=g(t)+s(t)+h(t)+εt</span></p>', unsafe_allow_html = True)
