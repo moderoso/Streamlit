@@ -17,49 +17,9 @@ st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Aum
 st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Resistência da OPEP em reduzir a produção</span>, o que manteve a oferta superior à demanda no mercado global, contribuindo para a queda dos preços.</p>', unsafe_allow_html = True)
 st.markdown('<p style="text-align: justify;">Esses fatores combinados geraram um desequilíbrio entre oferta e demanda, pressionando os preços para baixo ao longo desse período.</p>', unsafe_allow_html = True)
 
-
-
-
-
-
-
+#Adiciona Imagem na pagina
 image = Image.open('images/petroleo_mundo.jpg')
-st.image(image, caption='Petroleo no Mundo', width = 400)
-
-st.markdown(
-    <style>
-        button[title^=Exit]+div [data-testid=stimage]{
-            "text-align: center";
-            "display: block";
-            "margin-left: auto";
-            "margin-right: auto";
-            "width: 100%";
-        }
-    </style>, unsafe_allow_html=True
-)
+st.image(image, caption='Petroleo no Mundo', width = 600)
 
 
 
-
-
-
-#st.image("petroleo_mundo.png", width = 400)
-#st.markdown("[![Click Me](app/static/petroleo_mundo.png)](https://streamlit.io)")
-#st.image('petroleo_mundo.jpg', caption='Petroleo no Mundo', width=60)
-#st.markdown('<h1 style="float: left;">Petroleo no Mundo</h1><img style="float: right;" src="petroleo_mundo.jpg" />', unsafe_allow_html=True)
-#st.markdown('<p style="text-align: justify;"><img src="petroleo_mundo.jpg" width="30" height="30"></p>', unsafe_allow_html = True)
-
-#st.markdown('<div class="container"><img class="Petroleo no Mundo" src="data:image/png;base64,{base64.b64encode(open(petroleo_mundo.jpg, "rb").read()).decode()}"><p class="logo-text">Logo Much ?</p></div>', unsafe_allow_html=True
-
-#df.head()['img'].value
-##array([petroleo_mundo])
-#df['Filename'] = df['Filename'].str.replace('\','\')
-##df.head()['Filename'].value
-#array(['images/petroleo_mundo.png'])
-
-#for filename in df['Filename'].head():
-#    display(Image(filename=filename))
- 
-
-#def get_image_from_disk(images):
-   # return pure_pil_alpha_to_color_v2(Image.open(images/petroleo_mundo.png)) 
