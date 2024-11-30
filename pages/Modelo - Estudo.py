@@ -27,7 +27,7 @@ st.markdown('<p style="text-align: justify;">Esses fatores combinados geraram um
 
 df.head()['img'].value
 array([petroleo_mundo])
-df['Filename'] = df['Filename'].str.replace('\','/')
+df['Filename'] = df['Filename'].str.replace('\\','\')
 df.head()['Filename'].value
 array(['images/petroleo_mundo.png'])
 
