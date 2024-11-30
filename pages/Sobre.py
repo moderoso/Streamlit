@@ -56,17 +56,6 @@ st.markdown('Link acessado em 20 novembro 2024   ' '[Oito motivos para a queda d
 
 
 
-# Equipe do projeto
-st.markdown('## Equipe FIAP')
-st.markdown('#### Caio Vinicius Branco Gonçalves - RM 354248')
-st.markdown('#### Jhonny da Silva Mineu - RM 355135')
-st.markdown('#### Marina Mendez Araujo - RM 355100')
-st.markdown('#### Mônada Raquel Brito de Oliveira - RM 354367')
-st.markdown('#### Volmir Moderoso Santos - RM 355589')
-
-
-
-
 
 st.write("### Fontes de dados")
 st.write("Links acessado em 20 novembro 2024"
@@ -81,5 +70,15 @@ st.write("Links acessado em 20 novembro 2024"
          "\n* Oito motivos para a queda do preço do  petróleo  https://www.dw.com/pt-br/oito-motivos-para-a-queda-do-pre%C3%A7o-do-petr%C3%B3leo/a-19051686"
 		 )
 
+
+
+
+# Equipe do projeto
+st.markdown('## Equipe FIAP')
+st.markdown('#### Caio Vinicius Branco Gonçalves - RM 354248')
+st.markdown('#### Jhonny da Silva Mineu - RM 355135')
+st.markdown('#### Marina Mendez Araujo - RM 355100')
+st.markdown('#### Mônada Raquel Brito de Oliveira - RM 354367')
+st.markdown('#### Volmir Moderoso Santos - RM 355589')
 
 
