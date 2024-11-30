@@ -19,5 +19,6 @@ st.markdown('<p style="text-align: justify;">Esses fatores combinados geraram um
 
 
 
-st.image("petroleo_mundo.jpg", caption="Petroleo no Mundo")
+#st.image("petroleo_mundo.jpg", caption="Petroleo no Mundo")
+st.markdown('<h1 style="float: left;">Petroleo no Mundo</h1><img style="float: right;" src="petroleo_mundo.jpg" />', unsafe_allow_html=True)
 #st.markdown('<p style="text-align: justify;"><img src="petroleo_mundo.png" width="30" height="30"></p>', unsafe_allow_html = True)
