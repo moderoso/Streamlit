@@ -74,7 +74,7 @@ st.write("Links acessado em 20 novembro 2024"
 
 
 # Equipe do projeto
-st.markdown('## Equipe FIAP')
+st.markdown('<h3>Equipe FIAP - 5DTAT - Grupo 10</h3>', unsafe_allow_html = True)
 st.markdown('#### Caio Vinicius Branco Gonçalves - RM 354248')
 st.markdown('#### Jhonny da Silva Mineu - RM 355135')
 st.markdown('#### Marina Mendez Araujo - RM 355100')
