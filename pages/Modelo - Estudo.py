@@ -21,5 +21,13 @@ st.markdown('<p style="text-align: justify;">Esses fatores combinados geraram um
 image = Image.open('images/petroleo_mundo.jpg')
 st.image(image, caption='Petroleo no Mundo', width = 600)
 
+st.write("### Credits")
+st.write("The Lottie animation, found on lottiefiles.com are "
+         "\n* from Suhayra Sarwar   https://lottiefiles.com/90021-graph-stats"
+         "\n* from Nirdhum Narayan  https://lottiefiles.com/99430-statistics"
+         "\n* from Nirdhum Narayan  https://lottiefiles.com/99500-company-statistic-graph"
+         "\n* from Ilya Pavlov   https://lottiefiles.com/8586-rocket-in-space"
+         )
+
 
 
