@@ -15,24 +15,21 @@ st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Exp
 st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Retorno do Irã ao mercado internacional de petróleo</span>, após o acordo nuclear e a consequente remoção do embargo econômico imposto pelos Estados Unidos;</p>', unsafe_allow_html = True)
 st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Aumento da produção nacional no Brasil</span>, com a exploração do pré-sal, o que reduziu a necessidade de importações de petróleo e ampliou a oferta interna;</p>', unsafe_allow_html = True)
 st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Resistência da OPEP em reduzir a produção</span>, o que manteve a oferta superior à demanda no mercado global, contribuindo para a queda dos preços.</p>', unsafe_allow_html = True)
-st.markdown('<p style="text-align: justify;">Esses fatores combinados geraram um desequilíbrio entre oferta e demanda, pressionando os preços para baixo ao longo desse período.</p>', unsafe_allow_html = True)
+st.markdown('<p style="text-align: justify;">Esses fatores combinados geraram um desequilíbrio entre oferta e demanda, pressionando os preços para baixo ao longo desse período. Conforme os acontecimentos econômicos citados, é possível analisar que isso é um fator que impacta o aumento e a queda do valor do dólar.</p>', unsafe_allow_html = True)
 
 #Adiciona Imagem na pagina
 image = Image.open('images/petroleo_mundo.jpg')
 st.image(image, caption='Petroleo no Mundo', width = 600)
 
+st.markdown('<p style="text-align: justify;">A crise do petróleo de 1973 elevou os preços globais, e estimulou a exploração do recurso no Brasil. Durante este período, o Brasil investiu fortemente em tecnologia, incluindo a pesquisa em exploração offshore (em alto-mar).Em 2007, o Brasil fez a descoberta do pré-sal, um reservatório vasto de petróleo abaixo de uma camada de sal no fundo do oceano. Isso consolidou o Brasil como um importante produtor de petróleo, colocando-o entre os maiores exportadores do mundo.A Petrobras enfrentou crises políticas e econômicas nos últimos anos, incluindo investigações de corrupção (como a Lava Jato), o que afetou sua operação, mas mesmo assim, o Brasil continua sendo uma das principais potências petrolíferas globais.</p>', unsafe_allow_html = True)
 
-st.write("# Your graph in a glance")
 
-col1, col2, col3, col4 = st.columns(4)
-with col1:
-    st.metric("How many nodes ?", nodeCount)
-with col2:
-    st.metric("How many labels ?", labelCount)
-with col3:
-    st.metric("How many relations Types?", relTypeCount)
-with col4:
-    st.metric("How many relations (total) ?", relCount)
+
+
+
+
+
+
 
 
 
