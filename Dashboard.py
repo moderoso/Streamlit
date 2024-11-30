@@ -23,7 +23,7 @@ st.title('Dashboard - Variação do Preço do Petróleo :fuelpump:')
 url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?module=m&serid=1650971490&oper=view'
 
 # Construção dos dataframes 
-df_dolar = pd.read_csv('Valor_Dolar.csv', encoding = "ISO-8859-1", sep=";")
+df_dolar = pd.read_csv('Valor_Dolar.csv', encoding = "UTF-8", sep=";")
 df_dolar.head()
 
 df_datas_relevantes = pd.read_csv('Eventos_Relevantes_Petroleo.csv', encoding = "ISO-8859-1", sep=";")
