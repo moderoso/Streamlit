@@ -85,7 +85,7 @@ df_dolar.rename(columns={"Data":"Data", "Taxa de câmbio - R$ / US$ - comercial 
 st.dataframe(df_dolar)
 
 df_petroleo.rename(columns={"Data":"Data", "Preço - petróleo bruto - Brent (FOB)":"Valor Petroleo"},inplace=True)
-st.dataframe(df_petroleo)
+st.plotly_chart(df_petroleo)
 
 # Select the data for the chart
 #x = df_petroleo['Data']
@@ -96,8 +96,7 @@ st.dataframe(df_petroleo)
  
  
  
-st.subheader("Total Sales (in Millions) by Year")
-   st.bar_chart(data=df_petroleo,x="Data",y="Valor Petroleo")
+
  
 # Create a simple line chart
 #fig = go.Figure(data=go.Scatter(x, y))
