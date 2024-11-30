@@ -88,17 +88,22 @@ df_petroleo.rename(columns={"Data":"Data", "Preço - petróleo bruto - Brent (FO
 st.dataframe(df_petroleo)
 
 # Select the data for the chart
-x = df_petroleo['Data']
-y = df_petroleo['Valor Petroleo']
+#x = df_petroleo['Data']
+#y = df_petroleo['Valor Petroleo']
 
 
-st.dataframe(data=df_petroleo)
+#st.dataframe(data=df_petroleo)
+ 
+ 
+ 
+st.subheader("Total Sales (in Millions) by Year")
+   st.bar_chart(data=df_petroleo,x="Data",y="Valor Petroleo")
  
 # Create a simple line chart
-fig = go.Figure(data=go.Scatter(x, y))
+#fig = go.Figure(data=go.Scatter(x, y))
  
 # Display the figure with Streamlit
-st.plotly_chart(fig)
+#st.plotly_chart(fig)
 
 
 # Create the bar chart
