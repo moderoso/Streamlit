@@ -85,8 +85,11 @@ df_dolar.rename(columns={"Data":"Data", "Taxa de câmbio - R$ / US$ - comercial 
 st.dataframe(df_dolar)
 
 df_petroleo.rename(columns={"Data":"Data", "Preço - petróleo bruto - Brent (FOB)":"Valor Petroleo"},inplace=True)
-st.plotly_chart(df_petroleo)
+st.dataframe(data=df_petroleo)
 
+
+df = pd.DataFrame(df_petroleo)
+st.bar_chart(df)
 # Select the data for the chart
 #x = df_petroleo['Data']
 #y = df_petroleo['Valor Petroleo']
