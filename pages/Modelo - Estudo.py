@@ -86,9 +86,26 @@ st.dataframe(df_dolar)
 df_petroleo.rename(columns={"Data":"Data", "Preço - petróleo bruto - Brent (FOB)":"Valor Petroleo"},inplace=True)
 st.dataframe(df_petroleo)
 
-df_petroleo = pd.DataFrame(np.random.randn(20, 3), columns=["Data", "Valor Petroleo", "c"])
+# Select the data for the chart
+x = df_petroleo['Data']
+y = df_petroleo['Valor Petroleo']
 
-st.bar_chart(df_petroleo)
+# Create the bar chart
+st.bar_chart(
+    df,
+    x,
+    y,
+    title='Preço Medio Petroleo',
+    xlabel='X Axis',
+    ylabel='Y Axis',
+    colors=['red', 'green', 'blue']
+)
+
+
+
+#df_petroleo = pd.DataFrame(np.random.randn(20, 3), columns=["Data", "Valor Petroleo"])
+
+#st.bar_chart(df_petroleo)
 
 
 
