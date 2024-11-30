@@ -10,6 +10,8 @@ st.set_page_config(page_title= 'Modelo - Decomposição e Análise', layout='wid
 
 # Título da página e estudo
 st.title('Modelo - Estudo 📊')
+
+#Texto sobre o estudo
 st.markdown('<p style="text-align: justify;"> Com o contexto do petróleo e seu impacto no mundo, a DataPro realizou um estudo contendo informações relevantes para uma evolução dos indicadores pautada nos pontos de variações externas anteriormente explicadas, aplicando alguns algoritmos de previsibilidade para a obtenção dos preços médios. De acordo com o gráfico apresentado, é possível analisar o impacto dos eventos geopolíticos no preço do barril de petróleo. Durante a crise econômica de 2008/2009, o preço do petróleo sofreu uma queda acentuada devido à recessão global, que resultou em uma redução significativa na demanda por petróleo. A relutância dos membros da OPEP em ajustar suas cotas de produção exacerbou o desequilíbrio entre oferta e demanda, resultando em um excesso de oferta no mercado global e, consequentemente, uma queda substancial nos preços do petróleo. Entre os anos de 2014 e 2018, os preços do petróleo enfrentaram novos períodos de queda, impulsionados principalmente pela ascensão dos Estados Unidos como um dos maiores produtores de petróleo. Esse fenômeno resultou em diversos fatores que impactaram o mercado global de petróleo, incluindo:</p>', unsafe_allow_html = True)
 st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Diminuição da demanda e aumento da oferta para os Estados Unidos</span>, principal consumidor global de petróleo, devido ao aumento da produção interna;</p>', unsafe_allow_html = True)
 st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Expansão da produção de petróleo pelo Iraque</span>, que elevou a oferta global;</p>', unsafe_allow_html = True)
@@ -45,8 +47,6 @@ st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Esp
 
 st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Eventos Imprevistos:</span> Desastres naturais, como furacões e terremotos, podem interromper a produção de petróleo e causar aumentos nos preços. Além disso, novas descobertas de grandes reservas ou avanços tecnológicos na produção também podem impactar o mercado.</p>', unsafe_allow_html = True)
 
-
-
 st.markdown('<h3>Modelos preditivos utilizados no estudo </h3>', unsafe_allow_html = True)
 
 st.markdown('<p style="text-align: justify;"> Para trazer uma previsão do preço do petróleo para o cliente, a empresa DataPro construiu alguns modelos, com diferentes técnicas, para avaliar a que mais atende. As técnicas escolhidas pela DataPro foram:</p>', unsafe_allow_html = True)
@@ -65,6 +65,9 @@ st.markdown('<h5>2. PROPHET </h5>', unsafe_allow_html = True)
 st.markdown('<p style="text-align: justify;"> Desenvolvido pela Meta, é um modelo de previsão projetado para lidar com séries temporais que exibem tendências e sazonalidades.É particularmente útil para dados que possuem padrões sazonais e mudanças de tendência, e é desenhado para ser robusto a faltas de dados e a mudanças bruscas no comportamento da série. Ele utiliza o modelo de séries temporais decomposto com três componentes principais: tendência (g), sazonalidade (s) e feriados (h), combinados na seguinte equação:</p>', unsafe_allow_html = True)
 st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">y(t)=g(t)+s(t)+h(t)+εt</span></p>', unsafe_allow_html = True)
 st.markdown('<p style="text-align: justify;"> Uma ferramenta poderosa para previsão de séries temporais, especialmente quando se trata de dados com padrões sazonais complexos e mudanças de tendência, sua flexibilidade e robustez o tornam uma escolha popular para muitos problemas de previsão.</p>', unsafe_allow_html = True)
+
+# Webscraping dos dados de petróleo
+url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?module=m&serid=1650971490&oper=view'
 
 
 
