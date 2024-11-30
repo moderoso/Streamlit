@@ -23,7 +23,7 @@ st.markdown('<p style="text-align: justify;">Esses fatores combinados geraram um
 
 
 
-image = Image.open('petroleo_mundo.jpg')
+image = Image.open('images/petroleo_mundo.jpg')
 st.image(image, caption='Sunrise by the mountains')
 
 
