@@ -17,7 +17,7 @@ st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Res
 st.markdown('<p style="text-align: justify;">Esses fatores combinados geraram um desequilíbrio entre oferta e demanda, pressionando os preços para baixo ao longo desse período.</p>', unsafe_allow_html = True)
 
 
-
+st.image(images/petroleo_mundo.png[0]), width = 400)
 #st.markdown("[![Click Me](app/static/petroleo_mundo.png)](https://streamlit.io)")
 #st.image('petroleo_mundo.jpg', caption='Petroleo no Mundo', width=60)
 #st.markdown('<h1 style="float: left;">Petroleo no Mundo</h1><img style="float: right;" src="petroleo_mundo.jpg" />', unsafe_allow_html=True)
@@ -35,5 +35,5 @@ st.markdown('<p style="text-align: justify;">Esses fatores combinados geraram um
 #    display(Image(filename=filename))
  
 
-def get_image_from_disk(images):
-    return pure_pil_alpha_to_color_v2(Image.open(images/petroleo_mundo.png)) 
+#def get_image_from_disk(images):
+   # return pure_pil_alpha_to_color_v2(Image.open(images/petroleo_mundo.png)) 
