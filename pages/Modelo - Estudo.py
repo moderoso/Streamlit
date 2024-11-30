@@ -18,7 +18,7 @@ st.markdown('<p style="text-align: justify;">Esses fatores combinados geraram um
 
 
 st.image(
-(petroleo_mundo.png[0]), width = 400
+images/petroleo_mundo.png, width = 400
 )
 #st.markdown("[![Click Me](app/static/petroleo_mundo.png)](https://streamlit.io)")
 #st.image('petroleo_mundo.jpg', caption='Petroleo no Mundo', width=60)
