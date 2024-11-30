@@ -86,9 +86,9 @@ st.dataframe(df_dolar)
 df_petroleo.rename(columns={"Data":"Data", "Preço - petróleo bruto - Brent (FOB)":"Valor"},inplace=True)
 st.dataframe(df_petroleo)
 
-chart_data = df_dolar(np.random.randn(20, 3), columns=["a", "b", "c"])
+df_petroleo = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
 
-st.line_chart(chart_data)
+st.line_chart(df_petroleo)
 
 
 
