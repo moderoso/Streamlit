@@ -76,7 +76,7 @@ df_dolar.head()
 df_petroleo = importacao_dados_previsao(url)
 df_petroleo.head()
 
-df_petroleo.rename(columns={"ds":"Data", "y":"Valor"},inplace=True)
+df_petroleo.rename(columns={"Data":"Data", "Preço - petróleo bruto - Brent (FOB)":"Valor"},inplace=True)
 st.dataframe(df_petroleo)
 
 
