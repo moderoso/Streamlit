@@ -3,6 +3,7 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+import plotly.graph_objects as go
 
 from statsmodels.tsa.seasonal import seasonal_decompose
 from PIL import Image
@@ -90,19 +91,29 @@ st.dataframe(df_petroleo)
 x = df_petroleo['Data']
 y = df_petroleo['Valor Petroleo']
 
+
+
+ 
+# Create a simple line chart
+fig = go.Figure(df_petroleo=go.Scatter(x=['Data'], y=['Valor Petroleo']))
+ 
+# Display the figure with Streamlit
+st.plotly_chart(fig)
+
+
 # Create the bar chart
 
 #st.bar_chart(df_dolar)
 
 
 # Create two columns
-col1, col2 = st.columns(2)
+#col1, col2 = st.columns(2)
 
 # Display bar charts in each column
-with col1:
-    st.bar_chart(df_dolar)
-with col2:
-    st.bar_chart(df_petroleo)
+#with col1:
+#    st.bar_chart(df_dolar)
+#with col2:
+#    st.bar_chart(df_petroleo)
 
 #st.bar_chart(
 #    df_petroleo,
