@@ -1,8 +1,11 @@
 # Importação das bibliotecas
 import streamlit as st
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
 from statsmodels.tsa.seasonal import seasonal_decompose
 from PIL import Image
-import pandas as pd
 from utils import modelo_previsao_prophet,tratando_dados,importacao_dados_previsao,plot_previsao,plot_previsao_10_meses,modelo_previsao_ARIMA,decomposicao,teste_estatistico
 
 # Configuração da página
@@ -82,6 +85,10 @@ st.dataframe(df_dolar)
 
 df_petroleo.rename(columns={"Data":"Data", "Preço - petróleo bruto - Brent (FOB)":"Valor"},inplace=True)
 st.dataframe(df_petroleo)
+
+chart_data = df_dolar(np.random.randn(20, 3), columns=["a", "b", "c"])
+
+st.line_chart(chart_data)
 
 
 
