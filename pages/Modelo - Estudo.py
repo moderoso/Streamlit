@@ -1,8 +1,9 @@
 # Importação das bibliotecas
 import streamlit as st
 from statsmodels.tsa.seasonal import seasonal_decompose
-from utils import decomposicao,teste_estatistico
 from PIL import Image
+import pandas as pd
+from utils import modelo_previsao_prophet,tratando_dados,importacao_dados_previsao,plot_previsao,plot_previsao_10_meses,modelo_previsao_ARIMA,decomposicao,teste_estatistico
 
 # Configuração da página
 st.set_page_config(page_title= 'Modelo - Decomposição e Análise', layout='wide', page_icon= ':fuelpump:')
