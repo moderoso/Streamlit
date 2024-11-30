@@ -17,4 +17,4 @@ st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Res
 st.markdown('<p style="text-align: justify;">Esses fatores combinados geraram um desequilíbrio entre oferta e demanda, pressionando os preços para baixo ao longo desse período.</p>', unsafe_allow_html = True)
 
 
-st.markdown('<img src="petroleo_mundo.png" width="30" height="30">', unsafe_allow_html = True)
+st.markdown('<img src="/pages/petroleo_mundo.png" width="30" height="30">', unsafe_allow_html = True)
