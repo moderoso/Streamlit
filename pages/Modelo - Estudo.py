@@ -91,15 +91,18 @@ x = df_petroleo['Data']
 y = df_petroleo['Valor Petroleo']
 
 # Create the bar chart
-st.bar_chart(
-    df_petroleo,
-    x,
-    y,
-    title='Preço Medio Petroleo',
-    xlabel='X Axis',
-    ylabel='Y Axis',
-    colors=['red', 'green', 'blue']
-)
+
+st.bar_chart(df_petroleo,x,y)
+
+#st.bar_chart(
+#    df_petroleo,
+#    x,
+#    y,
+#    title='Preço Medio Petroleo',
+#    xlabel='X Axis',
+#    ylabel='Y Axis',
+#    colors=['red', 'green', 'blue']
+#)
 
 
 
