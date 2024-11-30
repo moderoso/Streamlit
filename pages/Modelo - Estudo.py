@@ -70,7 +70,7 @@ st.markdown('<p style="text-align: justify;"> Uma ferramenta poderosa para previ
 url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?module=m&serid=1650971490&oper=view'
 
 # Construção dos dataframes 
-df_dolar = pd.read_csv('Valor_Dolar.csv', encoding = "ISO-8859-1", sep=";")
+df_dolar = pd.read_csv('Valor_Dolar.csv', encoding = "UTF-8", sep=";")
 df_dolar.head()
 
 df_petroleo = importacao_dados_previsao(url)
