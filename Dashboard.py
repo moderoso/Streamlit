@@ -8,7 +8,7 @@ import matplotlib as plt
 
 import altair as alt
 
-from utils import importacao_dados_previsao
+from utils import importacao_dados_previsao, tratando_dados
 
 # Configuração da página
 st.set_page_config(page_title= 'Dashboard - Preço do Petróleo', layout='wide', page_icon= ':fuelpump:,📊 ')
@@ -32,9 +32,9 @@ df_datas_relevantes.head()
 df_prod_pretoleo = pd.read_csv('Producao_Petroleo_Anual.csv', encoding = "ISO-8859-1", sep=";")
 df_prod_pretoleo.head()
 
-df_preco = importacao_dados_previsao(url)
-df_preco.head()
-df_preco.rename(columns={"Preço - petróleo bruto - Brent (FOB)":"Valor"},inplace=True)
+df = importacao_dados_previsao(url)
+df_preco = tratando_dados(df)
+df_preco.rename(columns={"ds":"Data", "y":"Valor"},inplace=True)
 
 st.dataframe(df_preco)
 
