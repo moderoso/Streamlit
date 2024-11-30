@@ -26,17 +26,15 @@ st.markdown('<p style="text-align: justify;">Esses fatores combinados geraram um
 image = Image.open('images/petroleo_mundo.jpg')
 st.image(image, caption='Petroleo no Mundo', width = 400)
 
-st.markdown(
-     <style>
-        button[title^=Exit]+div [data-testid=stImage]{
-            text-align: center;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 100%;
+st.markdown('<p style>
+        button[title^=Exit]+div [data-testid=stimage]{
+            "text-align: center";
+            "display: block";
+            "margin-left: auto";
+            "margin-right: auto";
+            "width: 100%";
         }
-    </style>
-, unsafe_allow_html=True
+    </p>', unsafe_allow_html=True
 )
 
 
