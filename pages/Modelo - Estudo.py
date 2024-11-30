@@ -35,5 +35,5 @@ st.markdown('<p style="text-align: justify;">Esses fatores combinados geraram um
 #    display(Image(filename=filename))
  
 
-def get_image_from_disk(images/petroleo_mundo.png):
+def get_image_from_disk(images):
     return pure_pil_alpha_to_color_v2(Image.open(images/petroleo_mundo.png)) 
