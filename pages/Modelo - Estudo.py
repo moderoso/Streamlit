@@ -25,12 +25,15 @@ st.markdown('<p style="text-align: justify;">Esses fatores combinados geraram um
 
 #st.markdown('<div class="container"><img class="Petroleo no Mundo" src="data:image/png;base64,{base64.b64encode(open(petroleo_mundo.jpg, "rb").read()).decode()}"><p class="logo-text">Logo Much ?</p></div>', unsafe_allow_html=True
 
-df.head()['img'].value
-array([petroleo_mundo])
-df['Filename'] = df['Filename'].str.replace('\','\')
-df.head()['Filename'].value
-array(['images/petroleo_mundo.png'])
+#df.head()['img'].value
+##array([petroleo_mundo])
+#df['Filename'] = df['Filename'].str.replace('\','\')
+##df.head()['Filename'].value
+#array(['images/petroleo_mundo.png'])
 
-for filename in df['Filename'].head():
-    display(Image(filename=filename))
- 	
+#for filename in df['Filename'].head():
+#    display(Image(filename=filename))
+ 
+
+def get_image_from_disk(images/petroleo_mundo.png):
+    return pure_pil_alpha_to_color_v2(Image.open(images/petroleo_mundo.png)) 
