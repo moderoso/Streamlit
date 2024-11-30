@@ -95,7 +95,7 @@ y = df_petroleo['Valor Petroleo']
 st.dataframe(data=df_petroleo)
  
 # Create a simple line chart
-fig = go.Figure(data=go.Scatter(x=['Data'], y=['Valor Petroleo']))
+fig = go.Figure(data=go.Scatter(x, y))
  
 # Display the figure with Streamlit
 st.plotly_chart(fig)
