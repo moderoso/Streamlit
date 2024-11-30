@@ -23,11 +23,4 @@ st.markdown('<p style="text-align: justify;">Esses fatores combinados geraram um
 #st.markdown('<h1 style="float: left;">Petroleo no Mundo</h1><img style="float: right;" src="petroleo_mundo.jpg" />', unsafe_allow_html=True)
 #st.markdown('<p style="text-align: justify;"><img src="petroleo_mundo.jpg" width="30" height="30"></p>', unsafe_allow_html = True)
 
-st.markdown(
-    f"""
-    <div class="container">
-        <img class="Petroleo no Mundo" src="data:image/png;base64,{base64.b64encode(open(petroleo_mundo.jpg, "rb").read()).decode()}">
-        <p class="logo-text">Logo Much ?</p>
-    </div>
-    """,
-    unsafe_allow_html=True
+st.markdown('<div class="container"><img class="Petroleo no Mundo" src="data:image/png;base64,{base64.b64encode(open(petroleo_mundo.jpg, "rb").read()).decode()}"><p class="logo-text">Logo Much ?</p></div>', unsafe_allow_html=True
