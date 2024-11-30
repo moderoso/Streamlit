@@ -92,7 +92,7 @@ y = df_petroleo['Valor Petroleo']
 
 # Create the bar chart
 
-st.bar_chart(df_petroleo)
+st.bar_chart(df_dolar)
 
 #st.bar_chart(
 #    df_petroleo,
