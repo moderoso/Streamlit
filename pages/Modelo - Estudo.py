@@ -88,7 +88,7 @@ st.dataframe(df_petroleo)
 
 df_petroleo = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
 
-st.line_chart(df_petroleo)
+st.bar_chart(df_petroleo)
 
 
 
