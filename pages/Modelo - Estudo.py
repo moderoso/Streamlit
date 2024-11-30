@@ -92,7 +92,7 @@ y = df_petroleo['Valor Petroleo']
 
 # Create the bar chart
 st.bar_chart(
-    df,
+    df_petroleo,
     x,
     y,
     title='Preço Medio Petroleo',
