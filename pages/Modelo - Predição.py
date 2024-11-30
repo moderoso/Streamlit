@@ -9,8 +9,10 @@ st.set_page_config(page_title= 'Modelo - Predição', layout='wide', page_icon= 
 # Título da página e descrição introdutória do modelo escolhido, parâmetros e performance
 st.title('Modelo Preditivo :telescope: ⚡')
 
-st.markdown('<p style="text-align: justify;">Testando atualização do MVP do projeto com o GitHub na minha máquina <span style="font-weight: bold">-- Jhonny</span>. </p>', unsafe_allow_html = True)
-st.subheader('Escolha um tipo de modelo abaixo: ')
+st.markdown('<h3> Previsões de Demanda do Petróleo </h3>', unsafe_allow_html = True)
+
+st.markdown('<p style="text-align: justify;">A demanda mundial por petróleo deve atingir o seu pico em 2028. E, em particular no setor de transporte, o uso dos derivados deve entrar em declínio já a partir de 2026, segundo a Agência Internacional de Energia.</p>', unsafe_allow_html = True)
+st.subheader('Escolha um tipo de modelo preditivo abaixo: ')
 
 opcao = st.radio(
     "Selecione uma das opções abaixo:",
