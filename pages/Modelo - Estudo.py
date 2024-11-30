@@ -33,4 +33,4 @@ with col0:
     st.image("petroleo_mundo.jpg")
 with col1:
     st.write("## 🧍 Author")
-)	
+	
