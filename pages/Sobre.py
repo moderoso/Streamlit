@@ -53,7 +53,7 @@ st.markdown('- Desenvolvimento de um modelo Machine Learning')
 #st.markdown('Link acessado em 20 novembro 2024   ' '[Agência Internacional de Energia](https://pt.wikipedia.org/wiki/Ag%C3%AAncia_Internacional_de_Energia)')  
 #st.markdown('Link acessado em 20 novembro 2024   ' '[Oito motivos para a queda do preço do  petróleo](https://www.dw.com/pt-br/oito-motivos-para-a-queda-do-pre%C3%A7o-do-petr%C3%B3leo/a-19051686)') 
 
-
+st.markdown('<p style="text-align: justify;"><br /><br /><br /><br /></p>', unsafe_allow_html = True)
 
 
 
@@ -70,7 +70,7 @@ st.write("Links acessado em 20 novembro 2024"
          "\n* Oito motivos para a queda do preço do  petróleo  https://www.dw.com/pt-br/oito-motivos-para-a-queda-do-pre%C3%A7o-do-petr%C3%B3leo/a-19051686"
 		 )
 
-
+st.markdown('<p style="text-align: justify;"><br /><br /><br /><br /></p>', unsafe_allow_html = True)
 
 
 # Equipe do projeto
