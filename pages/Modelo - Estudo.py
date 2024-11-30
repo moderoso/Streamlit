@@ -18,9 +18,21 @@ st.markdown('<p style="text-align: justify;">Esses fatores combinados geraram um
 
 
 
-st.markdown("[![Click Me](app/static/petroleo_mundo.png)](https://streamlit.io)")
+#st.markdown("[![Click Me](app/static/petroleo_mundo.png)](https://streamlit.io)")
 #st.image('petroleo_mundo.jpg', caption='Petroleo no Mundo', width=60)
 #st.markdown('<h1 style="float: left;">Petroleo no Mundo</h1><img style="float: right;" src="petroleo_mundo.jpg" />', unsafe_allow_html=True)
 #st.markdown('<p style="text-align: justify;"><img src="petroleo_mundo.jpg" width="30" height="30"></p>', unsafe_allow_html = True)
 
 #st.markdown('<div class="container"><img class="Petroleo no Mundo" src="data:image/png;base64,{base64.b64encode(open(petroleo_mundo.jpg, "rb").read()).decode()}"><p class="logo-text">Logo Much ?</p></div>', unsafe_allow_html=True
+
+
+def img_to_bytes(img_path):
+    img_bytes = Path(img_path).read_bytes()
+    encoded = base64.b64encode(img_bytes).decode()
+    return encoded
+header_html = "<img src='data:image/png;base64,{}' class='img-fluid'>".format(
+    img_to_bytes("petroleo_mundo.png")
+)
+st.markdown(
+    header_html, unsafe_allow_html=True,
+)	
