@@ -25,12 +25,12 @@ st.markdown('<p style="text-align: justify;">Esses fatores combinados geraram um
 
 #st.markdown('<div class="container"><img class="Petroleo no Mundo" src="data:image/png;base64,{base64.b64encode(open(petroleo_mundo.jpg, "rb").read()).decode()}"><p class="logo-text">Logo Much ?</p></div>', unsafe_allow_html=True
 
+df.head()['img'].value
+array([petroleo_mundo])
+df['Filename'] = df['Filename'].str.replace('\','/')
+df.head()['Filename'].value
+array(['images/petroleo_mundo.png'])
 
-st.write()
-
-col0, col1, col2 = st.columns([1,4,4])
-with col0:
-    st.image("petroleo_mundo.jpg")
-with col1:
-    st.write("## 🧍 Author")
-	
+for filename in df['Filename'].head():
+    display(Image(filename=filename))
+ 	
