@@ -20,7 +20,7 @@ st.title('Dashboard - Variação do Preço do Petróleo :fuelpump:')
 #atualiza_dados()
 
 # Webscraping dos dados de petróleo
-url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?serid=38590&module=M'
+url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?module=m&serid=1650971490&oper=view'
 
 # Construção dos dataframes 
 df_dolar = pd.read_csv('Valor_Dolar.csv', encoding = "ISO-8859-1", sep=";")
@@ -34,7 +34,7 @@ df_prod_pretoleo.head()
 
 df_preco = importacao_dados_previsao(url)
 df_preco.head()
-
+df_preco.rename(columns={"Preço - petróleo bruto - Brent (FOB)":"Valor"},inplace=True)
 
 
 # Inserindo barra para filtrar os anos
