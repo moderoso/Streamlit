@@ -23,7 +23,24 @@ st.image(image, caption='Petroleo no Mundo', width = 600)
 
 st.markdown('<p style="text-align: justify;">A crise do petróleo de 1973 elevou os preços globais, e estimulou a exploração do recurso no Brasil. Durante este período, o Brasil investiu fortemente em tecnologia, incluindo a pesquisa em exploração offshore (em alto-mar).Em 2007, o Brasil fez a descoberta do pré-sal, um reservatório vasto de petróleo abaixo de uma camada de sal no fundo do oceano. Isso consolidou o Brasil como um importante produtor de petróleo, colocando-o entre os maiores exportadores do mundo.A Petrobras enfrentou crises políticas e econômicas nos últimos anos, incluindo investigações de corrupção (como a Lava Jato), o que afetou sua operação, mas mesmo assim, o Brasil continua sendo uma das principais potências petrolíferas globais.</p>', unsafe_allow_html = True)
 
+st.markdown('<h3>Modelos preditivos utilizados no estudo </h3>', unsafe_allow_html = True)
 
+st.markdown('<p style="text-align: justify;"> Para trazer uma previsão do preço do petróleo para o cliente, a empresa DataPro construiu alguns modelos, com diferentes técnicas, para avaliar a que mais atende. As técnicas escolhidas pela DataPro foram:</p>', unsafe_allow_html = True)
+
+st.markdown('<h4>1. ARIMA </h4>', unsafe_allow_html = True)
+
+st.markdown('<p style="text-align: justify;"> O modelo ARIMA (AutoRegressive Integrated Moving Average) é uma técnica de análise de séries temporais usada para prever dados que variam ao longo do tempo. Bastante utilizado em estatística e econometria para previsão e modelagem de dados temporais, ele combina três componentes principais:</p>', unsafe_allow_html = True)
+st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">AutoRegressivo (AR):</span>Captura a relação entre uma observação e um número definido de observações anteriores;</p>', unsafe_allow_html = True)
+st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Integrado (I):</span>Representa a diferenciação dos dados para torná-los estacionários, ou seja, com propriedades estatísticas constantes ao longo do tempo;</p>', unsafe_allow_html = True)
+st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Média Móvel (MA):</span>Molda a dependência entre uma observação e o erro de previsão de um número definido de observações anteriores.</p>', unsafe_allow_html = True)
+
+st.markdown('<p style="text-align: justify;"> Essa combinação ajuda a capturar padrões e tendências nos dados, fornecendo uma base sólida para previsões futuras.</p>', unsafe_allow_html = True)
+
+st.markdown('<h4>2. PROPHET </h4>', unsafe_allow_html = True)
+
+st.markdown('<p style="text-align: justify;"> Desenvolvido pela Meta, é um modelo de previsão projetado para lidar com séries temporais que exibem tendências e sazonalidades.É particularmente útil para dados que possuem padrões sazonais e mudanças de tendência, e é desenhado para ser robusto a faltas de dados e a mudanças bruscas no comportamento da série. Ele utiliza o modelo de séries temporais decomposto com três componentes principais: tendência (g), sazonalidade (s) e feriados (h), combinados na seguinte equação:</p>', unsafe_allow_html = True)
+st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">y(t)=g(t)+s(t)+h(t)+εt</span></p>', unsafe_allow_html = True)
+st.markdown('<p style="text-align: justify;"> Uma ferramenta poderosa para previsão de séries temporais, especialmente quando se trata de dados com padrões sazonais complexos e mudanças de tendência, sua flexibilidade e robustez o tornam uma escolha popular para muitos problemas de previsão.</p>', unsafe_allow_html = True)
 
 
 
