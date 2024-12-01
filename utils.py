@@ -101,9 +101,7 @@ def teste_estatistico(dados,string_teste):
         fig.patch.set_alpha(0)
         st.pyplot(fig)
 
-# Função para WMAPE (Weighted Mean Absolute Percentage Error), uma métrica de avaliação de desempenho usada em previsões e modelos de séries temporais. 
-def wmape(y_true, y_pred):
-  return np.abs(y_true-y_pred).sum() / np.abs(y_true).sum()
+
 
 # Armazenamento do modelo em cache
 @st.cache_resource 
