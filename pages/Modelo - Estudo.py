@@ -105,7 +105,7 @@ dolar_chart = px.bar(df_dolar, x='Data', y='Valor Dolar',
 #			  category_orders='Data',
               color_discrete_sequence=colors_dolar,
               title='Valor Medio Dolar',)
-st.plotly_chart(dolar_chart, theme="streamlit", use_container_width=True)
+st.plotly_chart(dolar_chart.T, theme="streamlit", use_container_width=True)
 
 
 #setting palette
@@ -116,7 +116,7 @@ petro_chart = px.bar(df_petroleo, x='Data', y='Valor Petroleo',
 #              category_orders='Data',
 			  color_discrete_sequence=colors,
               title='Valor Medio Petroleo',)
-st.plotly_chart(petro_chart, theme="streamlit", use_container_width=True)
+st.plotly_chart(petro_chart.T, theme="streamlit", use_container_width=True)
 
 
 
