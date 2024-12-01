@@ -77,28 +77,22 @@ url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?module=m&serid=1650971490&oper
 
 # Construção dos dataframes 
 df_dolar = pd.read_csv('Valor_Dolar_US.csv', encoding = "UTF-8", sep=";")
-#df_dolar.head()
+df_dolar.rename(columns={"Data":"Data", "Taxa de câmbio - R$ / US$ - comercial - compra - média":"Valor Dolar"},inplace=True)
+df_dolar.sort_values(by='Valor Dolar', ascending=True)
 
 df_petroleo = importacao_dados_previsao(url)
-#df_petroleo.head()
-
-
-df_dolar.rename(columns={"Data":"Data", "Taxa de câmbio - R$ / US$ - comercial - compra - média":"Valor Dolar"},inplace=True)
-#st.dataframe(df_dolar)
-
 df_petroleo.rename(columns={"Data":"Data", "Preço - petróleo bruto - Brent (FOB)":"Valor Petroleo"},inplace=True)
-#st.dataframe(data=df_petroleo, hide_index=True)
-
-
+df_petroleo.sort_values(by='Valor Petroleo', ascending=True)
 
 #setting palette
 colors_dolar=['#000099','#6f5f6f']
 
 dolar_chart = px.bar(df_dolar, x='Data', y='Valor Dolar',
               opacity= .8,
-              orientation='h',
+              orientation='v',
               color_discrete_sequence=colors_dolar,
-              title='Valor Medio Dolar',)
+              title='Valor Medio Dolar',
+              )
 st.plotly_chart(dolar_chart, theme="streamlit", use_container_width=True)
 
 
