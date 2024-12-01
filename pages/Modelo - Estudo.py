@@ -97,12 +97,15 @@ colors_dolar=['#000099','#6f5f6f']
 #df_dolar = df_dolar(['Valor Dolar'/10])
 #df_dolar['Valor Dolar Calculado'] = df_dolar(['Valor Dolar']/10)
 
-dolar_chart = px.bar(df_dolar, x='Data', y='Valor Dolar',
+df_dolar_pv = df_dolar.pivot(index=['Valor Dolar']).reset_index()
+
+
+dolar_chart = px.bar(df_dolar_pv, x='Data', y='Valor Dolar',
               opacity= .8,
 #			  category_orders='Data',
               color_discrete_sequence=colors_dolar,
               title='Valor Medio Dolar',)
-st.plotly_chart(t.dolar_chart, theme="streamlit", use_container_width=True)
+st.plotly_chart(dolar_chart, theme="streamlit", use_container_width=True)
 
 
 #setting palette
