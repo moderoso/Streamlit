@@ -104,7 +104,7 @@ colors_dolar=['#000099','#6f5f6f']
 
 dolar_chart = px.bar(df_dolar, x='Data', y='Valor Dolar',
               opacity= .8,
-              orientation='h',
+              orientation='v',
 #              ascending=True,
 # autorange='reversed',
 #			  category_orders='Data',
