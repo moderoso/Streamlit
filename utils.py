@@ -445,15 +445,15 @@ def plot_resultado(dataframe):
     col1, col2, col3, col4 = st.columns(4)
 
     # Maior valor do ano atual
-    mae = dataframe['MAE'].average()
+    mae = dataframe['MAE'].mean()
     col1.metric("Valor MAE do modelo:", f"{mae:.2f}")
 
     # Data do último registro
-    wmape = dataframe['WMAPE'].average()
+    wmape = dataframe['WMAPE'].mean()
     col2.metric("Valor WMAPE do modelo:", f"{wmape:.2f}")
 
     # Maior valor do período filtrado
-    mape = dataframe['MAPE'].average()
+    mape = dataframe['MAPE'].mean()
     col3.metric("Valor MAPE do modelo:", f"{mape:.2f}")
 
     # Menor valor do período filtrado
