@@ -2,7 +2,7 @@
 import pandas as pd
 import streamlit as st
 
-
+from pmdarima import auto_arima
 from sklearn.model_selection import TimeSeriesSplit
 
 import numpy as np
@@ -26,7 +26,7 @@ from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense, Dropout
 from statsmodels.tsa.arima.model import ARIMA
-from pmdarima import auto_arima
+
 # Armazenamento dos dados em cache, melhorando a performance do site
 @st.cache_data 
 # Leitura do dados no site e armazenamento no banco de dados no BigQuery
