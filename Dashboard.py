@@ -50,6 +50,10 @@ anos_selecionados = st.slider("Selecione o intervalo de anos",
 df_filtrado = df_preco[(df_preco['Data'].dt.year >= anos_selecionados[0]) & 
                        (df_preco['Data'].dt.year <= anos_selecionados[1])]
 
+
+
+# PLOTANDO OS 4 CARDS DO DASHBOARD
+
 col1, col2, col3, col4 = st.columns(4)
 
 # Maior valor do ano atual
@@ -72,6 +76,10 @@ col4.metric("Menor Valor (Período)", f"${menor_valor_filtrado:.2f}")
 
 # Imprimindo dataframe na tela
 st.dataframe(df_datas_relevantes)
+
+
+
+# PLOTANDO GRÁFICO COM A EVOLUÇÃO E OS EVENTOS RELEVANTES AO LONGO DO TEMPO
 
 # Criando o gráfico
 fig, ax = plt.pyplot.subplots(figsize=(10, 6))
@@ -96,7 +104,7 @@ st.pyplot(fig)
 
 
 
-
+# PLOTANDO GRÁFICO DE LINHAS COM MAIOR E MENOR VALOR DINÂMICOS
 
 # Encontrando os valores extremos no período filtrado
 data_maior_valor = df_filtrado[df_filtrado['Valor'] == maior_valor_filtrado]['Data'].iloc[0]
