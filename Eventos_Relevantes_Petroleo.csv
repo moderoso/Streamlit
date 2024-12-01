@@ -1,15 +1,15 @@
-﻿Inicio Mês;Data;Evento Global;Impacto no Petróleo
-01/10/1973;Outubro de 1973;Crise do Petróleo - Embargo Árabe (OPEP corta exportações para países ocidentais);Forte aumento no preço do petróleo devido à restrição de oferta.
-01/01/1979;Janeiro de 1979;Revolução Iraniana;Queda na produção iraniana causou aumento dos preços.
-01/08/1990;Agosto de 1990;Invasão do Kuwait pelo Iraque (Guerra do Golfo);Disrupção na produção e exportação no Oriente Médio elevou os preços.
-11/09/2001;11 de Setembro de 2001;Atentados nos EUA;Incertezas econômicas reduziram temporariamente a demanda por petróleo, causando volatilidade nos preços.
-01/03/2003;Março de 2003;Início da Guerra do Iraque;Alta nos preços devido a incertezas sobre a produção no Iraque, um dos maiores exportadores.
-01/07/2008;Julho de 2008;Preço do petróleo Brent atinge recorde histórico (US$ 147/barril);Impulsionado por alta demanda global e restrições na oferta.
-01/09/2008;Setembro de 2008;Crise financeira global (falência do Lehman Brothers);Forte queda nos preços devido à contração da economia e redução da demanda.
-01/04/2010;Abril de 2010;Explosão da plataforma Deepwater Horizon (BP) no Golfo do México;Aumentou preocupações com segurança e regulação no setor, impactando custos de produção.
-01/06/2014;Junho de 2014;Início da queda nos preços do petróleo devido ao aumento da produção dos EUA (xisto);Queda acentuada no preço devido ao excesso de oferta no mercado.
-01/11/2016;Novembro de 2016;Primeiro acordo da OPEP e não-OPEP (incluindo Rússia) para corte na produção;Alta nos preços em resposta à tentativa de reequilibrar o mercado.
-01/04/2020;Abril de 2020;Pandemia de COVID-19: queda global na demanda;Preços despencam, chegando a valores negativos para contratos futuros devido ao excesso de estoques.
-01/03/2021;Março de 2021;Crise no Canal de Suez (encalhe do navio Ever Given);Interrupção no transporte global afetou momentaneamente o fluxo de petróleo.
-01/02/2022;Fevereiro de 2022;Invasão da Ucrânia pela Rússia;Aumento nos preços devido a sanções à Rússia, um dos maiores exportadores de petróleo e gás.
-01/10/2023;Outubro de 2023;Decisão da OPEP+ de cortar produção para manter preços elevados;Alta nos preços em resposta à redução na oferta.
+Inicio Mês,Data,Evento Global,Impacto no Petróleo,Valor
+01/10/1973,Outubro de 1973,Crise do Petróleo - Embargo Árabe (OPEP corta exportações para países ocidentais),Forte aumento no preço do petróleo devido à restrição de oferta.,
+01/01/1979,Janeiro de 1979,Revolução Iraniana,Queda na produção iraniana causou aumento dos preços.,
+01/08/1990,Agosto de 1990,Invasão do Kuwait pelo Iraque (Guerra do Golfo),Disrupção na produção e exportação no Oriente Médio elevou os preços.,"19,93"
+11/09/2001,11 de Setembro de 2001,Atentados nos EUA,"Incertezas econômicas reduziram temporariamente a demanda por petróleo, causando volatilidade nos preços.","29,12"
+01/03/2003,Março de 2003,Início da Guerra do Iraque,"Alta nos preços devido a incertezas sobre a produção no Iraque, um dos maiores exportadores.","33,64"
+01/07/2008,Julho de 2008,Preço do petróleo Brent atinge recorde histórico (US$ 147/barril),Impulsionado por alta demanda global e restrições na oferta.,"139,38"
+01/09/2008,Setembro de 2008,Crise financeira global (falência do Lehman Brothers),Forte queda nos preços devido à contração da economia e redução da demanda.,"113,54"
+01/04/2010,Abril de 2010,Explosão da plataforma Deepwater Horizon (BP) no Golfo do México,"Aumentou preocupações com segurança e regulação no setor, impactando custos de produção.","82,63"
+01/06/2014,Junho de 2014,Início da queda nos preços do petróleo devido ao aumento da produção dos EUA (xisto),Queda acentuada no preço devido ao excesso de oferta no mercado.,"109,09"
+01/11/2016,Novembro de 2016,Primeiro acordo da OPEP e não-OPEP (incluindo Rússia) para corte na produção,Alta nos preços em resposta à tentativa de reequilibrar o mercado.,"45,77"
+01/04/2020,Abril de 2020,Pandemia de COVID-19: queda global na demanda,"Preços despencam, chegando a valores negativos para contratos futuros devido ao excesso de estoques.","14,97"
+01/03/2021,Março de 2021,Crise no Canal de Suez (encalhe do navio Ever Given),Interrupção no transporte global afetou momentaneamente o fluxo de petróleo.,"64,56"
+01/02/2022,Fevereiro de 2022,Invasão da Ucrânia pela Rússia,"Aumento nos preços devido a sanções à Rússia, um dos maiores exportadores de petróleo e gás.","90,24"
+01/10/2023,Outubro de 2023,Decisão da OPEP+ de cortar produção para manter preços elevados,Alta nos preços em resposta à redução na oferta.,
