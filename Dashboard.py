@@ -84,6 +84,12 @@ df_filtrado['Mês'] = df_filtrado['Data'].dt.month
 # Calculando a média do preço para cada combinação de ano e mês
 df_mensal = df_filtrado.groupby(['Ano', 'Mês'])['Valor'].mean().reset_index()
 
+# Calcular a variação percentual em relação ao mês anterior
+df_mensal['Variação (%)'] = df_mensal['Valor'].pct_change() * 100
+
+# Remover os primeiros valores sem variação
+df_mensal.dropna(subset=['Variação (%)'], inplace=True)
+
 # Usar uma paleta de cores qualitativa para maior distinção
 eventos_unicos = df_datas_relevantes['Evento Global'].unique()
 cores_eventos = px.colors.qualitative.Bold  # Paleta com cores distintas
@@ -204,7 +210,34 @@ with col2:
     # Gráfico 4:
 
 
+    # Criar o gráfico de barras com a variação percentual
+    fig_variação = px.bar(
+        df_mensal,
+        x=df_mensal['Mês'].astype(str) + '/' + df_mensal['Ano'].astype(str),
+        y='Variação (%)',
+        title="Variação Mensal do Preço do Petróleo",
+        labels={'Variação (%)': 'Variação (%)', 'x': 'Mês/Ano'},
+        text='Variação (%)'
+    )
 
+    # Ajustar a aparência do gráfico
+    fig_variação.update_traces(
+        texttemplate='%{text:.2f}%',  # Formato dos rótulos (2 casas decimais e %)
+        textposition='outside',       # Rótulos fora das barras
+        marker_color='orange',        # Cor das barras
+        marker_line_color='black',    # Contorno das barras
+        marker_line_width=1.2
+    )
+
+    fig_variação.update_layout(
+        xaxis_tickangle=-45,         # Rotação dos rótulos do eixo X
+        yaxis_title="Variação (%)",
+        template="plotly_white",
+        showlegend=False
+    )
+
+    # Exibir no Streamlit
+    st.plotly_chart(fig_variação, use_container_width=True)
 
 
 
