@@ -24,6 +24,7 @@ url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?module=m&serid=1650971490&oper
 
 df_datas_relevantes = pd.read_csv('Eventos_Relevantes_Petroleo.csv', encoding = "UTF-8", sep=";")
 df_datas_relevantes['Inicio Mês'] = pd.to_datetime(df_datas_relevantes['Inicio Mês'],format="%d/%m/%Y")
+df_datas_relevantes['Valor'] = df_datas_relevantes['Valor'].replace(',','.')
 df_datas_relevantes['Valor'] = pd.to_numeric(df_datas_relevantes['Valor'])
 
 df = importacao_dados_previsao(url)
@@ -149,11 +150,13 @@ with col1:
     )
 
     # Ajustes no layout
+    y_max = df_ranking['Valor'].max()
     fig2.update_layout(
-        xaxis_tickangle=-45,  # Rotação dos rótulos no eixo X
-        yaxis_title="Preço (US$)",
-        template="plotly_white",
-        showlegend=False       # Remove a legenda, já que as barras são autoexplicativas
+    yaxis_range=[0, y_max * 1.2],  # Adiciona 20% de folga ao topo do eixo Y
+    xaxis_tickangle=-45,
+    yaxis_title="Preço (US$)",
+    template="plotly_white",
+    showlegend=False
     )
 
     # Exibindo o gráfico no Streamlit
