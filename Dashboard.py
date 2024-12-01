@@ -1,12 +1,11 @@
 # Importação das bibliotecas
 import streamlit as st
 import pandas as pd
-import plotly.express as px
-import seaborn as sns
-import numpy as np
-import matplotlib as plt 
-import plotly.graph_objects as go
+
 import altair as alt
+from plotly.colors import n_colors
+import plotly.express as px
+import plotly.graph_objects as go
 
 from utils import importacao_dados_previsao, tratando_dados
 
@@ -24,7 +23,6 @@ url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?module=m&serid=1650971490&oper
 
 df_datas_relevantes = pd.read_csv('Eventos_Relevantes_Petroleo.csv', encoding = "UTF-8", sep=";")
 df_datas_relevantes['Inicio Mês'] = pd.to_datetime(df_datas_relevantes['Inicio Mês'],format="%d/%m/%Y")
-df_datas_relevantes['Valor'] = df_datas_relevantes['Valor'].replace(',','.')
 df_datas_relevantes['Valor'] = pd.to_numeric(df_datas_relevantes['Valor'])
 
 df = importacao_dados_previsao(url)
@@ -80,6 +78,13 @@ df_filtrado['Mês'] = df_filtrado['Data'].dt.month
 
 # Calculando a média do preço para cada combinação de ano e mês
 df_mensal = df_filtrado.groupby(['Ano', 'Mês'])['Valor'].mean().reset_index()
+
+# Gerar uma paleta de cores para os eventos
+eventos_unicos = df_datas_relevantes['Evento Global'].unique()
+cores_eventos = n_colors('rgb(0, 0, 255)', 'rgb(255, 0, 0)', len(eventos_unicos), colortype='rgb')
+
+# Criar um dicionário de mapeamento entre evento e cor
+mapa_cores = {evento: cor for evento, cor in zip(eventos_unicos, cores_eventos)}
 
 
 col1, col2 = st.columns(2)
@@ -186,16 +191,6 @@ with col2:
     st.plotly_chart(fig3, use_container_width=True)
 
     # Gráfico 4: Evolução do Preço com Eventos Relevantes
-
-
-    # Verificar valores extremos
-    print("Valores máximos e mínimos do eixo Y:")
-    print(f"Valor máximo: {df_filtrado['Valor'].max()}")
-    print(f"Valor mínimo: {df_filtrado['Valor'].min()}")
-    print(f"Valor máximo dos eventos: {df_datas_relevantes['Valor'].max()}")
-
-
-
     fig4 = go.Figure()
 
     # Linha de evolução diária
@@ -209,14 +204,15 @@ with col2:
 
     # Pontos dos eventos relevantes
     for _, row in df_datas_relevantes.iterrows():
+        evento = row['Evento Global']
+        cor = mapa_cores[evento]
         fig4.add_trace(go.Scatter(
             x=[row['Inicio Mês']],
             y=[row['Valor']],
-            mode='markers+text',
-            name=row['Evento Global'],
-            text=[row['Evento Global']],
-            textposition="top center",
-            marker=dict(color='red', size=8),
+            mode='markers',
+            name=evento,  # O evento será exibido na legenda
+            marker=dict(color=cor, size=10),
+            showlegend=True  # Garantir que o ponto apareça na legenda
         ))
 
     # Configurações do layout
@@ -225,9 +221,15 @@ with col2:
         xaxis_title="Data",
         yaxis_title="Preço (US$)",
         template="plotly_white",
-        showlegend=False,
+        legend=dict(
+            title="Eventos Relevantes",
+            x=1.05,  # Ajustar a posição da legenda para fora do gráfico
+            y=1,
+            bordercolor="Black",
+            borderwidth=1
+        ),
         yaxis_range=[df_filtrado['Valor'].min() - 5, df_filtrado['Valor'].max() + 5],  # Ajuste do eixo Y
     )
 
-    # Exibir no Streamlit
+    # Exibir o gráfico no Streamlit
     st.plotly_chart(fig4, use_container_width=True)
