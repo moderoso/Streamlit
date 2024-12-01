@@ -112,7 +112,7 @@ st.plotly_chart(dolar_chart, theme="streamlit", use_container_width=True)
 colors=['#1A8A41','#521052']
 
 petro_chart = px.bar(df_petroleo, x='Data', y='Valor Petroleo',
-              opacity= .8,
+              opacity= 1,
 #              category_orders='Data',
 			  color_discrete_sequence=colors,
               title='Valor Medio Petroleo',)
