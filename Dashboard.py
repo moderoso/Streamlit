@@ -143,6 +143,7 @@ with col1:
     )
 
     st.plotly_chart(fig1, use_container_width=True)
+    st.divider()
 
     # **Gráfico 2: Top 10 maiores valores no período filtrado**
     fig2 = px.bar(
@@ -175,8 +176,9 @@ with col1:
 
     # Exibindo o gráfico no Streamlit
     st.plotly_chart(fig2, use_container_width=True)
-    st.divider()  
+
 with col2:
+      
     # **Gráfico 3: Média de preço por mês e ano**
     fig3 = px.line(
         df_mensal,
@@ -198,7 +200,7 @@ with col2:
         template="plotly_white",
     )
     st.plotly_chart(fig3, use_container_width=True)
-
+    st.divider()
     # Gráfico 4:
 
 
