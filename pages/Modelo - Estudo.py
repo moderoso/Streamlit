@@ -87,16 +87,23 @@ df_dolar.rename(columns={"Data":"Data", "Taxa de câmbio - R$ / US$ - comercial 
 st.dataframe(df_dolar)
 
 df_petroleo.rename(columns={"Data":"Data", "Preço - petróleo bruto - Brent (FOB)":"Valor Petroleo"},inplace=True)
-st.dataframe(df_petroleo)
+st.dataframe(data=df_petroleo, hide_index=True)
 
-df_petro = px.data.df_petroleo()
-
-st.subheader("Petroleo Dataset")
-st.dataframe(df_petro)
 
 #fig_petroleo = px.scater(petroleo_df, x="Data", y="Valor Petroleo")
 #st.subheader("Petroleo Chart")
 #st.ploty_chart(fig_petroleo)
+
+
+
+#setting palette
+colors=['#1A8A41','#521052']
+
+petro_chart = px.bar(df_petroleo, x='Owner', y='Win Rate',
+              opacity= .8,
+              color_discrete_sequence=colors,
+              title='Win Rate',)
+st.plotly_chart(petro_chart)
 
 
 
