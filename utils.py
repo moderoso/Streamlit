@@ -138,6 +138,53 @@ def modelo_previsao_prophet(df_preco):
 
   return future_forecast
 
+
+def modelo_previsao_ARIMA(df_preco, p=1, d=1, q=1):
+    ultimos_dias = df_preco['ds'].max() - pd.DateOffset(months=3)
+
+    # Separação dos conjuntos de treino e teste
+    df_treino = df_preco[df_preco['ds'] < ultimos_dias]
+    df_teste = df_preco[df_preco['ds'] >= ultimos_dias]
+
+    results_arima = []
+    # Ajustando o modelo ARIMA
+    arima_model = ARIMA(df_treino['y'], order=(p, d, q))
+    arima_fitted = arima_model.fit()
+
+    # Previsões no conjunto de teste
+    forecast = arima_fitted.forecast(steps=len(df_teste))
+    valid = df_teste['y'].values  # Valores reais do conjunto de teste
+
+    print(forecast)
+   # Calculando as métricas
+    mae = mean_absolute_error(valid, forecast)
+    wmape_value = np.sum(np.abs(valid - forecast)) / np.sum(valid)
+    mape = np.mean(np.abs((valid - forecast) / valid)) * 100
+
+    results_arima.append({
+        'MAE': mae,
+        'WMAPE': wmape_value,
+        'MAPE': mape
+    })
+
+    # Consolidando os resultados
+    results_df = pd.DataFrame(results_arima)
+    plot_resultado(results_df)
+
+    # Treinando o modelo final com todos os dados
+    final_arima_model = ARIMA(df_preco['y'], order=(p, d, q))
+    final_arima_fitted = final_arima_model.fit()
+
+    # Previsões futuras
+    future_predictions = final_arima_fitted.forecast(steps=90)
+    last_date = df_preco['ds'].max()
+    future_dates = pd.date_range(last_date + pd.Timedelta(days=1), periods=90, freq='D')
+
+    # Retornando previsões futuras
+    future_forecast_df = pd.DataFrame({'ds': future_dates, 'yhat': future_predictions})
+    return future_forecast_df
+
+@st.cache_resource 
 def plot_previsao(df_real, previsao, titulo='Previsão do Preço do Petróleo (Próximos 90 dias)'):
     """
     Plota os dados reais e as previsões futuras usando matplotlib e exibe no Streamlit.
@@ -233,50 +280,6 @@ def plot_resultado(dataframe):
     acuracia = 100 - mape
     col4.metric("Valor de acurácia do modelo:", f"{acuracia:.2f}%")
 
-def modelo_previsao_ARIMA(df_preco, p=1, d=1, q=1):
-    ultimos_dias = df_preco['ds'].max() - pd.DateOffset(months=3)
 
-    # Separação dos conjuntos de treino e teste
-    df_treino = df_preco[df_preco['ds'] < ultimos_dias]
-    df_teste = df_preco[df_preco['ds'] >= ultimos_dias]
 
-    results_arima = []
-    # Ajustando o modelo ARIMA
-    arima_model = ARIMA(df_treino['y'], order=(p, d, q))
-    arima_fitted = arima_model.fit()
-
-    # Previsões no conjunto de teste
-    forecast = arima_fitted.forecast(steps=len(df_teste))
-    valid = df_teste['y'].values  # Valores reais do conjunto de teste
-
-    print(forecast)
-   # Calculando as métricas
-    mae = mean_absolute_error(valid, forecast)
-    wmape_value = np.sum(np.abs(valid - forecast)) / np.sum(valid)
-    mape = np.mean(np.abs((valid - forecast) / valid)) * 100
-
-    results_arima.append({
-        'MAE': mae,
-        'WMAPE': wmape_value,
-        'MAPE': mape
-    })
-
-    # Consolidando os resultados
-    results_df = pd.DataFrame(results_arima)
-    plot_resultado(results_df)
-
-    # Treinando o modelo final com todos os dados
-    final_arima_model = ARIMA(df_preco['y'], order=(p, d, q))
-    final_arima_fitted = final_arima_model.fit()
-
-    # Previsões futuras
-    future_predictions = final_arima_fitted.forecast(steps=90)
-    last_date = df_preco['ds'].max()
-    future_dates = pd.date_range(last_date + pd.Timedelta(days=1), periods=90, freq='D')
-
-    # Retornando previsões futuras
-    future_forecast_df = pd.DataFrame({'ds': future_dates, 'yhat': future_predictions})
-    return future_forecast_df
-
-@st.cache_resource 
 
