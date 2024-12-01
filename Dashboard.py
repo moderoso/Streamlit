@@ -79,9 +79,13 @@ df_filtrado['Mês'] = df_filtrado['Data'].dt.month
 # Calculando a média do preço para cada combinação de ano e mês
 df_mensal = df_filtrado.groupby(['Ano', 'Mês'])['Valor'].mean().reset_index()
 
-# Gerar uma paleta de cores para os eventos
+# Usar uma paleta de cores qualitativa para maior distinção
 eventos_unicos = df_datas_relevantes['Evento Global'].unique()
-cores_eventos = n_colors('rgb(0, 0, 255)', 'rgb(255, 0, 0)', len(eventos_unicos), colortype='rgb')
+cores_eventos = px.colors.qualitative.Set3  # Paleta com cores distintas
+
+# Garantir que há cores suficientes para todos os eventos
+while len(cores_eventos) < len(eventos_unicos):
+    cores_eventos.extend(px.colors.qualitative.Set3)
 
 # Criar um dicionário de mapeamento entre evento e cor
 mapa_cores = {evento: cor for evento, cor in zip(eventos_unicos, cores_eventos)}
@@ -192,6 +196,7 @@ with col2:
 
     # Gráfico 4: Evolução do Preço com Eventos Relevantes
     
+# Criar o gráfico
 fig4 = go.Figure()
 
 # Linha de evolução diária
@@ -211,9 +216,9 @@ for _, row in df_datas_relevantes.iterrows():
         x=[row['Inicio Mês']],
         y=[row['Valor']],
         mode='markers',
-        name=evento,  # O evento será exibido na legenda
+        name=evento,
         marker=dict(color=cor, size=10),
-        showlegend=True  # Garantir que o ponto apareça na legenda
+        showlegend=True
     ))
 
 # Configurações do layout
@@ -222,9 +227,11 @@ fig4.update_layout(
     xaxis_title="Data",
     yaxis_title="Preço (US$)",
     template="plotly_white",
+    height=600,  # Aumentar o tamanho do gráfico
     legend=dict(
         title="Eventos Relevantes",
-        x=1.05,  # Ajustar a posição da legenda para fora do gráfico
+        font=dict(size=10),  # Reduzir o tamanho da fonte da legenda
+        x=1.02,
         y=1,
         bordercolor="Black",
         borderwidth=1
