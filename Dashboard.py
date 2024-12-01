@@ -52,6 +52,7 @@ df_filtrado = df_preco[(df_preco['Data'].dt.year >= anos_selecionados[0]) &
 
 
 
+
 # PLOTANDO OS 4 CARDS DO DASHBOARD
 
 col1, col2, col3, col4 = st.columns(4)
@@ -76,6 +77,7 @@ col4.metric("Menor Valor (Período)", f"${menor_valor_filtrado:.2f}")
 
 # Imprimindo dataframe na tela
 st.dataframe(df_datas_relevantes)
+
 
 
 
@@ -129,6 +131,60 @@ ax.set_title(f"Evolução do Preço do Petróleo ({anos_selecionados[0]} - {anos
 ax.set_xlabel("Data")
 ax.set_ylabel("Preço ($)")
 ax.legend()
+
+# Exibindo o gráfico no Streamlit
+st.pyplot(fig)
+
+
+
+
+# PLOTANDO TOP 10 PREÇOS NO PERÍODO FILTRADO
+
+# Selecionando os 10 maiores valores
+df_ranking = df_filtrado.nlargest(10, 'Valor')
+
+# Criando o gráfico de barras
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.bar(df_ranking['Data'].dt.strftime('%d/%m/%Y'), df_ranking['Valor'], color='blue', alpha=0.7)
+
+# Adicionando título e rótulos
+ax.set_title(f"Top 10 Maiores Valores no Período ({anos_selecionados[0]} - {anos_selecionados[1]})")
+ax.set_xlabel("Data")
+ax.set_ylabel("Valor ($)")
+ax.tick_params(axis='x', rotation=45)  # Rotaciona os rótulos no eixo X para melhor visualização
+
+# Exibindo o gráfico no Streamlit
+st.pyplot(fig)
+
+
+
+
+# PLOTANDO GRÁFICO DE LINHAS COM A MÉDIA DE PREÇO NO MÊS DE CADA ANO FILTRADO
+
+# Adicionando colunas de ano e mês
+df_filtrado['Ano'] = df_filtrado['Data'].dt.year
+df_filtrado['Mês'] = df_filtrado['Data'].dt.month
+
+# Calculando a média do preço para cada combinação de ano e mês
+df_mensal = df_filtrado.groupby(['Ano', 'Mês'])['Valor'].mean().reset_index()
+
+# Pivotando os dados para formato adequado ao gráfico
+df_pivot = df_mensal.pivot(index='Mês', columns='Ano', values='Valor')
+
+# Criando o gráfico
+fig, ax = plt.subplots(figsize=(12, 6))
+
+# Plotando as linhas para cada ano
+for ano in df_pivot.columns:
+    ax.plot(df_pivot.index, df_pivot[ano], label=f'Ano {ano}', marker='o')
+
+# Configurações do gráfico
+ax.set_title(f"Média Mensal do Preço do Petróleo ({anos_selecionados[0]} - {anos_selecionados[1]})")
+ax.set_xlabel("Mês")
+ax.set_ylabel("Média do Preço ($)")
+ax.set_xticks(range(1, 13))
+ax.set_xticklabels(['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'])
+ax.legend(title="Ano", loc='upper right')
 
 # Exibindo o gráfico no Streamlit
 st.pyplot(fig)
