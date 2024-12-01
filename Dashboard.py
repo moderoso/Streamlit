@@ -22,15 +22,9 @@ st.title('Dashboard - Variação do Preço do Petróleo :fuelpump:')
 # Webscraping dos dados de petróleo
 url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?module=m&serid=1650971490&oper=view'
 
-# Construção dos dataframes 
-df_dolar = pd.read_csv('Valor_Dolar.csv', encoding = "UTF-8", sep=";")
-df_dolar.head()
-
 df_datas_relevantes = pd.read_csv('Eventos_Relevantes_Petroleo.csv', encoding = "UTF-8", sep=";")
-df_datas_relevantes.head()
-
-df_prod_pretoleo = pd.read_csv('Producao_Petroleo_Anual.csv', encoding = "ISO-8859-1", sep=";")
-df_prod_pretoleo.head()
+df_datas_relevantes['Inicio Mês'] = pd.to_datetime(df_datas_relevantes['Inicio Mês'],format="%d/%m/%Y")
+df_datas_relevantes['Valor'] = pd.to_numeric(df_datas_relevantes['Valor'])
 
 df = importacao_dados_previsao(url)
 df_preco = tratando_dados(df)
