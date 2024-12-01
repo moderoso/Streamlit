@@ -188,7 +188,17 @@ with col2:
     )
     st.plotly_chart(fig3, use_container_width=True)
 
-    # **Gráfico 4: Evolução com eventos relevantes**
+    # Gráfico 4: Evolução do Preço com Eventos Relevantes
+
+
+    # Verificar valores extremos
+    print("Valores máximos e mínimos do eixo Y:")
+    print(f"Valor máximo: {df_filtrado['Valor'].max()}")
+    print(f"Valor mínimo: {df_filtrado['Valor'].min()}")
+    print(f"Valor máximo dos eventos: {df_datas_relevantes['Valor'].max()}")
+
+
+
     fig4 = go.Figure()
 
     # Linha de evolução diária
@@ -219,6 +229,8 @@ with col2:
         yaxis_title="Preço (US$)",
         template="plotly_white",
         showlegend=False,
+        yaxis_range=[df_filtrado['Valor'].min() - 5, df_filtrado['Valor'].max() + 5],  # Ajuste do eixo Y
     )
 
+    # Exibir no Streamlit
     st.plotly_chart(fig4, use_container_width=True)
