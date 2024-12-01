@@ -23,6 +23,7 @@ from statsmodels.tsa.arima.model import ARIMA
 # Armazenamento dos dados em cache, melhorando a performance do site
 @st.cache_data 
 
+
 def importacao_dados_previsao(url):
     """
     Coleta dados de uma série temporal do site do IPEA.
@@ -90,6 +91,7 @@ def tratando_dados(df):
 
 @st.cache_resource 
 
+@st.cache_data 
 def modelo_previsao_prophet(df_preco):
 
   ultimos_dias = df_preco['ds'].max() - pd.DateOffset(months=3)
@@ -276,4 +278,5 @@ def modelo_previsao_ARIMA(df_preco, p=1, d=1, q=1):
     future_forecast_df = pd.DataFrame({'ds': future_dates, 'yhat': future_predictions})
     return future_forecast_df
 
+@st.cache_resource 
 
