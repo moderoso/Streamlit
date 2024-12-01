@@ -102,7 +102,7 @@ colors=['#1A8A41','#521052']
 petro_chart = px.bar(df_petroleo, x='Data', y='Valor Petroleo',
               opacity= .8,
               color_discrete_sequence=colors,
-              title='Win Rate',)
+              title='Valor Medio Petroleo',)
 st.plotly_chart(petro_chart)
 
 
