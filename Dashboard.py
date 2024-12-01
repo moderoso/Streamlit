@@ -93,7 +93,7 @@ while len(cores_eventos) < len(eventos_unicos):
 # Criar um dicionário de mapeamento entre evento e cor
 mapa_cores = {evento: cor for evento, cor in zip(eventos_unicos, cores_eventos)}
 
-
+st.divider()  
 col1, col2 = st.columns(2)
 
 with col1:
@@ -173,7 +173,7 @@ with col1:
 
     # Exibindo o gráfico no Streamlit
     st.plotly_chart(fig2, use_container_width=True)
-
+st.divider()  
 with col2:
     # **Gráfico 3: Média de preço por mês e ano**
     fig3 = px.line(
@@ -204,9 +204,9 @@ with col2:
 
 
 
-
+st.divider()  
 # Gráfico 5: Evolução do Preço com Eventos Relevantes
-    
+
 # Criar o gráfico
 fig4 = go.Figure()
 
