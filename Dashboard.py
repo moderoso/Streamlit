@@ -41,6 +41,9 @@ anos_selecionados = st.slider("Selecione o intervalo de anos",
 df_filtrado = df_preco[(df_preco['Data'].dt.year >= anos_selecionados[0]) & 
                        (df_preco['Data'].dt.year <= anos_selecionados[1])]
 
+df_datas_relevantes_filtrado = df_datas_relevantes[(df_datas_relevantes['Inicio Mês'].dt.year >= anos_selecionados[0]) & 
+                       (df_datas_relevantes['Inicio Mês'].dt.year <= anos_selecionados[1])]
+
 
 # PLOTANDO OS 4 CARDS DO DASHBOARD
 
@@ -194,7 +197,15 @@ with col2:
     )
     st.plotly_chart(fig3, use_container_width=True)
 
-    # Gráfico 4: Evolução do Preço com Eventos Relevantes
+    # Gráfico 4:
+
+
+
+
+
+
+
+# Gráfico 5: Evolução do Preço com Eventos Relevantes
     
 # Criar o gráfico
 fig4 = go.Figure()
@@ -209,7 +220,7 @@ fig4.add_trace(go.Scatter(
 ))
 
 # Pontos dos eventos relevantes
-for _, row in df_datas_relevantes.iterrows():
+for _, row in df_datas_relevantes_filtrado.iterrows():
     evento = row['Evento Global']
     cor = mapa_cores[evento]
     fig4.add_trace(go.Scatter(
