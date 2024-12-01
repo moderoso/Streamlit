@@ -71,22 +71,23 @@ col4.metric("Menor Valor (Período)", f"${menor_valor_filtrado:.2f}")
 
 
 
-col1, col2, col3, col4 = st.columns(4)
+# Criando o gráfico
+fig, ax = plt.subplots(figsize=(10, 6))
 
-# Maior valor do ano atual
-ano_atual = pd.Timestamp.now().year
-df_atual = df_preco[df_preco['Data'].dt.year == ano_atual]
-maior_valor_atual = df_atual['Valor'].max()
-col1.metric("Maior Valor (Ano Atual)", f"${maior_valor_atual:.2f}")
+# Plotando a evolução diária do preço
+ax.plot(df_filtrado['Data'], df_filtrado['Valor'], label='Preço Diário', color='blue')
 
-# Data do último registro
-ultima_data = df_preco['Data'].max()
-col2.metric("Última Data Registrada", ultima_data.strftime('%d/%m/%Y'))
+# Adicionando os eventos no gráfico
+for _, row in df_datas_relevantes.iterrows():
+    ax.scatter(row['inicio_do_mes'], row['valor'], color='red', label=row['evento'])
+    ax.text(row['inicio_do_mes'], row['valor'], row['evento'], fontsize=8, ha='right')
 
-# Maior valor do período filtrado
-maior_valor_filtrado = df_filtrado['Valor'].max()
-col3.metric("Maior Valor (Período)", f"${maior_valor_filtrado:.2f}")
+# Configurações do gráfico
+ax.set_title("Evolução do Preço do Petróleo com Eventos Relevantes")
+ax.set_xlabel("Data")
+ax.set_ylabel("Preço ($)")
+ax.legend()
 
-# Menor valor do período filtrado
-menor_valor_filtrado = df_filtrado['Valor'].min()
-col4.metric("Menor Valor (Período)", f"${menor_valor_filtrado:.2f}")
+# Exibindo o gráfico no Streamlit
+st.pyplot(fig)
+
