@@ -90,15 +90,11 @@ df_petroleo.rename(columns={"Data":"Data", "Preço - petróleo bruto - Brent (FO
 #st.dataframe(data=df_petroleo, hide_index=True)
 
 
-#fig_petroleo = px.scater(petroleo_df, x="Data", y="Valor Petroleo")
-#st.subheader("Petroleo Chart")
-#st.ploty_chart(fig_petroleo)
-
 
 #setting palette
 colors_dolar=['#000099','#6f5f6f']
 
-dolar_chart = px.bar(df_dolar, x='Data', y='Valor Dolar',
+dolar_chart = px.bar(df_dolar, x='Data/10', y='Valor Dolar',
               opacity= .8,
               color_discrete_sequence=colors_dolar,
               title='Valor Medio Dolar',)
@@ -113,71 +109,6 @@ petro_chart = px.bar(df_petroleo, x='Data', y='Valor Petroleo',
               color_discrete_sequence=colors,
               title='Valor Medio Petroleo',)
 st.plotly_chart(petro_chart)
-
-
-
-
-
-
-
-
-
-
-
-
-#df_petroleo = pd.DataFrame(st.bar_chart(df_petroleo), columns=["Data", "Valor Petroleo"])
-#st.bar_chart(df_petroleo)
-
-#df = pd.DataFrame(df_petroleo)
-
-# Plotting
-#st.bar_chart(df.set_index('Data'), x='Data', y='Valor Petroleo', x_label='Data', y_label='Data2')
-
-# Select the data for the chart
-#x = df_petroleo['Data']
-#y = df_petroleo['Valor Petroleo']
-
-#st.dataframe(data=df_petroleo)
- 
-# Create a simple line chart
-#fig = go.Figure(data=go.Scatter(x, y))
- 
-# Display the figure with Streamlit
-#st.plotly_chart(fig)
-
-
-# Create the bar chart
-
-#st.bar_chart(df_dolar)
-
-
-# Create two columns
-#col1, col2 = st.columns(2)
-
-# Display bar charts in each column
-#with col1:
-#    st.bar_chart(df_dolar)
-#with col2:
-#    st.bar_chart(df_petroleo)
-
-#st.bar_chart(
-#    df_petroleo,
-#    x,
-#    y,
-#    title='Preço Medio Petroleo',
-#    xlabel='X Axis',
-#    ylabel='Y Axis',
-#    colors=['red', 'green', 'blue']
-#)
-
-
-
-#df_petroleo = pd.DataFrame(np.random.randn(20, 3), columns=["Data", "Valor Petroleo"])
-
-#st.bar_chart(df_petroleo)
-
-
-
 
 
 
