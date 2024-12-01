@@ -86,7 +86,7 @@ data_maior_valor = df_filtrado[df_filtrado['Valor'] == maior_valor_filtrado]['Da
 data_menor_valor = df_filtrado[df_filtrado['Valor'] == menor_valor_filtrado]['Data'].iloc[0]
 
 # Criando o gráfico
-fig, ax = plt.subplots(figsize=(10, 6))
+fig, ax = plt.pyplot.subplots(figsize=(10, 6))
 
 # Plotando a evolução diária do preço
 ax.plot(df_filtrado['Data'], df_filtrado['Valor'], label='Preço Diário', color='blue', alpha=0.7)
@@ -117,7 +117,7 @@ st.pyplot(fig)
 df_ranking = df_filtrado.nlargest(10, 'Valor')
 
 # Criando o gráfico de barras
-fig, ax = plt.subplots(figsize=(10, 6))
+fig, ax = plt.pyplot.subplots(figsize=(10, 6))
 ax.bar(df_ranking['Data'].dt.strftime('%d/%m/%Y'), df_ranking['Valor'], color='blue', alpha=0.7)
 
 # Adicionando título e rótulos
