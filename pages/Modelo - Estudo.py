@@ -100,10 +100,11 @@ colors_dolar=['#000099','#6f5f6f']
 #df_dolar_pv = df_dolar.pivot(index=['Valor Dolar'], columns='Valor Dolar').reset_index()
 
 
-df_dolar = df_dolar[['Data']].transpose()
+#df_dolar = df_dolar[['Data']].transpose()
 
 dolar_chart = px.bar(df_dolar, x='Data', y='Valor Dolar',
               opacity= .8,
+              autorange='reversed',
 #			  category_orders='Data',
               color_discrete_sequence=colors_dolar,
               title='Valor Medio Dolar',)
