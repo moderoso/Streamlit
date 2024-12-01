@@ -37,6 +37,8 @@ anos_selecionados = st.slider("Selecione o intervalo de anos",
                               max_value=int(anos.max()), 
                               value=(int(anos.min()), int(anos.max())))
 
+st.divider()  
+
 # Filtrando o dataframe com base nos anos selecionados
 df_filtrado = df_preco[(df_preco['Data'].dt.year >= anos_selecionados[0]) & 
                        (df_preco['Data'].dt.year <= anos_selecionados[1])]
@@ -173,7 +175,7 @@ with col1:
 
     # Exibindo o gráfico no Streamlit
     st.plotly_chart(fig2, use_container_width=True)
-st.divider()  
+    st.divider()  
 with col2:
     # **Gráfico 3: Média de preço por mês e ano**
     fig3 = px.line(
