@@ -488,16 +488,18 @@ def modelo_previsao_ARIMA(df_preco):
     results_df = pd.DataFrame(results_arima)
     plot_resultado(results_df)
 
-    
-    # Treinando o modelo final
-    final_arima_model = auto_arima(df_preco['y'], seasonal=False, stepwise=True).fit(df_preco['y'])
-    future_predictions = final_arima_model.predict(n_periods=90)
 
-    # Datas futuras
+    # Treinando o modelo final
+    final_arima_model = ARIMA(df_preco['y'], order=(5, 1, 0))
+    final_arima_fitted = final_arima_model.fit()
+
+    future_predictions = final_arima_fitted.forecast(steps=90)
+
+    # Criando datas para previsões futuras
     last_date = df_preco['ds'].max()
     future_dates = pd.date_range(last_date + pd.Timedelta(days=1), periods=90, freq='D')
 
-    # Resultado final
+    # Exibindo as previsões futuras
     future_forecast_df = pd.DataFrame({'ds': future_dates, 'yhat': future_predictions})
 
     return future_forecast_df
