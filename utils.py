@@ -234,38 +234,37 @@ def plot_resultado(dataframe):
     acuracia = 100 - mape
     col4.metric("Valor de acurácia do modelo:", f"{acuracia:.2f}%")
 
-def modelo_previsao_ARIMA(df_preco):
+def modelo_previsao_ARIMA(df_preco, p=1, d=1, q=1):
     ultimos_dias = df_preco['ds'].max() - pd.DateOffset(months=3)
 
     # Separação dos conjuntos de treino e teste
     df_treino = df_preco[df_preco['ds'] < ultimos_dias]
     df_teste = df_preco[df_preco['ds'] >= ultimos_dias]
 
-    # Seleção automática de parâmetros usando auto_arima
-    auto_arima_model = auto_arima(df_treino['y'], seasonal=False, stepwise=True, trace=False)
-    p, d, q = auto_arima_model.order
-
-    # Ajustando o modelo ARIMA com os melhores parâmetros
+    results_arima = []
+    # Ajustando o modelo ARIMA
     arima_model = ARIMA(df_treino['y'], order=(p, d, q))
     arima_fitted = arima_model.fit()
 
     # Previsões no conjunto de teste
-    y_val_pred = arima_fitted.forecast(steps=len(df_teste))
-    y_val_true = df_teste['y'].values  # Valores reais do conjunto de teste
+    forecast = arima_fitted.forecast(steps=len(df_teste))
+    valid = df_teste['y'].values  # Valores reais do conjunto de teste
 
-    # Cálculo de métricas de desempenho
-    mae = mean_absolute_error(y_val_true, y_val_pred)
-    wmape_value = np.sum(np.abs(y_val_true - y_val_pred)) / np.sum(y_val_true)
-    mape = np.mean(np.abs((y_val_true - y_val_pred) / y_val_true)) * 100
+    print(forecast)
+   # Calculando as métricas
+    mae = mean_absolute_error(valid, forecast)
+    wmape_value = np.sum(np.abs(valid - forecast)) / np.sum(valid)
+    mape = np.mean(np.abs((valid - forecast) / valid)) * 100
 
-    # Exibindo resultados
-    results_arima = pd.DataFrame({
-        'MAE': [mae],
-        'WMAPE': [wmape_value],
-        'MAPE': [mape]
+    results_arima.append({
+        'MAE': mae,
+        'WMAPE': wmape_value,
+        'MAPE': mape
     })
-    print("Resultados do Modelo ARIMA:")
-    print(results_arima)
+
+    # Consolidando os resultados
+    results_df = pd.DataFrame(results_arima)
+    plot_resultado(results_df)
 
     # Treinando o modelo final com todos os dados
     final_arima_model = ARIMA(df_preco['y'], order=(p, d, q))
@@ -279,4 +278,5 @@ def modelo_previsao_ARIMA(df_preco):
     # Retornando previsões futuras
     future_forecast_df = pd.DataFrame({'ds': future_dates, 'yhat': future_predictions})
     return future_forecast_df
+
 
