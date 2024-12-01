@@ -94,7 +94,10 @@ df_petroleo.rename(columns={"Data":"Data", "Preço - petróleo bruto - Brent (FO
 #setting palette
 colors_dolar=['#000099','#6f5f6f']
 
-dolar_chart = px.bar(df_dolar, x='Data', y='Valor Dolar/10',
+df_dolar = df_dolar(['Valor Dolar'/10])
+
+
+dolar_chart = px.bar(df_dolar, x='Data', y='Valor Dolar',
               opacity= .8,
               color_discrete_sequence=colors_dolar,
               title='Valor Medio Dolar',)
