@@ -87,11 +87,16 @@ st.dataframe(df_dolar)
 df_petroleo.rename(columns={"Data":"Data", "Preço - petróleo bruto - Brent (FOB)":"Valor Petroleo"},inplace=True)
 st.dataframe(data=df_petroleo)
 
+df_petroleo_chart = pd.DataFrame(df_petroleo, columns=["Data", "Valor Petroleo"])
+st.bar_chart(df_petroleo_chart)
 
-df = pd.DataFrame(df_petroleo)
+
+
+
+#df = pd.DataFrame(df_petroleo)
 
 # Plotting
-st.bar_chart(df.set_index('Data'), x='Data', y='Valor Petroleo', x_label='Data', y_label='Data2')
+#st.bar_chart(df.set_index('Data'), x='Data', y='Valor Petroleo', x_label='Data', y_label='Data2')
 
 
 
