@@ -93,3 +93,34 @@ ax.legend()
 # Exibindo o gráfico no Streamlit
 st.pyplot(fig)
 
+
+
+
+
+
+# Encontrando os valores extremos no período filtrado
+data_maior_valor = df_filtrado[df_filtrado['Valor'] == maior_valor_filtrado]['Data'].iloc[0]
+data_menor_valor = df_filtrado[df_filtrado['Valor'] == menor_valor_filtrado]['Data'].iloc[0]
+
+# Criando o gráfico
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Plotando a evolução diária do preço
+ax.plot(df_filtrado['Data'], df_filtrado['Valor'], label='Preço Diário', color='blue', alpha=0.7)
+
+# Destacando o maior valor
+ax.scatter(data_maior_valor, maior_valor_filtrado, color='green', s=100, label=f'Maior Valor: ${maior_valor_filtrado:.2f}')
+ax.text(data_maior_valor, maior_valor_filtrado, f'{maior_valor_filtrado:.2f}', color='green', fontsize=10, ha='center', va='bottom')
+
+# Destacando o menor valor
+ax.scatter(data_menor_valor, menor_valor_filtrado, color='red', s=100, label=f'Menor Valor: ${menor_valor_filtrado:.2f}')
+ax.text(data_menor_valor, menor_valor_filtrado, f'{menor_valor_filtrado:.2f}', color='red', fontsize=10, ha='center', va='top')
+
+# Configurações do gráfico
+ax.set_title(f"Evolução do Preço do Petróleo ({anos_selecionados[0]} - {anos_selecionados[1]})")
+ax.set_xlabel("Data")
+ax.set_ylabel("Preço ($)")
+ax.legend()
+
+# Exibindo o gráfico no Streamlit
+st.pyplot(fig)
