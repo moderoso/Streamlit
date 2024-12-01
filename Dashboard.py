@@ -26,7 +26,7 @@ url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?module=m&serid=1650971490&oper
 df_dolar = pd.read_csv('Valor_Dolar.csv', encoding = "UTF-8", sep=";")
 df_dolar.head()
 
-df_datas_relevantes = pd.read_csv('Eventos_Relevantes_Petroleo.csv', encoding = "UTF-8", sep=",")
+df_datas_relevantes = pd.read_csv('Eventos_Relevantes_Petroleo.csv', encoding = "UTF-8", sep=";")
 df_datas_relevantes.head()
 
 df_prod_pretoleo = pd.read_csv('Producao_Petroleo_Anual.csv', encoding = "ISO-8859-1", sep=";")
