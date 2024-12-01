@@ -36,8 +36,6 @@ df = importacao_dados_previsao(url)
 df_preco = tratando_dados(df)
 df_preco.rename(columns={"ds":"Data", "y":"Valor"},inplace=True)
 
-# Imprimindo dataframe na tela
-st.dataframe(df_datas_relevantes)
 
 # Inserindo barra para filtrar os anos
 anos = df_preco['Data'].dt.year.unique()
@@ -49,8 +47,6 @@ anos_selecionados = st.slider("Selecione o intervalo de anos",
 # Filtrando o dataframe com base nos anos selecionados
 df_filtrado = df_preco[(df_preco['Data'].dt.year >= anos_selecionados[0]) & 
                        (df_preco['Data'].dt.year <= anos_selecionados[1])]
-
-
 
 
 # PLOTANDO OS 4 CARDS DO DASHBOARD
@@ -76,22 +72,12 @@ menor_valor_filtrado = df_filtrado['Valor'].min()
 col4.metric("Menor Valor (Período)", f"${menor_valor_filtrado:.2f}")
 
 
-
-# PLOTANDO GRÁFICO DINÂMICO DE LINHAS COM MAIOR E MENOR VALOR 
-
 # Encontrando os valores extremos no período filtrado
 data_maior_valor = df_filtrado[df_filtrado['Valor'] == maior_valor_filtrado]['Data'].iloc[0]
 data_menor_valor = df_filtrado[df_filtrado['Valor'] == menor_valor_filtrado]['Data'].iloc[0]
 
-# PLOTANDO TOP 10 PREÇOS NO PERÍODO FILTRADO
-
 # Selecionando os 10 maiores valores
 df_ranking = df_filtrado.nlargest(10, 'Valor')
-
-
-
-
-# PLOTANDO GRÁFICO DE LINHAS COM A MÉDIA DE PREÇO NO MÊS DE CADA ANO FILTRADO
 
 # Adicionando colunas de ano e mês
 df_filtrado['Ano'] = df_filtrado['Data'].dt.year
@@ -99,15 +85,6 @@ df_filtrado['Mês'] = df_filtrado['Data'].dt.month
 
 # Calculando a média do preço para cada combinação de ano e mês
 df_mensal = df_filtrado.groupby(['Ano', 'Mês'])['Valor'].mean().reset_index()
-
-
-
-
-
-
-
-
-
 
 
 col1, col2 = st.columns(2)
