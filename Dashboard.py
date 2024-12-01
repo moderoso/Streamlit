@@ -81,11 +81,11 @@ df_mensal = df_filtrado.groupby(['Ano', 'Mês'])['Valor'].mean().reset_index()
 
 # Usar uma paleta de cores qualitativa para maior distinção
 eventos_unicos = df_datas_relevantes['Evento Global'].unique()
-cores_eventos = px.colors.qualitative.Set3  # Paleta com cores distintas
+cores_eventos = px.colors.qualitative.Bold  # Paleta com cores distintas
 
 # Garantir que há cores suficientes para todos os eventos
 while len(cores_eventos) < len(eventos_unicos):
-    cores_eventos.extend(px.colors.qualitative.Set3)
+    cores_eventos.extend(px.colors.qualitative.Bold)
 
 # Criar um dicionário de mapeamento entre evento e cor
 mapa_cores = {evento: cor for evento, cor in zip(eventos_unicos, cores_eventos)}
