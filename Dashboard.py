@@ -5,7 +5,7 @@ import plotly.express as px
 import seaborn as sns
 import numpy as np
 import matplotlib as plt 
-
+import plotly.graph_objects as go
 import altair as alt
 
 from utils import importacao_dados_previsao, tratando_dados
@@ -77,57 +77,16 @@ col4.metric("Menor Valor (Período)", f"${menor_valor_filtrado:.2f}")
 
 
 
-
-
 # PLOTANDO GRÁFICO DINÂMICO DE LINHAS COM MAIOR E MENOR VALOR 
 
 # Encontrando os valores extremos no período filtrado
 data_maior_valor = df_filtrado[df_filtrado['Valor'] == maior_valor_filtrado]['Data'].iloc[0]
 data_menor_valor = df_filtrado[df_filtrado['Valor'] == menor_valor_filtrado]['Data'].iloc[0]
 
-# Criando o gráfico
-fig, ax = plt.pyplot.subplots(figsize=(10, 6))
-
-# Plotando a evolução diária do preço
-ax.plot(df_filtrado['Data'], df_filtrado['Valor'], label='Preço Diário', color='blue', alpha=0.7)
-
-# Destacando o maior valor
-ax.scatter(data_maior_valor, maior_valor_filtrado, color='green', s=100, label=f'Maior Valor: ${maior_valor_filtrado:.2f}')
-ax.text(data_maior_valor, maior_valor_filtrado, f'{maior_valor_filtrado:.2f}', color='green', fontsize=10, ha='center', va='bottom')
-
-# Destacando o menor valor
-ax.scatter(data_menor_valor, menor_valor_filtrado, color='red', s=100, label=f'Menor Valor: ${menor_valor_filtrado:.2f}')
-ax.text(data_menor_valor, menor_valor_filtrado, f'{menor_valor_filtrado:.2f}', color='red', fontsize=10, ha='center', va='top')
-
-# Configurações do gráfico
-ax.set_title(f"Evolução do Preço do Petróleo ({anos_selecionados[0]} - {anos_selecionados[1]})")
-ax.set_xlabel("Data")
-ax.set_ylabel("Preço ($)")
-ax.legend()
-
-# Exibindo o gráfico no Streamlit
-st.pyplot(fig)
-
-
-
-
 # PLOTANDO TOP 10 PREÇOS NO PERÍODO FILTRADO
 
 # Selecionando os 10 maiores valores
 df_ranking = df_filtrado.nlargest(10, 'Valor')
-
-# Criando o gráfico de barras
-fig, ax = plt.pyplot.subplots(figsize=(10, 6))
-ax.bar(df_ranking['Data'].dt.strftime('%d/%m/%Y'), df_ranking['Valor'], color='blue', alpha=0.7)
-
-# Adicionando título e rótulos
-ax.set_title(f"Top 10 Maiores Valores no Período ({anos_selecionados[0]} - {anos_selecionados[1]})")
-ax.set_xlabel("Data")
-ax.set_ylabel("Valor ($)")
-ax.tick_params(axis='x', rotation=45)  # Rotaciona os rótulos no eixo X para melhor visualização
-
-# Exibindo o gráfico no Streamlit
-st.pyplot(fig)
 
 
 
@@ -141,48 +100,131 @@ df_filtrado['Mês'] = df_filtrado['Data'].dt.month
 # Calculando a média do preço para cada combinação de ano e mês
 df_mensal = df_filtrado.groupby(['Ano', 'Mês'])['Valor'].mean().reset_index()
 
-# Pivotando os dados para formato adequado ao gráfico
-df_pivot = df_mensal.pivot(index='Mês', columns='Ano', values='Valor')
-
-# Criando o gráfico
-fig, ax = plt.subplots(figsize=(12, 6))
-
-# Plotando as linhas para cada ano
-for ano in df_pivot.columns:
-    ax.plot(df_pivot.index, df_pivot[ano], label=f'Ano {ano}', marker='o')
-
-# Configurações do gráfico
-ax.set_title(f"Média Mensal do Preço do Petróleo ({anos_selecionados[0]} - {anos_selecionados[1]})")
-ax.set_xlabel("Mês")
-ax.set_ylabel("Média do Preço ($)")
-ax.set_xticks(range(1, 13))
-ax.set_xticklabels(['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'])
-ax.legend(title="Ano", loc='upper right')
-
-# Exibindo o gráfico no Streamlit
-st.pyplot(fig)
 
 
 
 
-# PLOTANDO GRÁFICO COM A EVOLUÇÃO E OS EVENTOS RELEVANTES AO LONGO DO TEMPO
 
-# Criando o gráfico
-fig, ax = plt.pyplot.subplots(figsize=(10, 6))
 
-# Plotando a evolução diária do preço
-ax.plot(df_filtrado['Data'], df_filtrado['Valor'], label='Preço Diário', color='blue')
 
-# Adicionando os eventos no gráfico
-for _, row in df_datas_relevantes.iterrows():
-    ax.scatter(row['Inicio Mês'], row['Valor'], color='red', label=row['Evento Global'])
-    ax.text(row['Inicio Mês'], row['Valor'], row['Evento Global'], fontsize=8, ha='right')
 
-# Configurações do gráfico
-ax.set_title("Evolução do Preço do Petróleo com Eventos Relevantes")
-ax.set_xlabel("Data")
-ax.set_ylabel("Preço ($)")
-ax.legend()
 
-# Exibindo o gráfico no Streamlit
-st.pyplot(fig)
+
+col1, col2 = st.columns(2)
+
+with col1:
+    # **Gráfico 1: Evolução diária do preço com maior e menor valor**
+    fig1 = go.Figure()
+
+    # Adicionando a linha de evolução diária
+    fig1.add_trace(go.Scatter(
+        x=df_filtrado['Data'],
+        y=df_filtrado['Valor'],
+        mode='lines',
+        name='Preço Diário',
+        line=dict(color='blue', width=2),
+    ))
+
+    # Destacando o maior valor
+    fig1.add_trace(go.Scatter(
+        x=[data_maior_valor],
+        y=[maior_valor_filtrado],
+        mode='markers+text',
+        name=f'Maior Valor: ${maior_valor_filtrado:.2f}',
+        text=[f'{maior_valor_filtrado:.2f}'],
+        textposition="top center",
+        marker=dict(color='green', size=10),
+    ))
+
+    # Destacando o menor valor
+    fig1.add_trace(go.Scatter(
+        x=[data_menor_valor],
+        y=[menor_valor_filtrado],
+        mode='markers+text',
+        name=f'Menor Valor: ${menor_valor_filtrado:.2f}',
+        text=[f'{menor_valor_filtrado:.2f}'],
+        textposition="bottom center",
+        marker=dict(color='red', size=10),
+    ))
+
+    # Configurações do layout
+    fig1.update_layout(
+        title=f"Evolução do Preço do Petróleo ({anos_selecionados[0]} - {anos_selecionados[1]})",
+        xaxis_title="Data",
+        yaxis_title="Preço ($)",
+        legend_title="Legenda",
+        template="plotly_white",
+    )
+
+    st.plotly_chart(fig1, use_container_width=True)
+
+    # **Gráfico 2: Top 10 maiores valores no período filtrado**
+    fig2 = px.bar(
+        df_ranking,
+        x=df_ranking['Data'].dt.strftime('%d/%m/%Y'),
+        y='Valor',
+        title=f"Top 10 Maiores Valores ({anos_selecionados[0]} - {anos_selecionados[1]})",
+        labels={'Valor': 'Preço ($)', 'Data': 'Data'},
+    )
+
+    fig2.update_traces(marker_color='blue', marker_line_width=1.5, opacity=0.8)
+    fig2.update_layout(xaxis_tickangle=-45)
+    st.plotly_chart(fig2, use_container_width=True)
+
+with col2:
+    # **Gráfico 3: Média de preço por mês e ano**
+    fig3 = px.line(
+        df_mensal,
+        x='Mês',
+        y='Valor',
+        color='Ano',
+        title="Média Mensal do Preço por Ano",
+        labels={'Mês': 'Mês', 'Valor': 'Preço ($)', 'Ano': 'Ano'},
+        markers=True,
+    )
+
+    fig3.update_layout(
+        xaxis=dict(
+            tickmode='array',
+            tickvals=list(range(1, 13)),
+            ticktext=['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        ),
+        yaxis_title="Preço Médio ($)",
+        template="plotly_white",
+    )
+    st.plotly_chart(fig3, use_container_width=True)
+
+    # **Gráfico 4: Evolução com eventos relevantes**
+    fig4 = go.Figure()
+
+    # Linha de evolução diária
+    fig4.add_trace(go.Scatter(
+        x=df_filtrado['Data'],
+        y=df_filtrado['Valor'],
+        mode='lines',
+        name='Preço Diário',
+        line=dict(color='blue', width=2),
+    ))
+
+    # Pontos dos eventos relevantes
+    for _, row in df_datas_relevantes.iterrows():
+        fig4.add_trace(go.Scatter(
+            x=[row['Inicio Mês']],
+            y=[row['Valor']],
+            mode='markers+text',
+            name=row['Evento Global'],
+            text=[row['Evento Global']],
+            textposition="top center",
+            marker=dict(color='red', size=8),
+        ))
+
+    # Configurações do layout
+    fig4.update_layout(
+        title="Evolução do Preço do Petróleo com Eventos Relevantes",
+        xaxis_title="Data",
+        yaxis_title="Preço ($)",
+        template="plotly_white",
+        showlegend=False,
+    )
+
+    st.plotly_chart(fig4, use_container_width=True)
