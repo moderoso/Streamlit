@@ -57,7 +57,7 @@ col1, col2, col3, col4 = st.columns(4)
 ano_atual = pd.Timestamp.now().year
 df_atual = df_preco[df_preco['Data'].dt.year == ano_atual]
 maior_valor_atual = df_atual['Valor'].max()
-col1.metric("Maior Valor (Ano Atual)", f"${maior_valor_atual:.2f}")
+col1.metric("Maior Valor (Ano Atual)", f"US${maior_valor_atual:.2f}")
 
 # Data do último registro
 ultima_data = df_preco['Data'].max()
@@ -65,11 +65,11 @@ col2.metric("Última Data Registrada", ultima_data.strftime('%d/%m/%Y'))
 
 # Maior valor do período filtrado
 maior_valor_filtrado = df_filtrado['Valor'].max()
-col3.metric("Maior Valor (Período)", f"${maior_valor_filtrado:.2f}")
+col3.metric("Maior Valor (Período)", f"US${maior_valor_filtrado:.2f}")
 
 # Menor valor do período filtrado
 menor_valor_filtrado = df_filtrado['Valor'].min()
-col4.metric("Menor Valor (Período)", f"${menor_valor_filtrado:.2f}")
+col4.metric("Menor Valor (Período)", f"US${menor_valor_filtrado:.2f}")
 
 
 # Encontrando os valores extremos no período filtrado
@@ -107,7 +107,7 @@ with col1:
         x=[data_maior_valor],
         y=[maior_valor_filtrado],
         mode='markers+text',
-        name=f'Maior Valor: ${maior_valor_filtrado:.2f}',
+        name=f'Maior Valor: US${maior_valor_filtrado:.2f}',
         text=[f'{maior_valor_filtrado:.2f}'],
         textposition="top center",
         marker=dict(color='green', size=10),
@@ -118,7 +118,7 @@ with col1:
         x=[data_menor_valor],
         y=[menor_valor_filtrado],
         mode='markers+text',
-        name=f'Menor Valor: ${menor_valor_filtrado:.2f}',
+        name=f'Menor Valor: US${menor_valor_filtrado:.2f}',
         text=[f'{menor_valor_filtrado:.2f}'],
         textposition="bottom center",
         marker=dict(color='red', size=10),
@@ -128,7 +128,7 @@ with col1:
     fig1.update_layout(
         title=f"Evolução do Preço do Petróleo ({anos_selecionados[0]} - {anos_selecionados[1]})",
         xaxis_title="Data",
-        yaxis_title="Preço ($)",
+        yaxis_title="Preço (US$)",
         legend_title="Legenda",
         template="plotly_white",
     )
@@ -141,7 +141,7 @@ with col1:
         x=df_ranking['Data'].dt.strftime('%d/%m/%Y'),
         y='Valor',
         title=f"Top 10 Maiores Valores ({anos_selecionados[0]} - {anos_selecionados[1]})",
-        labels={'Valor': 'Preço ($)', 'Data': 'Data'},
+        labels={'Valor': 'Preço (US$)', 'Data': 'Data'},
     )
 
     fig2.update_traces(marker_color='blue', marker_line_width=1.5, opacity=0.8)
@@ -156,7 +156,7 @@ with col2:
         y='Valor',
         color='Ano',
         title="Média Mensal do Preço por Ano",
-        labels={'Mês': 'Mês', 'Valor': 'Preço ($)', 'Ano': 'Ano'},
+        labels={'Mês': 'Mês', 'Valor': 'Preço (US$)', 'Ano': 'Ano'},
         markers=True,
     )
 
@@ -166,7 +166,7 @@ with col2:
             tickvals=list(range(1, 13)),
             ticktext=['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
         ),
-        yaxis_title="Preço Médio ($)",
+        yaxis_title="Preço Médio (US$)",
         template="plotly_white",
     )
     st.plotly_chart(fig3, use_container_width=True)
@@ -199,7 +199,7 @@ with col2:
     fig4.update_layout(
         title="Evolução do Preço do Petróleo com Eventos Relevantes",
         xaxis_title="Data",
-        yaxis_title="Preço ($)",
+        yaxis_title="Preço (US$)",
         template="plotly_white",
         showlegend=False,
     )
