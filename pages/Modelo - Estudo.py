@@ -4,7 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import plotly.graph_objects as go
-from vega_datasets import data
+import plotly.express as px
+#from vega_datasets import data
 
 from statsmodels.tsa.seasonal import seasonal_decompose
 from PIL import Image
@@ -88,10 +89,14 @@ st.dataframe(df_dolar)
 df_petroleo.rename(columns={"Data":"Data", "Preço - petróleo bruto - Brent (FOB)":"Valor Petroleo"},inplace=True)
 st.dataframe(df_petroleo)
 
-source = data.df_petroleo()
+petroleo_df = px.data.df_petroleo()
 
-st.bar_chart(source, x="Data", y="Valor Petroleo", color="site", stack=False)
+st.subheader("Petroleo Dataset")
+st.dataframe(petroleo_df)
 
+fig_petroleo = px.scater(petroleo_df, x="Data", y="Valor Petroleo")
+st.subheader("Petroleo Chart")
+st.ploty_chart(fig_petroleo)
 
 
 
