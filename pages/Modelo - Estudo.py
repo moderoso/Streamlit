@@ -84,10 +84,10 @@ df_petroleo = importacao_dados_previsao(url)
 
 
 df_dolar.rename(columns={"Data":"Data", "Taxa de câmbio - R$ / US$ - comercial - compra - média":"Valor Dolar"},inplace=True)
-st.dataframe(df_dolar)
+#st.dataframe(df_dolar)
 
 df_petroleo.rename(columns={"Data":"Data", "Preço - petróleo bruto - Brent (FOB)":"Valor Petroleo"},inplace=True)
-st.dataframe(data=df_petroleo, hide_index=True)
+#st.dataframe(data=df_petroleo, hide_index=True)
 
 
 #fig_petroleo = px.scater(petroleo_df, x="Data", y="Valor Petroleo")
