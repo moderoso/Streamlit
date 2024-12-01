@@ -79,33 +79,7 @@ col4.metric("Menor Valor (Período)", f"${menor_valor_filtrado:.2f}")
 
 
 
-
-# PLOTANDO GRÁFICO COM A EVOLUÇÃO E OS EVENTOS RELEVANTES AO LONGO DO TEMPO
-
-# Criando o gráfico
-fig, ax = plt.pyplot.subplots(figsize=(10, 6))
-
-# Plotando a evolução diária do preço
-ax.plot(df_filtrado['Data'], df_filtrado['Valor'], label='Preço Diário', color='blue')
-
-# Adicionando os eventos no gráfico
-for _, row in df_datas_relevantes.iterrows():
-    ax.scatter(row['Inicio Mês'], row['Valor'], color='red', label=row['Evento Global'])
-    ax.text(row['Inicio Mês'], row['Valor'], row['Evento Global'], fontsize=8, ha='right')
-
-# Configurações do gráfico
-ax.set_title("Evolução do Preço do Petróleo com Eventos Relevantes")
-ax.set_xlabel("Data")
-ax.set_ylabel("Preço ($)")
-ax.legend()
-
-# Exibindo o gráfico no Streamlit
-st.pyplot(fig)
-
-
-
-
-# PLOTANDO GRÁFICO DE LINHAS COM MAIOR E MENOR VALOR DINÂMICOS
+# PLOTANDO GRÁFICO DINÂMICO DE LINHAS COM MAIOR E MENOR VALOR 
 
 # Encontrando os valores extremos no período filtrado
 data_maior_valor = df_filtrado[df_filtrado['Valor'] == maior_valor_filtrado]['Data'].iloc[0]
@@ -184,6 +158,31 @@ ax.set_ylabel("Média do Preço ($)")
 ax.set_xticks(range(1, 13))
 ax.set_xticklabels(['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'])
 ax.legend(title="Ano", loc='upper right')
+
+# Exibindo o gráfico no Streamlit
+st.pyplot(fig)
+
+
+
+
+# PLOTANDO GRÁFICO COM A EVOLUÇÃO E OS EVENTOS RELEVANTES AO LONGO DO TEMPO
+
+# Criando o gráfico
+fig, ax = plt.pyplot.subplots(figsize=(10, 6))
+
+# Plotando a evolução diária do preço
+ax.plot(df_filtrado['Data'], df_filtrado['Valor'], label='Preço Diário', color='blue')
+
+# Adicionando os eventos no gráfico
+for _, row in df_datas_relevantes.iterrows():
+    ax.scatter(row['Inicio Mês'], row['Valor'], color='red', label=row['Evento Global'])
+    ax.text(row['Inicio Mês'], row['Valor'], row['Evento Global'], fontsize=8, ha='right')
+
+# Configurações do gráfico
+ax.set_title("Evolução do Preço do Petróleo com Eventos Relevantes")
+ax.set_xlabel("Data")
+ax.set_ylabel("Preço ($)")
+ax.legend()
 
 # Exibindo o gráfico no Streamlit
 st.pyplot(fig)
