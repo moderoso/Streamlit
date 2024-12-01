@@ -227,10 +227,10 @@ fig4.update_layout(
     xaxis_title="Data",
     yaxis_title="Preço (US$)",
     template="plotly_white",
-    height=600,  # Aumentar o tamanho do gráfico
+    height=700,  # Aumentar o tamanho do gráfico
     legend=dict(
         title="Eventos Relevantes",
-        font=dict(size=10),  # Reduzir o tamanho da fonte da legenda
+        font=dict(size=8.5),  # Reduzir o tamanho da fonte da legenda
         x=1.02,
         y=1,
         bordercolor="Black",
