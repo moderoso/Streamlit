@@ -95,10 +95,11 @@ df_petroleo.rename(columns={"Data":"Data", "Preço - petróleo bruto - Brent (FO
 colors_dolar=['#000099','#6f5f6f']
 
 #df_dolar = df_dolar(['Valor Dolar'/10])
-df_dolar['Valor Dolar Calculado'] = df_dolar(['Valor Dolar']/10)
+#df_dolar['Valor Dolar Calculado'] = df_dolar(['Valor Dolar']/10)
 
-dolar_chart = px.bar(df_dolar, x='Data', y='Valor Dolar Calculado',
+dolar_chart = px.bar(df_dolar, x='Data', y='Valor Dolar',
               opacity= .8,
+			  category_orders='Data',
               color_discrete_sequence=colors_dolar,
               title='Valor Medio Dolar',)
 st.plotly_chart(dolar_chart)
@@ -109,7 +110,8 @@ colors=['#1A8A41','#521052']
 
 petro_chart = px.bar(df_petroleo, x='Data', y='Valor Petroleo',
               opacity= .8,
-              color_discrete_sequence=colors,
+              category_orders='Data',
+			  color_discrete_sequence=colors,
               title='Valor Medio Petroleo',)
 st.plotly_chart(petro_chart)
 
