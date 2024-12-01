@@ -26,6 +26,7 @@ from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense, Dropout
 from statsmodels.tsa.arima.model import ARIMA
+from pmdarima import auto_arima
 # Armazenamento dos dados em cache, melhorando a performance do site
 @st.cache_data 
 # Leitura do dados no site e armazenamento no banco de dados no BigQuery
@@ -444,44 +445,49 @@ def plot_resultado(dataframe):
 
     # Maior valor do ano atual
     mae = dataframe['MAE'].mean()
-    col1.metric("Valor MAE do modelo:", f"{mae:.2f}")
+    col1.metric("Valor MAE do modelo:", f"{mae:.2f}%")
 
     # Data do último registro
     wmape = dataframe['WMAPE'].mean()
-    col2.metric("Valor WMAPE do modelo:", f"{wmape:.2f}")
+    col2.metric("Valor WMAPE do modelo:", f"{wmape:.2f}%")
 
     # Maior valor do período filtrado
     mape = dataframe['MAPE'].mean()
-    col3.metric("Valor MAPE do modelo:", f"{mape:.2f}")
+    col3.metric("Valor MAPE do modelo:", f"{mape:.2f}%")
 
     # Menor valor do período filtrado
     acuracia = 100 - mape
-    col4.metric("Valor de acurácia do modelo:", f"{acuracia:.2f}")
+    col4.metric("Valor de acurácia do modelo:", f"{acuracia:.2f}%")
 
 def modelo_previsao_ARIMA(df_preco):
     # Configurando o TimeSeriesSplit
-    n_splits = 5  # Número de divisões para validação cruzada
+    n_splits = 5
     tscv = TimeSeriesSplit(n_splits=n_splits)
 
     # Armazenando os resultados
     results_arima = []
 
-    # Loop de validação cruzada
     for fold, (train_index, val_index) in enumerate(tscv.split(df_preco)):
         print(f"Treinando o Fold {fold + 1}...")
 
-        # Separando os dados de treino e validação
         train_data = df_preco.iloc[train_index]['y']
         val_data = df_preco.iloc[val_index]['y']
 
-        # Ajustando o modelo ARIMA no conjunto de treino
-        arima_model = ARIMA(train_data, order=(5, 1, 1))  # Parâmetros de exemplo (p=5, d=1, q=0)
+        # Seleção automática de parâmetros
+        auto_arima_model = auto_arima(train_data, seasonal=False, stepwise=True, trace=False)
+
+        # Obtendo os melhores parâmetros
+        p, d, q = auto_arima_model.order
+        print(f"Parâmetros otimizados para o Fold {fold + 1}: p={p}, d={d}, q={q}")
+
+        # Treinando o modelo ARIMA
+        arima_model = ARIMA(train_data, order=(p, d, q))
         arima_fitted = arima_model.fit()
 
-        # Fazendo previsões no conjunto de validação
+        # Fazendo previsões
         y_val_pred = arima_fitted.forecast(steps=len(val_data))
 
-        # Calculando as métricas
+        # Calculando métricas
         mae = mean_absolute_error(val_data, y_val_pred)
         wmape_value = np.sum(np.abs(val_data - y_val_pred)) / np.sum(val_data)
         mape = np.mean(np.abs((val_data - y_val_pred) / val_data)) * 100
@@ -493,19 +499,19 @@ def modelo_previsao_ARIMA(df_preco):
             'MAPE': mape
         })
 
-    # Consolidando os resultados
     results_df = pd.DataFrame(results_arima)
-    plot_resultado(results_df)
+    print("\nResultados da validação cruzada:")
+    print(results_df)
 
-    final_arima_model = ARIMA(df_preco['y'], order=(5, 1, 0))
-    final_arima_fitted = final_arima_model.fit()
+    # Treinando o modelo final
+    final_arima_model = auto_arima(df_preco['y'], seasonal=False, stepwise=True).fit(df_preco['y'])
+    future_predictions = final_arima_model.predict(n_periods=90)
 
-    future_predictions = final_arima_fitted.forecast(steps=90)
-    # Criando datas para previsões futuras
+    # Datas futuras
     last_date = df_preco['ds'].max()
     future_dates = pd.date_range(last_date + pd.Timedelta(days=1), periods=90, freq='D')
 
-    # Exibindo as previsões futuras
+    # Resultado final
     future_forecast_df = pd.DataFrame({'ds': future_dates, 'yhat': future_predictions})
 
     return future_forecast_df
