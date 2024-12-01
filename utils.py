@@ -338,15 +338,20 @@ def modelo_previsao_prophet(df_preco):
         # Calculando as métricas
         mae = mean_absolute_error(valid['y'], valid['yhat'])
         wmape_value = np.sum(np.abs(valid['y'] - valid['yhat'])) / np.sum(valid['y'])
+        mape = np.mean(np.abs((valid['y'] - valid['yhat']) / valid['y'])) * 100
+        accuracy = 100 - mape
 
         results_prophet.append({
             'fold': fold + 1,
             'MAE': mae,
-            'WMAPE': wmape_value
+            'WMAPE': wmape_value,
+            'MAPE': wmape_value,
+            'Acurácia':accuracy
         })
 
     # Consolidando os resultados
     results_df = pd.DataFrame(results_prophet)
+    st.dataframe(results_df)
 
     # Treinando o modelo final e prevendo os próximos 90 dias
     final_model = Prophet(daily_seasonality=True, yearly_seasonality=True)
@@ -462,15 +467,20 @@ def modelo_previsao_ARIMA(df_preco):
         # Calculando as métricas
         mae = mean_absolute_error(val_data, y_val_pred)
         wmape_value = np.sum(np.abs(val_data - y_val_pred)) / np.sum(val_data)
+        mape = np.mean(np.abs((val_data - y_val_pred) / val_data)) * 100
+        accuracy = 100 - mape
 
         results_arima.append({
             'fold': fold + 1,
             'MAE': mae,
-            'WMAPE': wmape_value
+            'WMAPE': wmape_value,
+            'MAPE': wmape_value,
+            'Acurácia':accuracy
         })
 
-        # Consolidando os resultados
+    # Consolidando os resultados
     results_df = pd.DataFrame(results_arima)
+    st.dataframe(results_df)
 
     final_arima_model = ARIMA(df_preco['y'], order=(5, 1, 0))
     final_arima_fitted = final_arima_model.fit()
