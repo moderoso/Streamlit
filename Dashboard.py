@@ -36,7 +36,8 @@ df = importacao_dados_previsao(url)
 df_preco = tratando_dados(df)
 df_preco.rename(columns={"ds":"Data", "y":"Valor"},inplace=True)
 
-st.dataframe(df_preco)
+# Imprimindo dataframe na tela
+#st.dataframe(df_preco)
 
 # Inserindo barra para filtrar os anos
 anos = df_preco['Data'].dt.year.unique()
@@ -72,7 +73,7 @@ col4.metric("Menor Valor (Período)", f"${menor_valor_filtrado:.2f}")
 
 
 # Criando o gráfico
-fig, ax = plt.subplots(figsize=(10, 6))
+fig, ax = plt.pyplot.subplots(figsize=(10, 6))
 
 # Plotando a evolução diária do preço
 ax.plot(df_filtrado['Data'], df_filtrado['Valor'], label='Preço Diário', color='blue')
