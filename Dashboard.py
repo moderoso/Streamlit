@@ -137,15 +137,32 @@ with col1:
 
     # **Gráfico 2: Top 10 maiores valores no período filtrado**
     fig2 = px.bar(
-        df_ranking,
-        x=df_ranking['Data'].dt.strftime('%d/%m/%Y'),
-        y='Valor',
-        title=f"Top 10 Maiores Valores ({anos_selecionados[0]} - {anos_selecionados[1]})",
-        labels={'Valor': 'Preço (US$)', 'Data': 'Data'},
+    df_ranking,
+    x=df_ranking['Data'].dt.strftime('%d/%m/%Y'),
+    y='Valor',
+    title=f"Top 10 Maiores Valores ({anos_selecionados[0]} - {anos_selecionados[1]})",
+    labels={'Valor': 'Preço (US$)', 'Data': 'Data'},
+    text='Valor'  # Adiciona os valores como rótulos
     )
 
-    fig2.update_traces(marker_color='blue', marker_line_width=1.5, opacity=0.8)
-    fig2.update_layout(xaxis_tickangle=-45)
+    # Personalizando os rótulos
+    fig2.update_traces(
+        texttemplate='%{text:.2f}',  # Formato dos rótulos (2 casas decimais)
+        textposition='outside',      # Posição dos rótulos (fora das barras)
+        marker_color='blue',         # Cor das barras
+        marker_line_width=1.5,       # Contorno das barras
+        opacity=0.8                  # Transparência das barras
+    )
+
+    # Ajustes no layout
+    fig2.update_layout(
+        xaxis_tickangle=-45,  # Rotação dos rótulos no eixo X
+        yaxis_title="Preço (US$)",
+        template="plotly_white",
+        showlegend=False       # Remove a legenda, já que as barras são autoexplicativas
+    )
+
+    # Exibindo o gráfico no Streamlit
     st.plotly_chart(fig2, use_container_width=True)
 
 with col2:
