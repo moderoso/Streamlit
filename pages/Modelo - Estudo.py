@@ -100,9 +100,9 @@ colors_dolar=['#000099','#6f5f6f']
 #df_dolar_pv = df_dolar.pivot(index=['Valor Dolar'], columns='Valor Dolar').reset_index()
 
 
+df_dolar = df_dolar.T
 
-
-dolar_chart = px.bar(df_dolar.T, x='Data', y='Valor Dolar',
+dolar_chart = px.bar(df_dolar, x='Data', y='Valor Dolar',
               opacity= .8,
 #			  category_orders='Data',
               color_discrete_sequence=colors_dolar,
@@ -113,7 +113,7 @@ st.plotly_chart(dolar_chart, theme="streamlit", use_container_width=True)
 #setting palette
 colors=['#1A8A41','#521052']
 
-petro_chart = px.bar(df_petroleo.T, x='Data', y='Valor Petroleo',
+petro_chart = px.bar(df_petroleo, x='Data', y='Valor Petroleo',
 #              opacity= 1,
 #              category_orders='Data',
 			  color_discrete_sequence=colors,
