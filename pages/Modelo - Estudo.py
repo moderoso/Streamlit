@@ -99,10 +99,10 @@ colors_dolar=['#000099','#6f5f6f']
 
 dolar_chart = px.bar(df_dolar, x='Data', y='Valor Dolar',
               opacity= .8,
-			  category_orders='Data',
+#			  category_orders='Data',
               color_discrete_sequence=colors_dolar,
               title='Valor Medio Dolar',)
-st.plotly_chart(dolar_chart)
+st.plotly_chart(dolar_chart, theme="streamlit", use_container_width=True)
 
 
 #setting palette
@@ -110,10 +110,10 @@ colors=['#1A8A41','#521052']
 
 petro_chart = px.bar(df_petroleo, x='Data', y='Valor Petroleo',
               opacity= .8,
-              category_orders='Data',
+#              category_orders='Data',
 			  color_discrete_sequence=colors,
               title='Valor Medio Petroleo',)
-st.plotly_chart(petro_chart)
+st.plotly_chart(petro_chart, theme=None, use_container_width=True)
 
 
 
