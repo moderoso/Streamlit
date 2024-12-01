@@ -351,7 +351,7 @@ def modelo_previsao_prophet(df_preco):
 
     # Consolidando os resultados
     results_df = pd.DataFrame(results_prophet)
-    st.dataframe(results_df)
+    plot_resultado(results_df)
 
     # Treinando o modelo final e prevendo os próximos 90 dias
     final_model = Prophet(daily_seasonality=True, yearly_seasonality=True)
@@ -441,6 +441,25 @@ def plot_previsao_10_meses(df_preco, future_forecast, titulo='Previsão do Preç
     st.pyplot(fig)
 
 
+def plot_resultado(dataframe):
+    col1, col2, col3, col4 = st.columns(4)
+
+    # Maior valor do ano atual
+    mae = dataframe['MAE'].average()
+    col1.metric("Valor MAE do modelo:", f"{mae:.2f}")
+
+    # Data do último registro
+    wmape = dataframe['WMAPE'].average()
+    col2.metric("Valor WMAPE do modelo:", f"{wmape:.2f}")
+
+    # Maior valor do período filtrado
+    mape = dataframe['MAPE'].average()
+    col3.metric("Valor MAPE do modelo:", f"{mape:.2f}")
+
+    # Menor valor do período filtrado
+    acuracia = 100 - mape
+    col4.metric("Valor de acurácia do modelo:", f"{acuracia:.2f}")
+
 def modelo_previsao_ARIMA(df_preco):
     # Configurando o TimeSeriesSplit
     n_splits = 5  # Número de divisões para validação cruzada
@@ -480,7 +499,7 @@ def modelo_previsao_ARIMA(df_preco):
 
     # Consolidando os resultados
     results_df = pd.DataFrame(results_arima)
-    st.dataframe(results_df)
+    plot_resultado(results_df)
 
     final_arima_model = ARIMA(df_preco['y'], order=(5, 1, 0))
     final_arima_fitted = final_arima_model.fit()
