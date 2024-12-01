@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import plotly.graph_objects as go
+from vega_datasets import data
 
 from statsmodels.tsa.seasonal import seasonal_decompose
 from PIL import Image
@@ -85,31 +86,37 @@ df_dolar.rename(columns={"Data":"Data", "Taxa de câmbio - R$ / US$ - comercial 
 st.dataframe(df_dolar)
 
 df_petroleo.rename(columns={"Data":"Data", "Preço - petróleo bruto - Brent (FOB)":"Valor Petroleo"},inplace=True)
-st.dataframe(data=df_petroleo)
+st.dataframe(df_petroleo)
 
-df_petroleo = pd.DataFrame(st.bar_chart(df_petroleo), columns=["Data", "Valor Petroleo"])
-st.bar_chart(df_petroleo)
+source = data.df_petroleo()
+
+st.bar_chart(source, x="Data", y="Valor Petroleo", color="site", stack=False)
 
 
 
+
+
+
+
+
+
+
+
+
+
+#df_petroleo = pd.DataFrame(st.bar_chart(df_petroleo), columns=["Data", "Valor Petroleo"])
+#st.bar_chart(df_petroleo)
 
 #df = pd.DataFrame(df_petroleo)
 
 # Plotting
 #st.bar_chart(df.set_index('Data'), x='Data', y='Valor Petroleo', x_label='Data', y_label='Data2')
 
-
-
 # Select the data for the chart
 #x = df_petroleo['Data']
 #y = df_petroleo['Valor Petroleo']
 
-
 #st.dataframe(data=df_petroleo)
- 
- 
- 
-
  
 # Create a simple line chart
 #fig = go.Figure(data=go.Scatter(x, y))
