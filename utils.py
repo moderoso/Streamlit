@@ -339,14 +339,12 @@ def modelo_previsao_prophet(df_preco):
         mae = mean_absolute_error(valid['y'], valid['yhat'])
         wmape_value = np.sum(np.abs(valid['y'] - valid['yhat'])) / np.sum(valid['y'])
         mape = np.mean(np.abs((valid['y'] - valid['yhat']) / valid['y'])) * 100
-        accuracy = 100 - mape
 
         results_prophet.append({
             'fold': fold + 1,
             'MAE': mae,
             'WMAPE': wmape_value,
-            'MAPE': wmape_value,
-            'Acurácia':accuracy
+            'MAPE': mape
         })
 
     # Consolidando os resultados
@@ -487,14 +485,12 @@ def modelo_previsao_ARIMA(df_preco):
         mae = mean_absolute_error(val_data, y_val_pred)
         wmape_value = np.sum(np.abs(val_data - y_val_pred)) / np.sum(val_data)
         mape = np.mean(np.abs((val_data - y_val_pred) / val_data)) * 100
-        accuracy = 100 - mape
 
         results_arima.append({
             'fold': fold + 1,
             'MAE': mae,
             'WMAPE': wmape_value,
-            'MAPE': wmape_value,
-            'Acurácia':accuracy
+            'MAPE': mape
         })
 
     # Consolidando os resultados
