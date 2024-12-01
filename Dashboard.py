@@ -191,45 +191,46 @@ with col2:
     st.plotly_chart(fig3, use_container_width=True)
 
     # Gráfico 4: Evolução do Preço com Eventos Relevantes
-    fig4 = go.Figure()
+    
+fig4 = go.Figure()
 
-    # Linha de evolução diária
+# Linha de evolução diária
+fig4.add_trace(go.Scatter(
+    x=df_filtrado['Data'],
+    y=df_filtrado['Valor'],
+    mode='lines',
+    name='Preço Diário',
+    line=dict(color='blue', width=2),
+))
+
+# Pontos dos eventos relevantes
+for _, row in df_datas_relevantes.iterrows():
+    evento = row['Evento Global']
+    cor = mapa_cores[evento]
     fig4.add_trace(go.Scatter(
-        x=df_filtrado['Data'],
-        y=df_filtrado['Valor'],
-        mode='lines',
-        name='Preço Diário',
-        line=dict(color='blue', width=2),
+        x=[row['Inicio Mês']],
+        y=[row['Valor']],
+        mode='markers',
+        name=evento,  # O evento será exibido na legenda
+        marker=dict(color=cor, size=10),
+        showlegend=True  # Garantir que o ponto apareça na legenda
     ))
 
-    # Pontos dos eventos relevantes
-    for _, row in df_datas_relevantes.iterrows():
-        evento = row['Evento Global']
-        cor = mapa_cores[evento]
-        fig4.add_trace(go.Scatter(
-            x=[row['Inicio Mês']],
-            y=[row['Valor']],
-            mode='markers',
-            name=evento,  # O evento será exibido na legenda
-            marker=dict(color=cor, size=10),
-            showlegend=True  # Garantir que o ponto apareça na legenda
-        ))
+# Configurações do layout
+fig4.update_layout(
+    title="Evolução do Preço do Petróleo com Eventos Relevantes",
+    xaxis_title="Data",
+    yaxis_title="Preço (US$)",
+    template="plotly_white",
+    legend=dict(
+        title="Eventos Relevantes",
+        x=1.05,  # Ajustar a posição da legenda para fora do gráfico
+        y=1,
+        bordercolor="Black",
+        borderwidth=1
+    ),
+    yaxis_range=[df_filtrado['Valor'].min() - 5, df_filtrado['Valor'].max() + 5],  # Ajuste do eixo Y
+)
 
-    # Configurações do layout
-    fig4.update_layout(
-        title="Evolução do Preço do Petróleo com Eventos Relevantes",
-        xaxis_title="Data",
-        yaxis_title="Preço (US$)",
-        template="plotly_white",
-        legend=dict(
-            title="Eventos Relevantes",
-            x=1.05,  # Ajustar a posição da legenda para fora do gráfico
-            y=1,
-            bordercolor="Black",
-            borderwidth=1
-        ),
-        yaxis_range=[df_filtrado['Valor'].min() - 5, df_filtrado['Valor'].max() + 5],  # Ajuste do eixo Y
-    )
-
-    # Exibir o gráfico no Streamlit
-    st.plotly_chart(fig4, use_container_width=True)
+# Exibir o gráfico no Streamlit
+st.plotly_chart(fig4, use_container_width=True)
