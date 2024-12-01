@@ -102,7 +102,7 @@ dolar_chart = px.bar(df_dolar, x='Data', y='Valor Dolar',
 #			  category_orders='Data',
               color_discrete_sequence=colors_dolar,
               title='Valor Medio Dolar',)
-st.plotly_chart(dolar_chart, theme="streamlit", use_container_width=True)
+st.plotly_chart(t.dolar_chart, theme="streamlit", use_container_width=True)
 
 
 #setting palette
