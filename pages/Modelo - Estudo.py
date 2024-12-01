@@ -100,6 +100,8 @@ colors_dolar=['#000099','#6f5f6f']
 #df_dolar_pv = df_dolar.pivot(index=['Valor Dolar'], columns='Valor Dolar').reset_index()
 
 
+
+
 dolar_chart = px.bar(df_dolar, x='Data', y='Valor Dolar',
               opacity= .8,
 #			  category_orders='Data',
