@@ -75,8 +75,7 @@ col3.metric("Maior Valor (Período)", f"${maior_valor_filtrado:.2f}")
 menor_valor_filtrado = df_filtrado['Valor'].min()
 col4.metric("Menor Valor (Período)", f"${menor_valor_filtrado:.2f}")
 
-# Imprimindo dataframe na tela
-st.dataframe(df_datas_relevantes)
+
 
 
 
@@ -91,8 +90,8 @@ ax.plot(df_filtrado['Data'], df_filtrado['Valor'], label='Preço Diário', color
 
 # Adicionando os eventos no gráfico
 for _, row in df_datas_relevantes.iterrows():
-    ax.scatter(row['Inicio Mês'], row['valor'], color='red', label=row['evento'])
-    ax.text(row['Inicio Mês'], row['valor'], row['evento'], fontsize=8, ha='right')
+    ax.scatter(row['Inicio Mês'], row['Valor'], color='red', label=row['evento'])
+    ax.text(row['Inicio Mês'], row['Valor'], row['evento'], fontsize=8, ha='right')
 
 # Configurações do gráfico
 ax.set_title("Evolução do Preço do Petróleo com Eventos Relevantes")
