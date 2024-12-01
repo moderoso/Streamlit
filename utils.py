@@ -454,49 +454,41 @@ def plot_resultado(dataframe):
     col4.metric("Valor de acurácia do modelo:", f"{acuracia:.2f}%")
 
 def modelo_previsao_ARIMA(df_preco):
-    # Configurando o TimeSeriesSplit
-    n_splits = 5
-    tscv = TimeSeriesSplit(n_splits=n_splits)
+    ultimos_dias = df_preco['ds'].max() - pd.DateOffset(months=3)
 
-    # Armazenando os resultados
+    df_treino = df_preco[df_preco['ds'] < ultimos_dias]
+    df_teste = df_preco[df_preco['ds'] >= ultimos_dias]    
+
     results_arima = []
 
-    for fold, (train_index, val_index) in enumerate(tscv.split(df_preco)):
-        print(f"Treinando o Fold {fold + 1}...")
+    # Seleção automática de parâmetros
+    auto_arima_model = auto_arima(df_treino, seasonal=False, stepwise=True, trace=False)
 
-        train_data = df_preco.iloc[train_index]['y']
-        val_data = df_preco.iloc[val_index]['y']
+    # Obtendo os melhores parâmetros
+    p, d, q = auto_arima_model.order
 
-        # Seleção automática de parâmetros
-        auto_arima_model = auto_arima(train_data, seasonal=False, stepwise=True, trace=False)
+    # Treinando o modelo ARIMA
+    arima_model = ARIMA(df_treino, order=(p, d, q))
+    arima_fitted = arima_model.fit()
 
-        # Obtendo os melhores parâmetros
-        p, d, q = auto_arima_model.order
-        print(f"Parâmetros otimizados para o Fold {fold + 1}: p={p}, d={d}, q={q}")
+    # Fazendo previsões
+    y_val_pred = arima_fitted.forecast(steps=len(df_teste))
 
-        # Treinando o modelo ARIMA
-        arima_model = ARIMA(train_data, order=(p, d, q))
-        arima_fitted = arima_model.fit()
+    # Calculando métricas
+    mae = mean_absolute_error(df_teste, y_val_pred)
+    wmape_value = np.sum(np.abs(df_teste - y_val_pred)) / np.sum(df_teste)
+    mape = np.mean(np.abs((df_teste - y_val_pred) / df_teste)) * 100
 
-        # Fazendo previsões
-        y_val_pred = arima_fitted.forecast(steps=len(val_data))
-
-        # Calculando métricas
-        mae = mean_absolute_error(val_data, y_val_pred)
-        wmape_value = np.sum(np.abs(val_data - y_val_pred)) / np.sum(val_data)
-        mape = np.mean(np.abs((val_data - y_val_pred) / val_data)) * 100
-
-        results_arima.append({
-            'fold': fold + 1,
-            'MAE': mae,
-            'WMAPE': wmape_value,
-            'MAPE': mape
-        })
+    results_arima.append({
+        'MAE': mae,
+        'WMAPE': wmape_value,
+        'MAPE': mape
+    })
 
     results_df = pd.DataFrame(results_arima)
-    print("\nResultados da validação cruzada:")
-    print(results_df)
+    plot_resultado(results_df)
 
+    
     # Treinando o modelo final
     final_arima_model = auto_arima(df_preco['y'], seasonal=False, stepwise=True).fit(df_preco['y'])
     future_predictions = final_arima_model.predict(n_periods=90)
