@@ -104,11 +104,13 @@ colors_dolar=['#000099','#6f5f6f']
 
 dolar_chart = px.bar(df_dolar, x='Data', y='Valor Dolar',
               opacity= .8,
-#              autorange='reversed',
+              orientation='h',
+              ascending=True,
+# autorange='reversed',
 #			  category_orders='Data',
               color_discrete_sequence=colors_dolar,
               title='Valor Medio Dolar',)
-			  dolar_chart = plotly_bar_chart(df=df_dolar)
+#			  dolar_chart = plotly_bar_chart(df=df_dolar)
 st.plotly_chart(dolar_chart, theme="streamlit", use_container_width=True)
 
 
