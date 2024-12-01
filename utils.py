@@ -313,54 +313,50 @@ def tratando_dados(df):
     return df_preco
 
 def modelo_previsao_prophet(df_preco):
-    # Configurando o TimeSeriesSplit
-    n_splits = 5  # Número de divisões para validação cruzada
-    tscv = TimeSeriesSplit(n_splits=n_splits)
 
-    # Armazenando resultados
-    results_prophet = []
+  ultimos_dias = df_preco['ds'].max() - pd.DateOffset(months=3)
 
-    # Validação cruzada
-    for fold, (train_index, val_index) in enumerate(tscv.split(df_preco)):
-        # Dividindo os dados em treino e validação
-        treino = df_preco.iloc[train_index]
-        valid = df_preco.iloc[val_index]
+  df_treino = df_preco[df_preco['ds'] < ultimos_dias]
+  df_teste = df_preco[df_preco['ds'] >= ultimos_dias]
 
-        # Criando e ajustando o modelo Prophet
-        model = Prophet(daily_seasonality=True, yearly_seasonality=True)
-        model.fit(treino)
 
-        # Prevendo para o conjunto de validação
-        forecast = model.predict(valid[['ds']])
-        valid = valid.merge(forecast[['ds', 'yhat']], on='ds')
+  # Armazenando resultados
+  results_prophet = []
 
-        # Calculando as métricas
-        mae = mean_absolute_error(valid['y'], valid['yhat'])
-        wmape_value = np.sum(np.abs(valid['y'] - valid['yhat'])) / np.sum(valid['y'])
-        mape = np.mean(np.abs((valid['y'] - valid['yhat']) / valid['y'])) * 100
+  model = Prophet(seasonality_mode='multiplicative',daily_seasonality=True, yearly_seasonality=True)  # ou 'multiplicative', dependendo do comportamento dos dados
+  model.fit(df_treino)
 
-        results_prophet.append({
-            'fold': fold + 1,
-            'MAE': mae,
-            'WMAPE': wmape_value,
-            'MAPE': mape
-        })
 
-    # Consolidando os resultados
-    results_df = pd.DataFrame(results_prophet)
-    plot_resultado(results_df)
+  # Prevendo para o conjunto de validação
+  forecast = model.predict(df_teste[['ds']])
+  valid = df_teste.merge(forecast[['ds', 'yhat']], on='ds')
 
-    # Treinando o modelo final e prevendo os próximos 90 dias
-    final_model = Prophet(daily_seasonality=True, yearly_seasonality=True)
-    final_model.fit(df_preco)
+  # Calculando as métricas
+  mae = mean_absolute_error(valid['y'], valid['yhat'])
+  wmape_value = np.sum(np.abs(valid['y'] - valid['yhat'])) / np.sum(valid['y'])
+  mape = np.mean(np.abs((valid['y'] - valid['yhat']) / valid['y'])) * 100
 
-    future_dates = final_model.make_future_dataframe(periods=90)
-    future_forecast = final_model.predict(future_dates)
+  results_prophet.append({
+      'MAE': mae,
+      'WMAPE': wmape_value,
+      'MAPE': mape
+  })
 
-    # Exibindo as previsões para os próximos 90 dias
-    future_forecast[['ds', 'yhat']].tail(90)
+  # Consolidando os resultados
+  results_df = pd.DataFrame(results_prophet)
+  plot_resultado(results_df)
 
-    return future_forecast
+  # Treinando o modelo final e prevendo os próximos 90 dias
+  final_model = Prophet(daily_seasonality=True, yearly_seasonality=True)
+  final_model.fit(df_preco)
+
+  future_dates = final_model.make_future_dataframe(periods=90)
+  future_forecast = final_model.predict(future_dates)
+
+  # Exibindo as previsões para os próximos 90 dias
+  future_forecast[['ds', 'yhat']].tail(90)
+
+  return future_forecast
 
 def plot_previsao(df_real, previsao, titulo='Previsão do Preço do Petróleo (Próximos 90 dias)'):
     """
