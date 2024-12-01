@@ -22,11 +22,6 @@ from statsmodels.tsa.arima.model import ARIMA
 
 # Armazenamento dos dados em cache, melhorando a performance do site
 @st.cache_data 
-# Leitura do dados no site e armazenamento no banco de dados no BigQuery
-# Armazenamento dos dados em cache
-@st.cache_data 
-# Consulta full de cada tabela criada no BigQuery
-
 
 def importacao_dados_previsao(url):
     """
@@ -92,6 +87,8 @@ def tratando_dados(df):
     df_preco = df.sort_values(by='ds')
 
     return df_preco
+
+@st.cache_resource 
 
 def modelo_previsao_prophet(df_preco):
 
