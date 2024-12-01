@@ -89,7 +89,12 @@ st.dataframe(data=df_petroleo)
 
 
 df = pd.DataFrame(df_petroleo)
-st.bar_chart(df)
+
+# Plotting
+st.bar_chart(df.set_index('Data'))
+
+
+
 # Select the data for the chart
 #x = df_petroleo['Data']
 #y = df_petroleo['Valor Petroleo']
