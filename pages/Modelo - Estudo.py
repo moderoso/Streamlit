@@ -27,7 +27,7 @@ st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Res
 st.markdown('<p style="text-align: justify;">Esses fatores combinados geraram um desequilíbrio entre oferta e demanda, pressionando os preços para baixo ao longo desse período. Conforme os acontecimentos econômicos citados, é possível analisar que isso é um fator que impacta o aumento e a queda do valor do dólar.</p>', unsafe_allow_html = True)
 
 #Adiciona Imagem na pagina
-image = Image.open('images/petroleo_mundo.jpg')
+image = Image.open('images/petroleo_mundo.png')
 st.image(image, caption='Petroleo no Mundo', width = 600)
 
 
