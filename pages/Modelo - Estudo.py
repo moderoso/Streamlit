@@ -99,7 +99,7 @@ st.dataframe(data=df_petroleo, hide_index=True)
 #setting palette
 colors=['#1A8A41','#521052']
 
-petro_chart = px.bar(df_petroleo, x='Owner', y='Win Rate',
+petro_chart = px.bar(df_petroleo, x='Data', y='Valor Petroleo',
               opacity= .8,
               color_discrete_sequence=colors,
               title='Win Rate',)
