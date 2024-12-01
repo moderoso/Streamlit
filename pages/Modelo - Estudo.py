@@ -89,14 +89,14 @@ st.dataframe(df_dolar)
 df_petroleo.rename(columns={"Data":"Data", "Preço - petróleo bruto - Brent (FOB)":"Valor Petroleo"},inplace=True)
 st.dataframe(df_petroleo)
 
-petroleo_df = px.data.df_petroleo()
+df_petro = px.data.df_petroleo()
 
 st.subheader("Petroleo Dataset")
-st.dataframe(petroleo_df)
+st.dataframe(df_petro)
 
-fig_petroleo = px.scater(petroleo_df, x="Data", y="Valor Petroleo")
-st.subheader("Petroleo Chart")
-st.ploty_chart(fig_petroleo)
+#fig_petroleo = px.scater(petroleo_df, x="Data", y="Valor Petroleo")
+#st.subheader("Petroleo Chart")
+#st.ploty_chart(fig_petroleo)
 
 
 
