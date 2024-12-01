@@ -37,7 +37,7 @@ df_preco = tratando_dados(df)
 df_preco.rename(columns={"ds":"Data", "y":"Valor"},inplace=True)
 
 # Imprimindo dataframe na tela
-#st.dataframe(df_preco)
+st.dataframe(df_datas_relevantes)
 
 # Inserindo barra para filtrar os anos
 anos = df_preco['Data'].dt.year.unique()
