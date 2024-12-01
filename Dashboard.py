@@ -70,7 +70,8 @@ col3.metric("Maior Valor (Período)", f"${maior_valor_filtrado:.2f}")
 menor_valor_filtrado = df_filtrado['Valor'].min()
 col4.metric("Menor Valor (Período)", f"${menor_valor_filtrado:.2f}")
 
-
+# Imprimindo dataframe na tela
+st.dataframe(df_datas_relevantes)
 
 # Criando o gráfico
 fig, ax = plt.pyplot.subplots(figsize=(10, 6))
