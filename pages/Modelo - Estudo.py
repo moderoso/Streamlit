@@ -76,7 +76,7 @@ st.markdown('<p style="text-align: justify;"> Uma ferramenta poderosa para previ
 url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?module=m&serid=1650971490&oper=view'
 
 # Construção dos dataframes 
-df_dolar = pd.read_csv('Valor_Dolar.csv', encoding = "UTF-8", sep=";")
+df_dolar = pd.read_csv('Valor_Dolar_US.csv', encoding = "UTF-8", sep=";")
 #df_dolar.head()
 
 df_petroleo = importacao_dados_previsao(url)
@@ -112,7 +112,7 @@ st.plotly_chart(dolar_chart, theme="streamlit", use_container_width=True)
 colors=['#1A8A41','#521052']
 
 petro_chart = px.bar(df_petroleo, x='Data', y='Valor Petroleo',
-              opacity= 1,
+#              opacity= 1,
 #              category_orders='Data',
 			  color_discrete_sequence=colors,
               title='Valor Medio Petroleo',)
