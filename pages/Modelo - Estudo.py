@@ -9,7 +9,7 @@ import plotly.express as px
 
 from statsmodels.tsa.seasonal import seasonal_decompose
 from PIL import Image
-from utils import modelo_previsao_prophet,tratando_dados,importacao_dados_previsao,plot_previsao,plot_previsao_10_meses,modelo_previsao_ARIMA,decomposicao,teste_estatistico
+from utils import importacao_dados_previsao
 
 # Configuração da página
 st.set_page_config(page_title= 'Modelo - Decomposição e Análise', layout='wide', page_icon= ':fuelpump:')
