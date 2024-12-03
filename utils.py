@@ -285,6 +285,9 @@ def metricas_utilizadas():
     st.markdown('<h5>Métricas utilizadas na avaliação dos modelos. </h5>', unsafe_allow_html = True)
 
     st.markdown('<p style="text-align: justify;"> MAE (Mean Absolute Error): Mede o erro médio absoluto entre os valores reais e previstos.</p>', unsafe_allow_html = True)
+    
     st.markdown('<p style="text-align: justify;"> MAPE (Mean Absolute Percentage Error): Calcula o erro médio percentual entre os valores reais e previstos.</p>', unsafe_allow_html = True)
+    
     st.markdown('<p style="text-align: justify;"> WMAPE (Weighted Mean Absolute Percentage Error): Uma variação do MAPE que pondera os erros absolutos pelo total dos valores reais.</p>', unsafe_allow_html = True)
+    
     st.markdown('<p style="text-align: justify;"> Acurácia: Mede a porcentagem de previsões dentro de uma faixa aceitável de erro.</p>', unsafe_allow_html = True)
