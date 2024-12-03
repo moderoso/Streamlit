@@ -45,10 +45,14 @@ opcao = st.radio(
 )
 
 
+
 # Execução da lógica com base na escolha
 if opcao == "Prophet":
+
     metricas_utilizadas()
 
+    st.markdown('<h3>PREVISÃO:</h3>', unsafe_allow_html = True)
+    
     # Aplicando o dataframe após o tratamento para treinar o modelo usando o Prophet
     future_forecast = modelo_previsao_prophet(df_preco)
 
@@ -58,7 +62,10 @@ if opcao == "Prophet":
     # Plotando o resultado dos últimos 10 meses + os próximos 90 dias previstos
     plot_previsao_10_meses(df_preco,future_forecast)
 elif opcao == "ARIMA":
+
     metricas_utilizadas()
+
+    st.markdown('<h3>PREVISÃO</h3>', unsafe_allow_html = True)
 
     # Aplicando o dataframe após o tratamento para treinar o modelo usando o ARIMA
     future_forecast = modelo_previsao_ARIMA(df_preco)
