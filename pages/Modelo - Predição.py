@@ -9,15 +9,6 @@ st.set_page_config(page_title= 'Modelo - Predição', layout='wide', page_icon= 
 # Título da página e descrição introdutória do modelo escolhido, parâmetros e performance
 st.title('Modelo Preditivo :telescope: ⚡')
 
-st.markdown('<h3> Previsões de Demanda do Petróleo </h3>', unsafe_allow_html = True)
-
-st.markdown('<p style="text-align: justify;">A demanda mundial por petróleo deve atingir o seu pico em 2028. E, em particular no setor de transporte, o uso dos derivados deve entrar em declínio já a partir de 2026, segundo a Agência Internacional de Energia.</p>', unsafe_allow_html = True)
-st.subheader('Escolha um tipo de modelo preditivo abaixo: ')
-
-opcao = st.radio(
-    "Selecione uma das opções abaixo:",
-    ("Prophet", "ARIMA")
-)
 # Leitura dos dados de petróleo com WebScraping
 url = 'http://www.ipeadata.gov.br/ExibeSerie.aspx?module=m&serid=1650971490&oper=view'
 df = importacao_dados_previsao(url)
@@ -43,6 +34,15 @@ st.markdown('<h5>2. PROPHET </h5>', unsafe_allow_html = True)
 st.markdown('<p style="text-align: justify;"> Desenvolvido pela Meta, é um modelo de previsão projetado para lidar com séries temporais que exibem tendências e sazonalidades.É particularmente útil para dados que possuem padrões sazonais e mudanças de tendência, e é desenhado para ser robusto a faltas de dados e a mudanças bruscas no comportamento da série. Ele utiliza o modelo de séries temporais decomposto com três componentes principais: tendência (g), sazonalidade (s) e feriados (h), combinados na seguinte equação:</p>', unsafe_allow_html = True)
 st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">y(t)=g(t)+s(t)+h(t)+εt</span></p>', unsafe_allow_html = True)
 st.markdown('<p style="text-align: justify;"> Uma ferramenta poderosa para previsão de séries temporais, especialmente quando se trata de dados com padrões sazonais complexos e mudanças de tendência, sua flexibilidade e robustez o tornam uma escolha popular para muitos problemas de previsão.</p>', unsafe_allow_html = True)
+
+
+
+st.subheader('Escolha um tipo de modelo preditivo abaixo: ')
+
+opcao = st.radio(
+    "Selecione uma das opções abaixo:",
+    ("Prophet", "ARIMA")
+)
 
 
 # Execução da lógica com base na escolha
