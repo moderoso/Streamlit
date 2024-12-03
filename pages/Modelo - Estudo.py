@@ -53,7 +53,6 @@ st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Esp
 
 st.markdown('<p style="text-align: justify;"><span style="font-weight: bold">Eventos Imprevistos:</span> Desastres naturais, como furacões e terremotos, podem interromper a produção de petróleo e causar aumentos nos preços. Além disso, novas descobertas de grandes reservas ou avanços tecnológicos na produção também podem impactar o mercado.</p>', unsafe_allow_html = True)
 
-st.markdown('<h3>Modelos preditivos utilizados no estudo </h3>', unsafe_allow_html = True)
 
 
 # Webscraping dos dados de petróleo
